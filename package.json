@@ -21,8 +21,8 @@
     "url": "https://github.com/tobiipro/eslint-plugin-firecloud/issues"
   },
   "homepage": "https://github.com/tobiipro/eslint-plugin-firecloud#readme",
-  
+
   "peerDependencies": {
-    "eslint-config-firecloud": "git://github.com/tobiipro/eslint-config-firecloud.git"
+    "eslint-config-firecloud": "*"
   }
 }
