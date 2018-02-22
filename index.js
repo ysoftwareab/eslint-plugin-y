@@ -1,1 +1,1 @@
-module.exports = require('eslint-config-firecloud');
+module.exports = require('eslint-config-firecloud/rules');
