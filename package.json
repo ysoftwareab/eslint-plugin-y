@@ -1,27 +1,9 @@
 {
+  "private": true,
   "name": "eslint-plugin-firecloud",
   "version": "0.0.1",
-  "description": "A collection of custom ESLint rules used by Firecloud team",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tobiipro/eslint-plugin-firecloud.git"
-  },
-  "keywords": [
-    "eslint",
-    "rules",
-    "plugin"
-  ],
-  "author": "",
+  "description": "A proxy module to rules in 'eslint-config-firecloud'",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tobiipro/eslint-plugin-firecloud/issues"
-  },
-  "homepage": "https://github.com/tobiipro/eslint-plugin-firecloud#readme",
-
   "peerDependencies": {
     "eslint-config-firecloud": "*"
   }
