@@ -2,7 +2,7 @@
   "private": true,
   "name": "eslint-plugin-firecloud",
   "description": "A proxy module to ESLint rules in eslint-config-firecloud.",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "license": "Unlicense",
   "peerDependencies": {
     "eslint-config-firecloud": "*"
