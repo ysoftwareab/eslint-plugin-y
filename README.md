@@ -12,3 +12,8 @@ points back to `eslint-config-firecloud/rules` module for a list of rules to be 
 them across several repos is to create an `eslint-plugin-your-team-name` and put all the rules there.
 Since, we already had our shared `eslint-config-firecloud`, we wanted to have our rules lying beside configs,
 so both rules and configs for them can be changed in the same place. So this module acts as a sole proxy.
+
+
+## License
+
+[UNLICENSE](UNLICENSE)

@@ -3,7 +3,7 @@
   "name": "eslint-plugin-firecloud",
   "version": "0.0.1",
   "description": "A proxy module to rules in 'eslint-config-firecloud'",
-  "license": "MIT",
+  "license": "Unlicense",
   "peerDependencies": {
     "eslint-config-firecloud": "*"
   }
