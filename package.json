@@ -4,6 +4,10 @@
   "description": "A proxy module to ESLint rules in eslint-config-firecloud.",
   "version": "0.1.0",
   "license": "Unlicense",
+  "files": [
+    "/UNLICENSE",
+    "/index.js"
+  ],
   "peerDependencies": {
     "eslint-config-firecloud": "*"
   }
