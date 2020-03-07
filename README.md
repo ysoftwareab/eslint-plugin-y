@@ -88,5 +88,5 @@ that have concrete consequences on daily work.
 [UNLICENSE](UNLICENSE)
 
 
-  [1]: https://travis-ci.com/tobiipro/eslint-config-firecloud
-  [2]: https://travis-ci.com/tobiipro/eslint-config-firecloud.svg?branch=master
+  [1]: https://travis-ci.com/rokmoln/eslint-config-firecloud
+  [2]: https://travis-ci.com/rokmoln/eslint-config-firecloud.svg?branch=master
