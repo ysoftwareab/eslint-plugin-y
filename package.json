@@ -35,7 +35,6 @@
   "devDependencies": {
     "@getify/eslint-plugin-proper-arrows": "^8.0.1",
     "babel-eslint": "^10.0.3",
-    "eclint": "^2.6.0",
     "eslint": "^6.5.1",
     "eslint-config-firecloud": "file:.",
     "eslint-import-resolver-node": "^0.3.3",
