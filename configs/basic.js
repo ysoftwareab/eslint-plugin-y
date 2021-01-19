@@ -45,6 +45,8 @@ module.exports = {
     'brace-style': 'error',
     'callback-return': 'error',
     camelcase: ['warn', {
+      // NOTE commented out because we use the same config for babel/camelcase which doesn't have ignoreImports
+      // ignoreImports: true,
       properties: 'never'
     }],
     'capitalized-comments': 'off',
@@ -59,6 +61,7 @@ module.exports = {
     'constructor-super': 'error',
     curly: 'error',
     'default-case': 'error',
+    'default-case-last': 'error',
     'default-param-last': 'error',
     'dot-location': ['error', 'property'],
     'dot-notation': 'error',
@@ -76,6 +79,7 @@ module.exports = {
     'generator-star-spacing': 'error',
     'getter-return': 'error',
     'global-require': 'error',
+    'grouped-accessor-pairs': 'error',
     'guard-for-in': 'off',
     'handle-callback-err': 'error',
     'id-blacklist': 'off',
@@ -131,12 +135,14 @@ module.exports = {
     'no-confusing-arrow': 'error',
     'no-console': 'error',
     'no-const-assign': 'error',
+    'no-constructor-return': 'error',
     'no-constant-condition': ['error', {
       checkLoops: false
     }],
     'no-continue': 'off',
     'no-control-regex': 'error',
     'no-debugger': isIde ? 'warn' : 'off',
+    'no-dupe-else-if': 'error',
     'no-delete-var': 'error',
     'no-div-regex': 'off',
     'no-dupe-args': 'error',
@@ -179,6 +185,7 @@ module.exports = {
     'no-lone-blocks': 'error',
     'no-lonely-if': 'error',
     'no-loop-func': 'error',
+    'no-loss-of-precision': 'error',
     'no-magic-numbers': 'off',
     'no-misleading-character-class': 'error',
     'no-mixed-operators': 'off',
@@ -198,6 +205,7 @@ module.exports = {
     'no-new-symbol': 'error',
     'no-new-wrappers': 'error',
     'no-new': 'warn',
+    'no-nonoctal-decimal-escape': 'error',
     'no-obj-calls': 'error',
     'no-octal-escape': 'error',
     'no-octal': 'error',
@@ -206,10 +214,12 @@ module.exports = {
     'no-plusplus': 'error',
     'no-process-env': 'off',
     'no-process-exit': 'error',
+    'no-promise-executor-return': 'error',
     'no-proto': 'error',
     'no-prototype-builtins': 'error',
     'no-redeclare': 'error',
     'no-regex-spaces': 'error',
+    'no-restricted-exports': 'off',
     'no-restricted-globals': 'off',
     'no-restricted-imports': 'off',
     'no-restricted-modules': 'off',
@@ -220,6 +230,7 @@ module.exports = {
     'no-script-url': 'error',
     'no-self-assign': 'error',
     'no-self-compare': 'error',
+    'no-setter-return': 'error',
     'no-sequences': 'error',
     'no-shadow-restricted-names': 'error',
     'no-shadow': 'off',
@@ -244,6 +255,7 @@ module.exports = {
     'no-unused-expressions': 'warn',
     'no-unused-labels': 'error',
     'no-unsafe-negation': 'error',
+    'no-unsafe-optional-chaining': 'error',
     'no-unused-vars': ['error', {
       args: 'all',
       argsIgnorePattern: '^_',
@@ -257,6 +269,7 @@ module.exports = {
       classes: false,
       variables: false
     }],
+    'no-useless-backreference': 'error',
     'no-useless-call': 'error',
     'no-useless-catch': 'error',
     'no-useless-computed-key': 'error',
@@ -331,6 +344,7 @@ module.exports = {
     }, {
       enforceForRenamedProperties: false
     }],
+    'prefer-exponentiation-operator': 'off',
     'prefer-named-capture-group': 'off',
     'prefer-numeric-literals': 'error',
     'prefer-object-spread': 'error',
