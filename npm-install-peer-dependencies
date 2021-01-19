@@ -17,7 +17,7 @@ done
 DIR=$(cd -P $(dirname ${SOURCE}) && pwd)
 
 function exe() {
-    echo "$(pwd)\$ $@"
+    echo "$(pwd)\$ $*"
     "$@"
 }
 
@@ -28,7 +28,7 @@ node -e " \
     }); \
     " | {
     NPM_PEER_DEPS=
-    while read LINE; do
+    while read -r LINE; do
         NAME=$(echo "${LINE}" | cut -d $'\t' -f 1)
         VSN=$(echo "${LINE}" | cut -d $'\t' -f 2)
 
