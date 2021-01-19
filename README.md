@@ -88,5 +88,5 @@ that have concrete consequences on daily work.
 [UNLICENSE](UNLICENSE)
 
 
-  [1]: https://travis-ci.com/rokmoln/eslint-config-firecloud
-  [2]: https://travis-ci.com/rokmoln/eslint-config-firecloud.svg?branch=master
+  [1]: https://github.com/rokmoln/eslint-config-firecloud/actions?query=workflow%3ACI+branch%3Amaster
+  [2]: https://github.com/rokmoln/eslint-config-firecloud/workflows/CI/badge.svg?branch=master
