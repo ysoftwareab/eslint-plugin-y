@@ -29,7 +29,7 @@ module.exports = {
           return;
         }
 
-        if (_.includes(sourceCode.getText().slice(prev.end, node.start), '\n\n')) {
+        if (_.includes(sourceCode.getText().slice(prev.range[1], node.range[0]), '\n\n')) {
           // contains empty line between prev token and node
           return;
         }

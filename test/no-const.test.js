@@ -21,10 +21,12 @@ _ruleTester.run('no-const', rule, {
   }],
 
   invalid: [{
-    code: 'const a;',
+    code: 'const a = undefined;',
+    output: 'let a = undefined;',
     errors: 1
   }, {
     code: "const b = {a: 'value'}; const {a} = b;",
+    output: "let b = {a: 'value'}; let {a} = b;",
     errors: 2
   }]
 });

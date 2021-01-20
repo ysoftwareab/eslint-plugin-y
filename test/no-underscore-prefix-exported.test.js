@@ -42,7 +42,7 @@ _ruleTester.run('no-underscore-prefix-exported', rule, {
     code: 'export function _a(b, c){let d = 5}',
     errors: 1
   }, {
-    code: 'export let {[b]:_c}',
+    code: 'export let {[b]:_c} = {}',
     errors: 1
   }]
 });

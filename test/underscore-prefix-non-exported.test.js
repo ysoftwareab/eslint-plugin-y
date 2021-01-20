@@ -42,7 +42,7 @@ let _whileExporting = {
     code: 'function a(b, c){let d = 5}',
     errors: 1
   }, {
-    code: 'let {[b]:c}',
+    code: 'let {[b]:c} = {}',
     errors: 1
   }]
 };
