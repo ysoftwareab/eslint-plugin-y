@@ -21,7 +21,10 @@ const resolvePath = require("path").resolve,
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 6, sourceType: "module" } });
+const ruleTester = new RuleTester({
+    parser: require.resolve('babel-eslint'),
+    parserOptions: { ecmaVersion: 6, sourceType: "module" }
+});
 
 ruleTester.run("object-curly-newline", rule, {
     valid: [

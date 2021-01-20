@@ -2,6 +2,7 @@ let eslint = require('eslint');
 let rule = require('../rules/no-const');
 
 let _ruleTester = new eslint.RuleTester({
+  parser: require.resolve('babel-eslint'),
   parserOptions: {
     ecmaVersion: 2015,
     sourceType: 'module'

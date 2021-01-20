@@ -3,6 +3,7 @@ let eslint = require('eslint');
 let rule = require('../rules/import-specifier-newline');
 
 let _ruleTester = new eslint.RuleTester({
+  parser: require.resolve('babel-eslint'),
   parserOptions: {
     ecmaVersion: 2015,
     sourceType: 'module'

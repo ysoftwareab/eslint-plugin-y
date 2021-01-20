@@ -3,6 +3,7 @@ let eslint = require('eslint');
 let rule = require('../rules/padding-line-import-multiple');
 
 let _ruleTester = new eslint.RuleTester({
+  parser: require.resolve('babel-eslint'),
   parserOptions: {
     ecmaVersion: 2015,
     sourceType: 'module'
