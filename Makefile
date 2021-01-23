@@ -31,6 +31,9 @@ SF_ECLINT_FILES_IGNORE += \
 	-e "^test/object-property-newline\.test\.js$$" \
 	-e "^test/order-imports\.test\.js$$" \
 
+SF_DEPS_TARGETS += \
+	.github/workflows/main.yml \
+
 SF_TEST_TARGETS += \
 	test-rules \
 
