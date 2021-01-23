@@ -1,7 +1,7 @@
 // NOTE that this is an addon config. An eslint plugin needs to be installed manually.
 
 let _pluginName = 'eslint-plugin-jest';
-let _pluginVsn = '^22.17.0';
+let _pluginVsn = '^24.1.3';
 let _pluginActualVsn = require(`${_pluginName}/package.json`).version;
 let _semver = require('semver');
 
@@ -22,18 +22,22 @@ module.exports = {
     'jest/expect-expect': 'error',
     'jest/lowercase-name': 'error',
     'jest/no-alias-methods': 'error',
+    'jest/no-conditional-expect': 'off',
     'jest/no-commented-out-tests': 'error',
+    'jest/no-deprecated-functions': 'error',
+    'jest/no-done-callback': 'error',
     'jest/no-duplicate-hooks': 'error',
     'jest/no-empty-title': 'error',
     'jest/no-expect-resolves': 'error',
     'jest/no-export': 'error',
     'jest/no-hooks': 'off',
     'jest/no-if': 'error',
+    'jest/no-interpolation-in-snapshots': 'error',
     'jest/no-jasmine-globals': 'error',
     'jest/no-large-snapshots': 'error',
     'jest/no-mocks-import': 'error',
+    'jest/no-restricted-matchers': 'off',
     'jest/no-standalone-expect': 'error',
-    'jest/no-test-callback': 'error',
     'jest/no-test-return-statement': 'error',
     'jest/no-truthy-falsy': 'error',
     'jest/no-try-expect': 'error',
@@ -47,6 +51,6 @@ module.exports = {
     'jest/prefer-to-contain': 'error',
     'jest/prefer-to-have-length': 'error',
     'jest/require-top-level-describe': 'error',
-    'jest/require-tothrow-message': 'off'
+    'jest/require-to-throw-message': 'off'
   }
 };
