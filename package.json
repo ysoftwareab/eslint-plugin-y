@@ -28,6 +28,14 @@
     "eslint-plugin-lodash": "^7.1.0",
     "eslint-plugin-no-null": "^1.0.2"
   },
+  "optionalPeerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "eslint-plugin-jasmine": "^2.10.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-mocha": "^6.1.1",
+    "eslint-plugin-protractor": "^2.1.1",
+    "eslint-plugin-vue": "^5.2.2"
+  },
   "dependencies": {
     "lodash": "^4.17.5",
     "semver": "^7.3.4"
