@@ -29,7 +29,7 @@ function exe() {
     }); \
     "
   node -e " \
-    optPeerDeps = require('${DIR}/package.json').optionalPeerDependencies; \
+    peerDeps = require('${DIR}/package.json').optionalPeerDependencies; \
     Object.keys(peerDeps).forEach(function(name) { \
         console.log(name + '\t' + peerDeps[name] + '\t' + 'optional'); \
     }); \
@@ -41,35 +41,45 @@ function exe() {
     VSN=$(echo "${LINE}" | cut -d $'\t' -f 2)
     OPTIONAL=$(echo "${LINE}" | cut -d $'\t' -f 3)
 
-    # is the version already specified in dependencies or devDependencies?
+    # is the version already specified as dependency?
     IN_PACKAGE_JSON=false
     IN_PACKAGE_JSON=$(node -p "try { \
       var pkg = require('./package.json'); \
       var vsn = (pkg.dependencies || {})[\"${NAME}\"] || (pkg.devDependencies || {})[\"${NAME}\"]; \
       vsn === \"${VSN}\"; \
       } catch(err){false}" | \
-      grep -q "^false$" || \
-      echo "true")
+      grep -q "^false$" && \
+      echo "false" || echo "true")
 
-    # if not, skip installing if optional
-    [[ "${IN_PACKAGE_JSON}" = "true" ]] || \
-      [[ "${OPTIONAL}" != "optional" ]] || continue
+    if [[ "${IN_PACKAGE_JSON}" = "true" ]]; then
+      # and is it already installed (static spec), then skip
+      node -p "try { \
+        var pkg = require('./node_modules/${NAME}/package.json'); \
+        pkg.version === \"${VSN}\"; \
+        } catch(err){false}" | \
+        grep -q "^false$" || \
+        continue
 
-    # and is it already installed (static spec)?
-    [[ "${IN_PACKAGE_JSON}" = "false" ]] || node -p "try { \
-      var pkg = require('./node_modules/${NAME}/package.json'); \
-      pkg.version === \"${VSN}\"; \
-      } catch(err){false}" | \
-      grep -q "^false$" || \
-      continue
+      # and is it already installed (range spec), then skip
+      node -p "try { \
+        var pkg = require('./node_modules/${NAME}/package.json'); \
+        (pkg._requested || {}).rawSpec === \"${VSN}\"; \
+        } catch(err){false}" | \
+        grep -q "^false$" || \
+        continue
+    elif [[ "${OPTIONAL}" = "optional" ]]; then
+      # not, if optional and no version specified as dependency, then skip
+      IN_PACKAGE_JSON=false
+      IN_PACKAGE_JSON=$(node -p "try { \
+        var pkg = require('./package.json'); \
+        var vsn = (pkg.dependencies || {})[\"${NAME}\"] || (pkg.devDependencies || {})[\"${NAME}\"]; \
+        vsn !== undefined; \
+        } catch(err){false}" | \
+        grep -q "^false$" && \
+        echo "false" || echo "true")
 
-    # and is it already installed (range spec)?
-    [[ "${IN_PACKAGE_JSON}" = "false" ]] || node -p "try { \
-      var pkg = require('./node_modules/${NAME}/package.json'); \
-      (pkg._requested || {}).rawSpec === \"${VSN}\"; \
-      } catch(err){false}" | \
-      grep -q "^false$" || \
-      continue
+      [[ "${IN_PACKAGE_JSON}" = "true" ]] || continue
+    fi
 
     # https://github.com/stedolan/jq/issues/105#issuecomment-437363987
     # cat <<< "$(jq ".devDependencies += {\"${NAME}\": \"${VSN}\"}" < package.json)" > package.json
