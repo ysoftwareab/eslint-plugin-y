@@ -1,7 +1,7 @@
 // NOTE that this is an addon config. An eslint plugin needs to be installed manually.
 
 let _pluginName = 'eslint-plugin-jasmine';
-let _pluginVsn = '^2.10.1';
+let _pluginVsn = '^4.1.1';
 let _pluginActualVsn = require(`${_pluginName}/package.json`).version;
 let _semver = require('semver');
 
@@ -15,10 +15,12 @@ module.exports = {
     'plugin:jasmine/recommended'
   ],
 
+  // not set by 'plugin:jasmine/recommended'
   env: {
     jasmine: true
   },
 
+  // not set by 'plugin:jasmine/recommended'
   plugins: [
     'jasmine'
   ],
