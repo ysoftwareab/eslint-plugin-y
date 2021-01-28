@@ -1,0 +1,15 @@
+eslint-config-firecloud v0.12.0 Release Notes
+
+Highlights since v0.11.0-src:
+
+* None
+
+Breaking commits since v0.11.0-src:
+
+* None
+
+Commits since v0.11.0-src:
+
+* a8f38a8 2021-01-28 mark typescript as non-optional in order for npm-install-peer-dependencies to install it automatically
+* 9339f9a 2021-01-28 add typescript as a dependency, following the spec of tsutils. see commit description for WTF?!
+o 71e34a4 2021-01-27 0.11.0
