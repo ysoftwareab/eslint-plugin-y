@@ -41,31 +41,6 @@
     "lodash": "^4.17.5",
     "semver": "^7.3.4"
   },
-  "devDependencies": {
-    "@getify/eslint-plugin-proper-arrows": "^10.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.14.0",
-    "@typescript-eslint/parser": "^4.14.1",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^7.18.0",
-    "eslint-config-firecloud": "file:.",
-    "eslint-import-resolver-node": "^0.3.3",
-    "eslint-plugin-async-await": "^0.0.0",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-eslint-comments": "^3.1.2",
-    "eslint-plugin-firecloud": "git://github.com/rokmoln/eslint-plugin-firecloud.git#semver:~0.1.0",
-    "eslint-plugin-fp": "^2.3.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jasmine": "^4.1.1",
-    "eslint-plugin-jest": "^24.1.3",
-    "eslint-plugin-jsdoc": "^31.4.0",
-    "eslint-plugin-lodash": "^7.1.0",
-    "eslint-plugin-mocha": "^8.0.0",
-    "eslint-plugin-no-null": "^1.0.2",
-    "eslint-plugin-protractor": "^2.1.1",
-    "eslint-plugin-vue": "^7.5.0",
-    "npm-publish-git": "git://github.com/andreineculau/npm-publish-git.git#semver:~0.0.8",
-    "typescript": "^4.1.3"
-  },
   "scripts": {
     "postinstall": "echo '___ WARN Maybe you want to run node_modules/eslint-config-firecloud/npm-install-peer-dependencies.'"
   }
