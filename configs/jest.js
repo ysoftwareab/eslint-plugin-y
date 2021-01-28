@@ -11,6 +11,16 @@ if (!_semver.satisfies(_pluginActualVsn.replace(/.*#semver:/, ''), _pluginVsn.re
   throw new Error(`Expected ${_pluginName}@${_pluginVsn} but found version ${_pluginActualVsn} installed.`);
 }
 
+// NOTE requires typescript-eslint/experimental-utils, typescript-eslint/typescript-estree, tsutils, typescript
+let _tsName = 'typescript';
+let _tsVsn = require('../package.json').optionalPeerDependencies[_tsName];
+
+let _tsActualVsn = require(`${_tsName}/package.json`).version;
+// eslint-disable-next-line lodash/prefer-lodash-method
+if (!_semver.satisfies(_tsActualVsn.replace(/.*#semver:/, ''), _tsVsn.replace(/.*#semver:/, ''))) {
+  throw new Error(`Expected ${_tsName}@${_tsVsn} but found version ${_tsActualVsn} installed.`);
+}
+
 module.exports = {
   extends: [
     'plugin:jest/recommended'
