@@ -1,4 +1,4 @@
-let _pluginName = 'eslint-plugin-babel';
+let _pluginName = '@babel/eslint-plugin';
 let _pluginVsn = require('../package.json').peerDependencies[_pluginName];
 
 let _pluginActualVsn = require(`${_pluginName}/package.json`).version;
@@ -23,32 +23,32 @@ module.exports = {
   },
 
   plugins: [
-    'babel'
+    '@babel'
   ],
 
   rules: {
     'new-cap': 'off',
-    'babel/new-cap': _basic.rules['new-cap'],
+    '@babel/new-cap': _basic.rules['new-cap'],
 
     camelcase: 'off',
-    'babel/camelcase': _basic.rules.camelcase,
+    '@babel/camelcase': _basic.rules.camelcase,
 
     'no-invalid-this': 'off',
-    'babel/no-invalid-this': _basic.rules['no-invalid-this'],
+    '@babel/no-invalid-this': _basic.rules['no-invalid-this'],
 
     'object-curly-spacing': 'off',
-    'babel/object-curly-spacing': _basic.rules['object-curly-spacing'],
+    '@babel/object-curly-spacing': _basic.rules['object-curly-spacing'],
 
     quotes: 'off',
-    'babel/quotes': _basic.rules.quotes,
+    '@babel/quotes': _basic.rules.quotes,
 
     semi: 'off',
-    'babel/semi': _basic.rules.semi,
+    '@babel/semi': _basic.rules.semi,
 
     'no-unused-expressions': 'off',
-    'babel/no-unused-expressions': _basic.rules['no-unused-expressions'],
+    '@babel/no-unused-expressions': _basic.rules['no-unused-expressions'],
 
     'valid-typeof': 'off',
-    'babel/valid-typeof': _basic.rules['valid-typeof']
+    '@babel/valid-typeof': _basic.rules['valid-typeof']
   }
 };
