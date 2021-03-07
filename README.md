@@ -7,7 +7,7 @@ In your project's `.eslintrc.js`
 ```js
 module.exports = {
   extends: [
-    'firecloud/config/node'
+    'plugin:firecloud/node'
   ],
   rules: {
     'override-some-rule': error
@@ -23,8 +23,8 @@ If you want to use an addon, it's as easy as doing this in `.eslintrc.js`:
 ```js
 module.exports = {
   extends: [
-    'firecloud/config/node',
-    'firecloud/config/jest'
+    'plugin:firecloud/node',
+    'plugin:firecloud/jest'
   ],
   rules: {
     'override-some-rule': error
@@ -39,17 +39,17 @@ and running `npm install --dev eslint-plugin-jest`.
 
 Common bundles are provided as following:
 
-- Node.js: `firecloud/config/node`
-- Browser: `firecloud/config/browser`
+- Node.js: `plugin:firecloud/node`
+- Browser: `plugin:firecloud/browser`
 
 These addons require you to install the plugin manually:
 
-- `@typescript-eslint/eslint-plugin`: `firecloud/config/typescript`
-- `eslint-plugin-jasmine`: `firecloud/config/jasmine`
-- `eslint-plugin-jest`: `firecloud/config/jest`
-- `eslint-plugin-mocha` (with Chai): `firecloud/config/mocha`
-- `eslint-plugin-protractor`: `firecloud/config/protractor`
-- `eslint-plugin-vue`: `firecloud/config/vue`
+- `@typescript-eslint/eslint-plugin`: `plugin:firecloud/typescript`
+- `eslint-plugin-jasmine`: `plugin:firecloud/jasmine`
+- `eslint-plugin-jest`: `plugin:firecloud/jest`
+- `eslint-plugin-mocha` (with Chai): `plugin:firecloud/mocha`
+- `eslint-plugin-protractor`: `plugin:firecloud/protractor`
+- `eslint-plugin-vue`: `plugin:firecloud/vue`
 
 
 ## Guiding Principles
