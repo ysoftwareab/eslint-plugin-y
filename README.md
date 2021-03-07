@@ -1,6 +1,6 @@
-# eslint-config-firecloud [![Build Status][2]][1]
+# eslint-plugin-firecloud [![Build Status][2]][1]
 
-The ESLint config used within Tobii Cloud Services.
+The ESLint plugin used within firecloud.
 
 In your project's `.eslintrc.js`
 
@@ -15,7 +15,7 @@ module.exports = {
 }
 ```
 
-Optionally, you can run `node_modules/eslint-config-firecloud/npm-install-peer-dependencies`
+Optionally, you can run `node_modules/eslint-plugin-firecloud/npm-install-peer-dependencies`
 in order to install the required peer dependencies.
 
 If you want to use an addon, it's as easy as doing this in `.eslintrc.js`:
@@ -88,5 +88,5 @@ that have concrete consequences on daily work.
 [UNLICENSE](UNLICENSE)
 
 
-  [1]: https://github.com/rokmoln/eslint-config-firecloud/actions?query=workflow%3ACI+branch%3Amaster
-  [2]: https://github.com/rokmoln/eslint-config-firecloud/workflows/CI/badge.svg?branch=master
+  [1]: https://github.com/rokmoln/eslint-plugin-firecloud/actions?query=workflow%3ACI+branch%3Amaster
+  [2]: https://github.com/rokmoln/eslint-plugin-firecloud/workflows/CI/badge.svg?branch=master
