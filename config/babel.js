@@ -16,9 +16,10 @@ let _basic = require('./basic');
 _basic = _.cloneDeep(_basic);
 
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
 
   parserOptions: {
+    requireConfigFile: false,
     sourceType: 'module'
   },
 
