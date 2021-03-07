@@ -7,7 +7,7 @@ In your project's `.eslintrc.js`
 ```js
 module.exports = {
   extends: [
-    'firecloud/node'
+    'firecloud/configs/node'
   ],
   rules: {
     'override-some-rule': error
@@ -23,7 +23,7 @@ If you want to use an addon, it's as easy as doing this in `.eslintrc.js`:
 ```js
 module.exports = {
   extends: [
-    'firecloud/node',
+    'firecloud/configs/node',
     'firecloud/configs/jest'
   ],
   rules: {
@@ -39,8 +39,8 @@ and running `npm install --dev eslint-plugin-jest`.
 
 Common bundles are provided as following:
 
-- Node.js: `firecloud/node`
-- Browser: `firecloud/browser`
+- Node.js: `firecloud/configs/node`
+- Browser: `firecloud/configs/browser`
 
 These addons require you to install the plugin manually:
 
