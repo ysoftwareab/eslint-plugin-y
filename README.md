@@ -83,6 +83,26 @@ that have concrete consequences on daily work.
 * Not strictly related to eslint/style, but when writing TypeScript, see [our guideline](typescript.md).
 
 
+## Backwards compatibility
+
+In March 2021, repositories got renamed
+*``eslint-config-firecloud` -> `eslint-plugin-firecloud` (this one)
+* `eslint-plugin-firecloud` -> `eslint-plugin-firecloud-deprecated` ([this one](https://github.com/rokmoln/eslint-plugin-firecloud-deprecated))
+
+The reason for this change was because ESlint can now store and reference configs inside a plugin,
+and because npm@7 has a backward incompatible change to auto-install peer dependencies,
+while the previous setup only works on the assumption that peer dependencies are not automatically installed.
+
+Github's behaviour is to redirect when renaming, so currently both `rokmoln/eslint-config-firecloud`
+and `rokmoln/eslint-plugin-firecloud` are pointing to the same content of this repository.
+
+So for backwards compatibility,
+the v0.0.x and v0.1.x tags are from the original `eslint-plugin-firecloud`,
+now called `eslint-plugin-firecloud-deprecated`,
+while the v0.0.x and v0.1.x tags of the original `eslint-config-firecloud`
+have been namespaced with `config/`.
+
+
 ## License
 
 [UNLICENSE](UNLICENSE)
