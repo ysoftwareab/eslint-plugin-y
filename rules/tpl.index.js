@@ -32,7 +32,7 @@ let _ruleData = _.reduce(_ruleFiles, function(acc, ruleFile) {
 }, {});
 
 let _tpl = _.template(outdent`
-  module.exports.rules = {
+  module.exports = {
     <% _.forEach(_ruleData, function(ruleFile, rule) { %>
     '<%= rule %>': require('<%= ruleFile %>'),
     <% }) %>

@@ -1,4 +1,4 @@
-module.exports.rules = {
+module.exports = {
   
   'array-bracket-newline': require('./array-bracket-newline.js'),
   
