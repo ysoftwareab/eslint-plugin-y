@@ -20,7 +20,10 @@ const { RuleTester } = require("eslint/lib/rule-tester");
 //------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({
-  parser: require.resolve('babel-eslint')
+  parser: require.resolve('@babel/eslint-parser'),
+  parserOptions: {
+    requireConfigFile: false
+  }
 });
 
 ruleTester.run("array-element-newline", rule, {

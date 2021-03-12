@@ -3,9 +3,10 @@ let eslint = require('eslint');
 let rule = require('../rules/no-underscore-prefix-exported');
 
 let _ruleTester = new eslint.RuleTester({
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@babel/eslint-parser'),
   parserOptions: {
     ecmaVersion: 2015,
+    requireConfigFile: false,
     sourceType: 'module'
   }
 });

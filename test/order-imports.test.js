@@ -21,8 +21,8 @@ const rule = require("../rules/order-imports"),
 //------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({
-    parser: require.resolve('babel-eslint'),
-    parserOptions: { ecmaVersion: 6, sourceType: "module" }
+    parser: require.resolve('@babel/eslint-parser'),
+    parserOptions: { requireConfigFile: false, ecmaVersion: 6, sourceType: "module" }
 }),
     expectedError = {
         message: "Imports should be sorted alphabetically.",

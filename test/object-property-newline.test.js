@@ -21,7 +21,10 @@ const rule = require("../rules/object-property-newline"),
 //------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({
-    parser: require.resolve('babel-eslint')
+    parser: require.resolve('@babel/eslint-parser'),
+    parserOptions: {
+        requireConfigFile: false
+    }
 });
 
 ruleTester.run("object-property-newline", rule, {
