@@ -1,14 +1,22 @@
 // NOTE that this is an addon config. An eslint plugin needs to be installed manually.
 
 let _pluginName = 'eslint-plugin-jest';
+let _typescriptName = 'typescript';
+
+let _semver = require('semver');
 let _pluginVsn = require('../package.json').optionalPeerDependencies[_pluginName];
+let _typescriptVsn = require('../package.json').optionalPeerDependencies[_typescriptName];
 
 let _pluginActualVsn = require(`${_pluginName}/package.json`).version;
-let _semver = require('semver');
-
 // eslint-disable-next-line lodash/prefer-lodash-method
 if (!_semver.satisfies(_pluginActualVsn.replace(/.*#semver:/, ''), _pluginVsn.replace(/.*#semver:/, ''))) {
   throw new Error(`Expected ${_pluginName}@${_pluginVsn} but found version ${_pluginActualVsn} installed.`);
+}
+
+let _typescriptActualVsn = require(`${_typescriptName}/package.json`).version;
+// eslint-disable-next-line lodash/prefer-lodash-method
+if (!_semver.satisfies(_typescriptActualVsn.replace(/.*#semver:/, ''), _typescriptVsn.replace(/.*#semver:/, ''))) {
+  throw new Error(`Expected ${_typescriptName}@${_typescriptVsn} but found version ${_typescriptActualVsn} installed.`);
 }
 
 module.exports = {
