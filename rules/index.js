@@ -1,13 +1,26 @@
 module.exports.rules = {
-  'array-bracket-newline': require('./array-bracket-newline'),
-  'array-element-newline': require('./array-element-newline'),
-  'import-specifier-newline': require('./import-specifier-newline'),
-  'no-const': require('./no-const'),
-  'no-underscore-prefix-exported': require('./no-underscore-prefix-exported'),
-  'no-for': require('./no-for'),
-  'object-curly-newline': require('./object-curly-newline'),
-  'object-property-newline': require('./object-property-newline'),
-  'order-imports': require('./order-imports'),
-  'padding-line-import-multiple': require('./padding-line-import-multiple'),
-  'underscore-prefix-non-exported': require('./underscore-prefix-non-exported')
+  
+  'array-bracket-newline': require('./array-bracket-newline.js'),
+  
+  'array-element-newline': require('./array-element-newline.js'),
+  
+  'import-specifier-newline': require('./import-specifier-newline.js'),
+  
+  'no-const': require('./no-const.js'),
+  
+  'no-for': require('./no-for.js'),
+  
+  'no-underscore-prefix-exported': require('./no-underscore-prefix-exported.js'),
+  
+  'object-curly-newline': require('./object-curly-newline.js'),
+  
+  'object-property-newline': require('./object-property-newline.js'),
+  
+  'order-imports': require('./order-imports.js'),
+  
+  'padding-line-import-multiple': require('./padding-line-import-multiple.js'),
+  
+  'underscore-prefix-non-exported': require('./underscore-prefix-non-exported.js'),
+  
+  '_': undefined
 };
