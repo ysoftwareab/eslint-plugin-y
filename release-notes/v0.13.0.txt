@@ -1,0 +1,26 @@
+eslint-plugin-firecloud v0.13.0 Release Notes
+
+Highlights since v0.12.0-src:
+
+* None
+
+Breaking commits since v0.12.0-src:
+
+* d0948b5 2021-03-07 breaking: /configs -> /config, as per eslint's convention
+* a610698 2021-03-07 breaking: move config packs to configs/
+
+
+Commits since v0.12.0-src:
+
+* ed7e3f3 2021-03-12 add typescript as an optional peer dependency. see 9339f9a add typescript as a dependency, following the spec of tsutils. see commit description for WTF?!
+* d838494 2021-03-12 fixup! babel-eslint is now @babel/eslint-parser
+* 0f87ff5 2021-03-12 updated package.json
+* f18c4a4 2021-03-11 add note about tags
+* 41a973c 2021-03-08 babel-eslint-plugin is now @babel/eslint-plugin
+* 514fb99 2021-03-07 babel-eslint is now @babel/eslint-parser
+* a186f2f 2021-03-07 updated support-firecloud
+* 82f53b1 2021-03-07 random fixes for eslint-config-firecloud -> eslint-plugin-firecloud
+* 20bd731 2021-03-07 as per eslint's convention, configs inside a plugin are referenced as 'plugin:name/path'
+* d0948b5 2021-03-07 breaking: /configs -> /config, as per eslint's convention
+* a610698 2021-03-07 breaking: move config packs to configs/
+o e3ca2be 2021-01-28 0.12.0
