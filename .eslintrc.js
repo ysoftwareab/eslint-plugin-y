@@ -2,7 +2,7 @@ module.exports = {
   root: true,
 
   extends: [
-    './config/node.js'
+    './configs/node.js'
   ],
 
   rules: {
