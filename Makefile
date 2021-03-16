@@ -40,6 +40,11 @@ SF_DEPS_TARGETS += \
 	configs/index.js \
 	rules/index.js \
 
+SF_CHECK_TPL_FILES += \
+	.github/workflows/main.yml \
+	configs/index.js \
+	rules/index.js \
+
 SF_TEST_TARGETS += \
 	test-rules \
 
