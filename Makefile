@@ -15,6 +15,10 @@ include support-firecloud/build.mk/core.misc.release.npg.mk
 
 JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 
+SF_VENDOR_FILES_IGNORE += \
+	-e "^configs/index\.js$$" \
+	-e "^rules/index\.js$$" \
+
 SF_ECLINT_FILES_IGNORE += \
 	-e "^rules/.*\.original\.js$$" \
 	-e "^rules/array-bracket-newline\.js$$" \
