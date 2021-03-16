@@ -33,6 +33,7 @@ SF_ECLINT_FILES_IGNORE += \
 
 SF_DEPS_TARGETS += \
 	.github/workflows/main.yml \
+	configs/index.js \
 	rules/index.js \
 
 SF_TEST_TARGETS += \
@@ -41,6 +42,11 @@ SF_TEST_TARGETS += \
 # ------------------------------------------------------------------------------
 
 .github/workflows/main.yml: .github/workflows/main.yml.tpl .github/workflows.src/main.yml support-firecloud/package.json
+	$(call sf-generate-from-template)
+
+
+.PHONY: configs/index.js
+configs/index.js: configs/tpl.index.js
 	$(call sf-generate-from-template)
 
 
