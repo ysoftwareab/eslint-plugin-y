@@ -13,6 +13,10 @@ include support-firecloud/build.mk/core.misc.release.npg.mk
 
 # ------------------------------------------------------------------------------
 
+JS_CONFIG_FILES := $(shell $(FIND_Q) configs -type f -name "*.js" -print)
+JS_CONFIG_FILES := $(filter-out configs/index.js,$(JS_CONFIG_FILES))
+JS_RULE_FILES := $(shell $(FIND_Q) rules -type f -name "*.js" -print)
+JS_RULE_FILES := $(filter-out rules/index.js,$(JS_RULE_FILES))
 JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 
 SF_VENDOR_FILES_IGNORE += \
@@ -54,13 +58,11 @@ SF_TEST_TARGETS += \
 	$(call sf-generate-from-template)
 
 
-.PHONY: configs/index.js
-configs/index.js: configs/tpl.index.js
+configs/index.js: configs/tpl.index.js $(JS_CONFIG_FILES)
 	$(call sf-generate-from-template)
 
 
-.PHONY: rules/index.js
-rules/index.js: rules/tpl.index.js
+rules/index.js: rules/tpl.index.js $(JS_RULE_FILES)
 	$(call sf-generate-from-template)
 
 
