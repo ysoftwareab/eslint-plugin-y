@@ -21,12 +21,10 @@ if (!_semver.satisfies(_typescriptActualVsn.replace(/.*#semver:/, ''), _typescri
 
 let _ = require('lodash');
 let _basic = require('./basic');
-let _babel = require('./babel');
 let _restoreBasicOverrides = require('./typescript-eslint-recommended');
 
 // see https://github.com/eslint/eslint/issues/12592
 _basic = _.cloneDeep(_basic);
-_babel = _.cloneDeep(_babel);
 
 let isIde = process.env.VSCODE_PID !== undefined;
 
@@ -145,9 +143,8 @@ module.exports = {
     'brace-style': 'off',
     '@typescript-eslint/brace-style': _basic.rules['brace-style'],
 
-    // 'camelcase': 'off',
-    'babel/camelcase': 'off',
-    '@typescript-eslint/camelcase': _babel.rules.camelcase,
+    camelcase: 'off',
+    '@typescript-eslint/camelcase': _basic.rules.camelcase,
 
     '@typescript-eslint/explicit-function-return-type': ['error', {
       allowExpressions: true,
