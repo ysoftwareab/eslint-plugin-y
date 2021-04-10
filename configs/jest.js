@@ -2,8 +2,8 @@
 
 let _pluginName = 'eslint-plugin-jest';
 let _typescriptName = 'typescript';
-
 let _semver = require('semver');
+
 let _pluginVsn = require('../package.json').optionalPeerDependencies[_pluginName];
 let _typescriptVsn = require('../package.json').optionalPeerDependencies[_typescriptName];
 
