@@ -1,7 +1,6 @@
 let _pluginName = 'eslint-plugin-async-await';
 let _pluginVsn = require('../package.json').peerDependencies[_pluginName];
-
-let _pluginActualVsn = require(`${_pluginName}/package.json`).version;
+let _pluginActualVsn = require('./util').eslintRequire(`${_pluginName}/package.json`).version;
 let _semver = require('semver');
 
 // eslint-disable-next-line lodash/prefer-lodash-method
