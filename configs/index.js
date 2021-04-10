@@ -18,6 +18,12 @@ module.exports = {
     ]
   },
   
+  'browser-only': {
+    extends: [
+      './browser-only.js'
+    ]
+  },
+  
   'browser': {
     extends: [
       './browser.js'
@@ -87,6 +93,12 @@ module.exports = {
   'no-null': {
     extends: [
       './no-null.js'
+    ]
+  },
+  
+  'node-only': {
+    extends: [
+      './node-only.js'
     ]
   },
   

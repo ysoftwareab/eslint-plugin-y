@@ -1,25 +1,5 @@
-module.exports = {
-  extends: [
-    './basic.js',
-    './babel.js',
-    './async-await.js',
-    './eslint-comments.js',
-    './firecloud.js',
-    './fp.js',
-    './import.js',
-    './jsdoc.js',
-    './lodash.js',
-    './no-null.js',
-    './proper-arrows.js'
-  ],
+let _ = require('lodash');
+let _nodeConfig = require('./node');
+let _browserOnlyConfig = require('./browser-only');
 
-  globals: {
-    __dirname: false,
-    __filename: false
-  },
-
-  env: {
-    browser: true,
-    commonjs: true
-  }
-};
+module.exports = _.merge({}, _nodeConfig, _browserOnlyConfig);
