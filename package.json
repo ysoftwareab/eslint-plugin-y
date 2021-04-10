@@ -2,7 +2,7 @@
   "private": true,
   "name": "eslint-plugin-firecloud",
   "description": "The ESLint plugin used within firecloud.",
-  "version": "0.13.4",
+  "version": "0.13.5",
   "license": "Unlicense",
   "files": [
     "/*.js",
