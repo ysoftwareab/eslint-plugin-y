@@ -2,12 +2,21 @@
 
 let _ = require('lodash');
 let _basic = require('./basic');
-let _recommended = require('@typescript-eslint/eslint-plugin/dist/configs/recommended');
+
+let _prefix = '@typescript-eslint/eslint-plugin/dist/configs/';
+let _base = require('./util').eslintRequire(`${_prefix}/base`);
+let _eslintRecommended = require('./util').eslintRequire(`${_prefix}/eslint-recommended`).overrides[0];
+let _recommended = require('./util').eslintRequire(`${_prefix}/recommended`);
 
 // see https://github.com/eslint/eslint/issues/12592
 _basic = _.cloneDeep(_basic);
 
-let _restoreBasicOverrides = _.cloneDeep(_recommended);
+let _restoreBasicOverrides = _.merge(
+  {},
+  _base,
+  _eslintRecommended,
+  _recommended
+);
 
 let filterObject = function(obj, predicate) {
   // eslint-disable-next-line fp/no-mutating-assign
@@ -30,7 +39,14 @@ let mapObjectValues = function(obj, predicate) {
 };
 
 _restoreBasicOverrides.rules = filterObject(_restoreBasicOverrides.rules, function(_value, key) {
-  return !/^@typescript-eslint/.test(key);
+  // https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/FAQ.md
+  if (key === 'no-undef') {
+    return false;
+  }
+  if (/^@typescript-eslint/.test(key)) {
+    return false;
+  }
+  return true;
 });
 
 _restoreBasicOverrides.rules = mapObjectValues(_restoreBasicOverrides.rules, function(_value, key) {

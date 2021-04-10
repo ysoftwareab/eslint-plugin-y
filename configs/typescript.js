@@ -57,16 +57,19 @@ module.exports = {
       default: 'array'
     }],
     '@typescript-eslint/await-thenable': 'off', // tslint:await-promise
-    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off', // tslint:ban-ts-ignore
     '@typescript-eslint/ban-types': 'off',
 
     '@typescript-eslint/no-type-alias': 'off', // tslint:interface-over-type-literal
     '@typescript-eslint/consistent-type-definitions': 'off', // tslint:interface-over-type-literal
 
-    '@typescript-eslint/class-name-casing': 'error', // tslint:class-name
+    // replaced by @typescript-eslint/naming-convention
+    // '@typescript-eslint/class-name-casing': 'error', // tslint:class-name
     '@typescript-eslint/explicit-member-accessibility': 'off', // tslint:member-access
-    '@typescript-eslint/generic-type-naming': 'error',
-    '@typescript-eslint/interface-name-prefix': 'error', // tslint:interface-name
+    // replaced by @typescript-eslint/naming-convention
+    // '@typescript-eslint/generic-type-naming': 'error',
+    // replaced by @typescript-eslint/naming-convention
+    // '@typescript-eslint/interface-name-prefix': 'error', // tslint:interface-name
     '@typescript-eslint/member-ordering': ['error'],
 
     // tslint:no-angle-bracket-type-assertion, tslint: no-object-literal-type-assertion
@@ -92,7 +95,9 @@ module.exports = {
     '@typescript-eslint/prefer-readonly': 'off',
     '@typescript-eslint/promise-function-async': 'error', // requiresTypeInfo
     '@typescript-eslint/restrict-plus-operands': 'error', // requiresTypeInfo
-    '@typescript-eslint/strict-boolean-expressions': 'error', // requiresTypeInfo
+    '@typescript-eslint/strict-boolean-expressions': ['error', { // requiresTypeInfo
+      allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: true
+    }],
     '@typescript-eslint/typedef': 'off',
     '@typescript-eslint/type-annotation-spacing': ['error'], // tslint:typedef-whitespace
     // @typescript-eslint/unbound-method is buggy, otherwise it should be set to 'error'
@@ -131,10 +136,13 @@ module.exports = {
         requireLast: true
       }
     }],
-    '@typescript-eslint/member-naming': ['error', {
-      private: '^_'
+    // replaced by @typescript-eslint/naming-convention
+    // '@typescript-eslint/member-naming': ['error', {
+    //   private: '^_'
+    // }],
+    '@typescript-eslint/no-unnecessary-condition': ['error', {
+      allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: true
     }],
-    '@typescript-eslint/no-unnecessary-condition': 'error',
 
     // -------------------------------------------------------------------------
 
@@ -143,8 +151,9 @@ module.exports = {
     'brace-style': 'off',
     '@typescript-eslint/brace-style': _basic.rules['brace-style'],
 
-    camelcase: 'off',
-    '@typescript-eslint/camelcase': _basic.rules.camelcase,
+    // replaced by @typescript-eslint/naming-convention
+    // camelcase: 'off',
+    // '@typescript-eslint/camelcase': _basic.rules.camelcase,
 
     '@typescript-eslint/explicit-function-return-type': ['error', {
       allowExpressions: true,
@@ -154,6 +163,54 @@ module.exports = {
 
     'func-call-spacing': 'off',
     '@typescript-eslint/func-call-spacing': _basic.rules['func-call-spacing'],
+
+    camelcase: 'off',
+    '@typescript-eslint/naming-convention': ['warn', {
+      // @typescript-eslint/camelcase
+      selector: 'default',
+      format: ['strictCamelCase'],
+      leadingUnderscore: 'allow',
+      trailingUnderscore: 'forbid'
+    }, {
+      // camelcase.properties set to never in basic.js
+      selector: 'property',
+      // eslint-disable-next-line no-null/no-null
+      format: null
+    }, {
+      // '@typescript-eslint/class-name-casing': 'error', // tslint:class-name
+      selector: 'class',
+      format: ['StrictPascalCase'],
+      leadingUnderscore: 'forbid',
+      trailingUnderscore: 'forbid'
+    }, {
+      // '@typescript-eslint/generic-type-naming': 'error',
+      // selector: 'typeParameter',
+      selector: [
+        'typeAlias',
+        'typeParameter'
+      ],
+      format: ['PascalCase'],
+      // prefix: 'T'
+      custom: {
+        // regex: '^T[A-Z][a-zA-Z]+$',
+        regex: '^(T[A-Z][a-zA-Z]+|[A-Z])$',
+        match: true
+      }
+    }, {
+      // '@typescript-eslint/member-naming': ['error', {private: '^_'}],
+      selector: 'memberLike',
+      modifiers: ['private'],
+      format: ['strictCamelCase'],
+      leadingUnderscore: 'require'
+    }, {
+      // '@typescript-eslint/interface-name-prefix': 'error', // tslint:interface-name
+      selector: 'interface',
+      format: ['StrictPascalCase'],
+      custom: {
+        regex: '^I[A-Z]',
+        match: false
+      }
+    }],
 
     'global-require': 'off',
     '@typescript-eslint/no-require-imports': _basic.rules['global-require'],
