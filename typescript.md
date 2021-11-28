@@ -106,7 +106,7 @@ Newer versions of TypeScript have opened up the possibility for so-called utilit
 
 Similarly to the built-in types, more utility-types exist as external packages:
 
-* our own collection: https://github.com/tobiipro/lodash-firecloud/blob/master/src/types.ts
+* our own collection: https://github.com/ysoftwareab/lodash-y/blob/master/src/types.ts
 * https://github.com/piotrwitek/utility-types
 * https://github.com/pirix-gh/ts-toolbelt
   * **comprehensive** but can easily throw TypeScript errors because of high complexity

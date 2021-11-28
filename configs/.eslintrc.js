@@ -2,7 +2,7 @@ module.exports = {
   root: false,
 
   rules: {
-    'firecloud/array-bracket-newline': 'off',
-    'firecloud/array-element-newline': 'off'
+    'y/array-bracket-newline': 'off',
+    'y/array-element-newline': 'off'
   }
 };

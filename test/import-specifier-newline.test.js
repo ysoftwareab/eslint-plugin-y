@@ -1,4 +1,4 @@
-/* eslint-disable firecloud/underscore-prefix-non-exported */
+/* eslint-disable y/underscore-prefix-non-exported */
 let eslint = require('eslint');
 let rule = require('../rules/import-specifier-newline');
 

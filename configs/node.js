@@ -7,13 +7,13 @@ let _nodeConfig = {
     './babel.js',
     './async-await.js',
     './eslint-comments.js',
-    './firecloud.js',
     './fp.js',
     './import.js',
     './jsdoc.js',
     './lodash.js',
     './no-null.js',
-    './proper-arrows.js'
+    './proper-arrows.js',
+    './y.js'
   ]
 };
 

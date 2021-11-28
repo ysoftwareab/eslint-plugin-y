@@ -1,30 +1,30 @@
 module.exports = {
   plugins: [
-    'firecloud'
+    'y'
   ],
 
   rules: {
     'array-bracket-newline': 'off',
-    'firecloud/array-bracket-newline': ['error', {
+    'y/array-bracket-newline': ['error', {
       multiline: true,
       minItems: 1,
       allowObjectCurly: true
     }],
 
     'array-element-newline': 'off',
-    'firecloud/array-element-newline': ['error', {
+    'y/array-element-newline': ['error', {
       multiline: true,
       minItems: 1,
       allowObjectCurly: true
     }],
 
-    'firecloud/import-specifier-newline': 'error',
-    'firecloud/no-const': 'error',
-    'firecloud/no-for': 'error',
-    'firecloud/no-underscore-prefix-exported': 'error',
+    'y/import-specifier-newline': 'error',
+    'y/no-const': 'error',
+    'y/no-for': 'error',
+    'y/no-underscore-prefix-exported': 'error',
 
     'object-curly-newline': 'off',
-    'firecloud/object-curly-newline': ['error', {
+    'y/object-curly-newline': ['error', {
       OnlyParam: {
         multiline: true,
         minProperties: 0, // aka disable
@@ -53,13 +53,13 @@ module.exports = {
     }],
 
     'object-property-newline': 'off',
-    'firecloud/object-property-newline': ['error', {
+    'y/object-property-newline': ['error', {
       allowAllPropertiesOnSameLine: false,
       allowOnlyParamOnSameLine: true
     }],
 
-    'firecloud/order-imports': 'error',
-    'firecloud/padding-line-import-multiple': 'error',
-    'firecloud/underscore-prefix-non-exported': 'error'
+    'y/order-imports': 'error',
+    'y/padding-line-import-multiple': 'error',
+    'y/underscore-prefix-non-exported': 'error'
   }
 };
