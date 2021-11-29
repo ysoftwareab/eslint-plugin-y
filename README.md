@@ -1,6 +1,6 @@
 # eslint-plugin-y [![Build Status][2]][1]
 
-The ESLint plugin used within y.
+The ESLint plugin used within Y Software AB.
 
 In your project's `.eslintrc.js`
 
