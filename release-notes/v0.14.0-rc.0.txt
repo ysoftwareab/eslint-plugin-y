@@ -1,0 +1,20 @@
+eslint-plugin-y v0.14.0-rc.0 Release Notes
+
+Highlights since v0.13.6-src:
+
+* None
+
+Breaking commits since v0.13.6-src:
+
+* None
+
+Commits since v0.13.6-src:
+
+* 994c2bb 2021-11-29 shellcheck
+* adcd907 2021-11-29 fix compat with git 2.32, which doesn't like .git symlinks
+* 230ad80 2021-11-29 github: enable workflow_dispatch and concurrency
+* 6c70a81 2021-11-29 typo
+* 5ef3ea4 2021-11-29 use support-firecloud/gitconfig
+* 71cc279 2021-11-29 rename firecloud -> y
+* a66bc5d 2021-11-29 mv configs/firecloud.js -> configs/y.js
+o 3e4e0c9 2021-04-11 0.13.6
