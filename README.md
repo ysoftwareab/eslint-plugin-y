@@ -86,7 +86,8 @@ that have concrete consequences on daily work.
 ## Backwards compatibility
 
 In March 2021, repositories got renamed
-*``eslint-config-y` -> `eslint-plugin-y` (this one)
+
+* `eslint-config-y` -> `eslint-plugin-y` (this one)
 * `eslint-plugin-y` -> `eslint-plugin-y-deprecated` ([this one](https://github.com/ysoftwareab/eslint-plugin-y-deprecated))
 
 The reason for this change was because ESlint can now store and reference configs inside a plugin,
