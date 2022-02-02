@@ -28,8 +28,8 @@ jobs:
     name: 'main-node-${{ matrix.node }}'
     runs-on: ubuntu-latest
     container:
-      image: 'ysoftwareab/yp-ubuntu-20.04-minimal:0.3.27'
-      options: '--user sf:sf'
+      image: 'ysoftwareab/yp-ubuntu-20.04-minimal:${ENVSUBST_YP_VSN}'
+      options: '--user yp:yp'
       env:
         GITHUB_JOB_NAME: 'main-node-${{ matrix.node }}'
         GITHUB_MATRIX_NODE: '${{ matrix.node }}'
