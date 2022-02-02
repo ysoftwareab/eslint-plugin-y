@@ -2,7 +2,7 @@
   "private": true,
   "name": "eslint-plugin-y",
   "description": "The ESLint plugin used within Y Software AB.",
-  "version": "0.14.0-rc.0",
+  "version": "0.14.0-rc.1",
   "license": "Unlicense",
   "files": [
     "/*.js",
