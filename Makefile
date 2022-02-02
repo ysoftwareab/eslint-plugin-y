@@ -1,15 +1,15 @@
-ifeq (,$(wildcard support-firecloud/Makefile))
-INSTALL_SUPPORT_FIRECLOUD := $(shell git submodule update --init --recursive support-firecloud)
+ifeq (,$(wildcard yplatform/Makefile))
+INSTALL_SUPPORT_FIRECLOUD := $(shell git submodule update --init --recursive yplatform)
 ifneq (,$(filter undefine,$(.FEATURES)))
 undefine INSTALL_SUPPORT_FIRECLOUD
 endif
 endif
 
-include support-firecloud/build.mk/generic.common.mk
-include support-firecloud/build.mk/sh.check.shellcheck.mk
-include support-firecloud/build.mk/node.common.mk
-include support-firecloud/build.mk/js.check.eslint.mk
-include support-firecloud/build.mk/core.misc.release.npg.mk
+include yplatform/build.mk/generic.common.mk
+include yplatform/build.mk/sh.check.shellcheck.mk
+include yplatform/build.mk/node.common.mk
+include yplatform/build.mk/js.check.eslint.mk
+include yplatform/build.mk/core.misc.release.npg.mk
 
 # ------------------------------------------------------------------------------
 
@@ -19,11 +19,12 @@ JS_RULE_FILES := $(shell $(FIND_Q) rules -type f -name "*.js" -print)
 JS_RULE_FILES := $(filter-out rules/index.js,$(JS_RULE_FILES))
 JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 
-SF_VENDOR_FILES_IGNORE += \
+YP_VENDOR_FILES_IGNORE += \
+	-e "^\.github/workflows/main\.yml$$" \
 	-e "^configs/index\.js$$" \
 	-e "^rules/index\.js$$" \
 
-SF_ECLINT_FILES_IGNORE += \
+YP_ECLINT_FILES_IGNORE += \
 	-e "^rules/.*\.original\.js$$" \
 	-e "^rules/array-bracket-newline\.js$$" \
 	-e "^rules/array-element-newline\.js$$" \
@@ -39,31 +40,35 @@ SF_ECLINT_FILES_IGNORE += \
 	-e "^test/object-property-newline\.test\.js$$" \
 	-e "^test/order-imports\.test\.js$$" \
 
-SF_DEPS_TARGETS += \
+YP_DEPS_TARGETS += \
 	.github/workflows/main.yml \
 	configs/index.js \
 	rules/index.js \
 
-SF_CHECK_TPL_FILES += \
+YP_CHECK_TPL_FILES += \
 	.github/workflows/main.yml \
 	configs/index.js \
 	rules/index.js \
 
-SF_TEST_TARGETS += \
+YP_TEST_TARGETS += \
 	test-rules \
 
 # ------------------------------------------------------------------------------
 
-.github/workflows/main.yml: .github/workflows/main.yml.tpl .github/workflows.src/main.yml support-firecloud/package.json
-	$(call sf-generate-from-template)
+.github/workflows/main.yml: yplatform/package.json
+.github/workflows/main.yml: $(wildcard .github/workflows.src/main*)
+.github/workflows/main.yml: .github/workflows/main.yml.tpl
+	$(call yp-generate-from-template)
 
 
-configs/index.js: configs/tpl.index.js $(JS_CONFIG_FILES)
-	$(call sf-generate-from-template)
+configs/index.js: $(JS_CONFIG_FILES)
+configs/index.js: configs/tpl.index.js
+	$(call yp-generate-from-template)
 
 
-rules/index.js: rules/tpl.index.js $(JS_RULE_FILES)
-	$(call sf-generate-from-template)
+rules/index.js: $(JS_RULE_FILES)
+rules/index.js: rules/tpl.index.js
+	$(call yp-generate-from-template)
 
 
 .PHONY: test-rules
