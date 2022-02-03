@@ -6,7 +6,6 @@ import outdent from 'outdent';
 import path from 'path';
 
 let _configFiles = fs.readdirSync(__dirname).sort();
-
 let _configData = _.reduce(_configFiles, function(acc, configFile) {
   if (path.extname(configFile) !== '.js') {
     return acc;
@@ -41,7 +40,11 @@ let _tpl = _.template(outdent`
   };
 `);
 
-// eslint-disable-next-line no-console
-console.log(_tpl({
-  _configData
-}));
+if (require.main === module) {
+  // eslint-disable-next-line no-console
+  console.log(_tpl({_configData}));
+}
+
+export {
+  _configData as configData
+}

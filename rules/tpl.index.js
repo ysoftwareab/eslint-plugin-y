@@ -6,7 +6,6 @@ import outdent from 'outdent';
 import path from 'path';
 
 let _ruleFiles = fs.readdirSync(__dirname).sort();
-
 let _ruleData = _.reduce(_ruleFiles, function(acc, ruleFile) {
   if (path.extname(ruleFile) !== '.js') {
     return acc;
@@ -40,7 +39,11 @@ let _tpl = _.template(outdent`
   };
 `);
 
-// eslint-disable-next-line no-console
-console.log(_tpl({
-  _ruleData
-}));
+if (require.main === module) {
+  // eslint-disable-next-line no-console
+  console.log(_tpl({_ruleData}));
+}
+
+export {
+  _ruleData as ruleData
+}

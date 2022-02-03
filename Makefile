@@ -22,6 +22,7 @@ JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
 	-e "^configs/index\.js$$" \
+	-e "^package\.json$$" \
 	-e "^rules/index\.js$$" \
 
 YP_ECLINT_FILES_IGNORE += \
@@ -43,11 +44,13 @@ YP_ECLINT_FILES_IGNORE += \
 YP_DEPS_TARGETS += \
 	.github/workflows/main.yml \
 	configs/index.js \
+	package.json \
 	rules/index.js \
 
 YP_CHECK_TPL_FILES += \
 	.github/workflows/main.yml \
 	configs/index.js \
+	package.json \
 	rules/index.js \
 
 YP_TEST_TARGETS += \
@@ -63,6 +66,11 @@ YP_TEST_TARGETS += \
 
 configs/index.js: $(JS_CONFIG_FILES)
 configs/index.js: configs/tpl.index.js
+	$(call yp-generate-from-template)
+
+
+package.json: $(JS_CONFIG_FILES) $(JS_RULES_FILES)
+package.json: package.json.tpl
 	$(call yp-generate-from-template)
 
 
