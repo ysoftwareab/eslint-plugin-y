@@ -38,7 +38,7 @@ jobs:
         SF_PRINTENV_BOOTSTRAP: '${{ secrets.SF_PRINTENV_BOOTSTRAP }}'
         V: '${{ secrets.V }}'
     steps:
-      - uses: 'ysoftwareab/yplatform@v${ENVSUBST_SF_VSN}'
+      - uses: ysoftwareab/yplatform@v0.3.27
         with:
           run: |
             bin/github-fix
