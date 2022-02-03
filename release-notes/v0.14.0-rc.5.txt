@@ -1,0 +1,15 @@
+eslint-plugin-y v0.14.0-rc.5 Release Notes
+
+Highlights since v0.14.0-rc.4-src:
+
+* None
+
+Breaking commits since v0.14.0-rc.4-src:
+
+* None
+
+Commits since v0.14.0-rc.4-src:
+
+* feda9fd 2022-02-03 check that we test with the same deps as in peerDependencies
+* ce16982 2022-02-03 fixup! not sure where the T prefix comes from
+o f776825 2022-02-03 0.14.0-rc.4
