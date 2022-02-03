@@ -32,7 +32,7 @@ jobs:
           - 12
           - 14
           - 16
-          - lts
+          - lts/*
           - node
     name: main-node-${{ matrix.node }}
     runs-on: ubuntu-latest
