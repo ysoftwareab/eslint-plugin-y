@@ -91,7 +91,7 @@ let _config = {
     'eslint-plugin-vue': '^8.4.0',
     'eslint-plugin-y': 'file:.',
     'npm-publish-git': 'git://github.com/ysoftwareab/npm-publish-git.git#semver:~0.0.12',
-    outdent: '^0.7.0',
+    outdent: '^0.8.0',
     typescript: '^4.1.3'
   },
   scripts: {
