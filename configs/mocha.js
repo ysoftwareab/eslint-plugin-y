@@ -32,8 +32,9 @@ module.exports = {
     'mocha/max-top-level-suites': ['error', {
       limit: 1
     }],
-    'mocha/ no-return-from-async': 'error',
+    'mocha/no-return-from-async': 'error',
     'mocha/no-async-describe': 'error',
+    'mocha/no-empty-description': 'error',
     'mocha/no-exclusive-tests': 'error',
     'mocha/no-exports': 'error',
     'mocha/no-global-tests': 'error',
