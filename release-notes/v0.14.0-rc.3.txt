@@ -1,0 +1,22 @@
+eslint-plugin-y v0.14.0-rc.3 Release Notes
+
+Highlights since v0.14.0-rc.2-src:
+
+* None
+
+Breaking commits since v0.14.0-rc.2-src:
+
+* None
+
+Commits since v0.14.0-rc.2-src:
+
+* f4943e4 2022-02-03 didn't realize there's a trick to maintain pre-exports behavior
+* 6b9185a 2022-02-03 fixup! bump outdent
+* a7fff79 2022-02-03 fixup! add node oldest-lts=12 types
+* 4f146fb 2022-02-03 test all node lts versions and latest. remove 10
+* 25f7986 2022-02-03 bump outdent
+* bb9d456 2022-02-03 add node oldest-lts=12 types
+* c0c6a1d 2022-02-03 fixup! fixup! fixup! fixup! fixup! support-firecloud -> yplatform
+* 4a03923 2022-02-03 fixup! fixup! fixup! fixup! support-firecloud -> yplatform
+* d01649a 2022-02-03 fixup! fixup! fixup! support-firecloud -> yplatform
+o 93a5118 2022-02-03 0.14.0-rc.2
