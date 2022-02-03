@@ -72,6 +72,7 @@ let _config = {
     '@babel/eslint-parser': '^7.13.0',
     '@babel/eslint-plugin': '^7.13.0',
     '@getify/eslint-plugin-proper-arrows': '^11.0.3',
+    '@types/node': '^12.12.6',
     '@typescript-eslint/eslint-plugin': '^5.10.2',
     '@typescript-eslint/parser': '^5.10.2',
     eslint: '^8.8.0',
