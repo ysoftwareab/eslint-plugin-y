@@ -195,7 +195,7 @@ module.exports = {
       custom: {
         // regex: '^T[A-Z][a-zA-Z]+$',
         // regex: '^(T[A-Z][a-zA-Z]+|[A-Z])$',
-        regex: '^[A-Z][a-zA-Z]+)$',
+        regex: '^[A-Z][a-zA-Z]+$',
         match: true
       }
     }, {
