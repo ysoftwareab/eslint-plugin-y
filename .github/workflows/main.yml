@@ -34,8 +34,8 @@ jobs:
         GITHUB_JOB_NAME: 'main-node-${{ matrix.node }}'
         GITHUB_MATRIX_NODE: '${{ matrix.node }}'
         GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-        SF_LOG_BOOTSTRAP: '${{ secrets.SF_LOG_BOOTSTRAP }}'
-        SF_PRINTENV_BOOTSTRAP: '${{ secrets.SF_PRINTENV_BOOTSTRAP }}'
+        YP_LOG_BOOTSTRAP: '${{ secrets.YP_LOG_BOOTSTRAP }}'
+        YP_PRINTENV_BOOTSTRAP: '${{ secrets.YP_PRINTENV_BOOTSTRAP }}'
         V: '${{ secrets.V }}'
     steps:
       - uses: ysoftwareab/yplatform@v0.3.27
