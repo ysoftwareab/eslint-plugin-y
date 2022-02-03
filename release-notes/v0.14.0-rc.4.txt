@@ -1,0 +1,22 @@
+
+eslint-plugin-y v0.14.0-rc.4 Release Notes
+
+Highlights since v0.14.0-rc.3-src:
+
+* None
+
+Breaking commits since v0.14.0-rc.3-src:
+
+* None
+
+Commits since v0.14.0-rc.3-src:
+
+* 814c943 2022-02-03 lint
+* 782d021 2022-02-03 not sure where the T prefix comes from
+* 2ebb6ff 2022-02-03 clarify our usage of @typescript-eslint:recommended
+* e7011af 2022-02-03 rename
+* 733c6ab 2022-02-03 canonical nvm install
+* ae55030 2022-02-03 fix lts reference
+* 9afa333 2022-02-03 add js-yaml, otherwise the CI will complain that the github workflow is out-of-date - quotes mangling
+* a1b3881 2022-02-03 no need for node-esm
+o 5a2c04d 2022-02-03 0.14.0-rc.3
