@@ -46,5 +46,6 @@ if (require.main === module) {
 }
 
 export {
+  // eslint-disable-next-line import/prefer-default-export
   _configData as configData
 };

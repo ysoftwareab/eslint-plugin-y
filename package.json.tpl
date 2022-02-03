@@ -2,27 +2,30 @@
 // -*- mode: js -*-
 
 import _ from 'lodash';
-import fs from 'fs';
-import path from 'path';
 
-import {configData} from './configs/index.js.tpl';
-import {ruleData} from './rules/index.js.tpl';
+import {
+  configData
+} from './configs/index.js.tpl';
+
+import {
+  ruleData
+} from './rules/index.js.tpl';
 
 let _configExports = _.mapKeys(configData, function(_value, key) {
-  return `configs/${key}`
+  return `./configs/${key}`;
 });
 
 let _ruleExports = _.mapKeys(ruleData, function(_value, key) {
-  return `rules/${key}`
+  return `./rules/${key}`;
 });
 
 let _config = {
-  'private': true,
-  'name': 'eslint-plugin-y',
-  'description': 'The ESLint plugin used within Y Software AB.',
-  'version': '0.14.0-rc.1',
-  'license': 'Unlicense',
-  'files': [
+  private: true,
+  name: 'eslint-plugin-y',
+  description: 'The ESLint plugin used within Y Software AB.',
+  version: '0.14.0-rc.1',
+  license: 'Unlicense',
+  files: [
     '/*.js',
     '/BUILD',
     '/UNLICENSE',
@@ -31,17 +34,17 @@ let _config = {
     '/npm-install-peer-dependencies',
     '/rules/'
   ],
-  'exports': {
+  exports: {
     '.': './index.js',
     ..._configExports,
     ..._ruleExports
   },
-  'peerDependencies': {
+  peerDependencies: {
     '@babel/core': '^7.13.0',
     '@babel/eslint-parser': '^7.13.0',
     '@babel/eslint-plugin': '^7.13.0',
     '@getify/eslint-plugin-proper-arrows': '^11.0.3',
-    'eslint': '^8.8.0',
+    eslint: '^8.8.0',
     'eslint-import-resolver-node': '^0.3.3',
     'eslint-plugin-async-await': '^0.0.0',
     'eslint-plugin-eslint-comments': '^3.1.2',
@@ -51,27 +54,27 @@ let _config = {
     'eslint-plugin-lodash': '^7.1.0',
     'eslint-plugin-no-null': '^1.0.2'
   },
-  'optionalPeerDependencies': {
+  optionalPeerDependencies: {
     '@typescript-eslint/eslint-plugin': '^5.10.2',
     'eslint-plugin-jasmine': '^4.1.1',
     'eslint-plugin-jest': '^26.0.0',
     'eslint-plugin-mocha': '^10.0.3',
     'eslint-plugin-protractor': '^2.1.1',
     'eslint-plugin-vue': '^8.4.0',
-    'typescript': '^4.1.3'
+    typescript: '^4.1.3'
   },
-  'dependencies': {
-    'lodash': '^4.17.5',
-    'semver': '^7.3.4'
+  dependencies: {
+    lodash: '^4.17.5',
+    semver: '^7.3.4'
   },
-  'devDependencies': {
+  devDependencies: {
     '@babel/core': '^7.13.0',
     '@babel/eslint-parser': '^7.13.0',
     '@babel/eslint-plugin': '^7.13.0',
     '@getify/eslint-plugin-proper-arrows': '^11.0.3',
     '@typescript-eslint/eslint-plugin': '^5.10.2',
     '@typescript-eslint/parser': '^5.10.2',
-    'eslint': '^8.8.0',
+    eslint: '^8.8.0',
     'eslint-import-resolver-node': '^0.3.3',
     'eslint-plugin-async-await': '^0.0.0',
     'eslint-plugin-eslint-comments': '^3.1.2',
@@ -87,15 +90,15 @@ let _config = {
     'eslint-plugin-vue': '^8.4.0',
     'eslint-plugin-y': 'file:.',
     'npm-publish-git': 'git://github.com/ysoftwareab/npm-publish-git.git#semver:~0.0.12',
-    'outdent': '^0.7.0',
-    'typescript': '^4.1.3'
+    outdent: '^0.7.0',
+    typescript: '^4.1.3'
   },
-  'scripts': {
-    'postinstall': "echo '___ WARN Maybe you want to run node_modules/eslint-plugin-y/npm-install-peer-dependencies.'"
+  scripts: {
+    postinstall: "echo '___ WARN Maybe you want to run node_modules/eslint-plugin-y/npm-install-peer-dependencies.'"
   }
 };
 
 if (require.main === module) {
   // eslint-disable-next-line no-console
-  console.log(JSON.stringify(_config, null, 2));
+  console.log(JSON.stringify(_config, undefined, 2));
 }

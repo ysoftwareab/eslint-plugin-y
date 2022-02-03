@@ -15,7 +15,7 @@
 
 const resolvePath = require("path").resolve,
     rule = require("../rules/object-curly-newline"),
-    { RuleTester } = require("eslint/lib/rule-tester");
+    { RuleTester } = require("./util");
 
 //------------------------------------------------------------------------------
 // Tests
