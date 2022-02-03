@@ -34,7 +34,7 @@ module.exports = {
     }],
     '@getify/proper-arrows/return': ['error', {
       object: true,
-      ternatry: true,
+      ternary: 0,
       chained: true,
       sequence: true,
       trivial: false
