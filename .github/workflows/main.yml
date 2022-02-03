@@ -23,7 +23,10 @@ jobs:
       fail-fast: false
       matrix:
         node:
-          - 10
+          - 12
+          - 14
+          - 16
+          - lts
           - node
     name: 'main-node-${{ matrix.node }}'
     runs-on: ubuntu-latest
