@@ -1,10 +1,10 @@
-#!/usr/bin/env node-esm
+#!/usr/bin/env node
 // -*- mode: js -*-
 
-import _ from 'lodash';
-import fs from 'fs';
-import outdent from 'outdent';
-import path from 'path';
+let _ = require('lodash');
+let fs = require('fs');
+let outdent = require('outdent');
+let path = require('path');
 
 let _configFiles = fs.readdirSync(__dirname).sort();
 let _configData = _.reduce(_configFiles, function(acc, configFile) {
@@ -45,7 +45,7 @@ if (require.main === module) {
   console.log(_tpl({_configData}));
 }
 
-export {
+module.exports = {
   // eslint-disable-next-line import/prefer-default-export
-  _configData as configData
+  configData: _configData
 };

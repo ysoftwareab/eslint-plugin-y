@@ -1,10 +1,10 @@
-#!/usr/bin/env node-esm
+#!/usr/bin/env node
 // -*- mode: js -*-
 
-import _ from 'lodash';
-import fs from 'fs';
-import outdent from 'outdent';
-import path from 'path';
+let _ = require('lodash');
+let fs = require('fs');
+let outdent = require('outdent');
+let path = require('path');
 
 let _ruleFiles = fs.readdirSync(__dirname).sort();
 let _ruleData = _.reduce(_ruleFiles, function(acc, ruleFile) {
@@ -44,7 +44,7 @@ if (require.main === module) {
   console.log(_tpl({_ruleData}));
 }
 
-export {
+module.exports = {
   // eslint-disable-next-line import/prefer-default-export
-  _ruleData as ruleData
+  ruleData: _ruleData
 };
