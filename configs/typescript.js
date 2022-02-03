@@ -126,6 +126,7 @@ module.exports = {
 
     // rules not in tslint, specific to the typescript plugin
 
+    '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/member-delimiter-style': ['error', {
       multiline: {
         delimiter: 'semi',
