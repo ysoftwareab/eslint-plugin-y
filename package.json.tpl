@@ -57,7 +57,7 @@ let _config = {
     'eslint-plugin-jest': '^26.0.0',
     'eslint-plugin-mocha': '^10.0.3',
     'eslint-plugin-protractor': '^2.1.1',
-    'eslint-plugin-vue': '^7.5.0',
+    'eslint-plugin-vue': '^8.4.0',
     'typescript': '^4.1.3'
   },
   'dependencies': {
@@ -84,7 +84,7 @@ let _config = {
     'eslint-plugin-mocha': '^10.0.3',
     'eslint-plugin-no-null': '^1.0.2',
     'eslint-plugin-protractor': '^2.1.1',
-    'eslint-plugin-vue': '^7.5.0',
+    'eslint-plugin-vue': '^8.4.0',
     'eslint-plugin-y': 'file:.',
     'npm-publish-git': 'git://github.com/ysoftwareab/npm-publish-git.git#semver:~0.0.12',
     'outdent': '^0.7.0',
