@@ -68,6 +68,7 @@
     "eslint-plugin-protractor": "^2.1.1",
     "eslint-plugin-vue": "^8.4.0",
     "eslint-plugin-y": "file:.",
+    "js-yaml": "^3.14.1",
     "npm-publish-git": "git://github.com/ysoftwareab/npm-publish-git.git#semver:~0.0.12",
     "outdent": "^0.8.0",
     "typescript": "^4.1.3"
