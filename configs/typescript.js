@@ -21,7 +21,7 @@ if (!_semver.satisfies(_typescriptActualVsn.replace(/.*#semver:/, ''), _typescri
 
 let _ = require('lodash');
 let _basic = require('./basic');
-let _restoreBasicOverrides = require('./typescript-eslint-recommended');
+let _typescriptRestoreBasic = require('./typescript-recommended-restore-basic');
 
 // see https://github.com/eslint/eslint/issues/12592
 _basic = _.cloneDeep(_basic);
@@ -44,8 +44,8 @@ module.exports = {
   },
 
   rules: {
-    // restore all keys in @typescript-eslint/recommended that are not @typescript-eslint i.e. basic
-    ..._restoreBasicOverrides.rules,
+    // restore all rules in @typescript-eslint/recommended that are not @typescript-eslint i.e. basic
+    ..._typescriptRestoreBasic.rules,
 
     // -------------------------------------------------------------------------
 

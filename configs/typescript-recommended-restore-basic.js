@@ -39,7 +39,7 @@ let mapObjectValues = function(obj, predicate) {
 };
 
 _restoreBasicOverrides.rules = filterObject(_restoreBasicOverrides.rules, function(_value, key) {
-  // https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/FAQ.md
+  // https://github.com/typescript-eslint/typescript-eslint/blob/13583e65f5973da2a7ae8384493c5e00014db51b/docs/linting/TROUBLESHOOTING.md#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
   if (key === 'no-undef') {
     return false;
   }
@@ -50,6 +50,9 @@ _restoreBasicOverrides.rules = filterObject(_restoreBasicOverrides.rules, functi
 });
 
 _restoreBasicOverrides.rules = mapObjectValues(_restoreBasicOverrides.rules, function(_value, key) {
+  if (_.isEmpty(_basic.rules[key])) {
+    throw new Error(`Expected a ${key} rule in configs/basics. @typescript-eslint:recommended wants to override it.`);
+  }
   return _basic.rules[key];
 });
 

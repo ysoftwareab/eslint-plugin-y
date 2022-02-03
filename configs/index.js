@@ -114,9 +114,9 @@ module.exports = {
     ]
   },
   
-  'typescript-eslint-recommended': {
+  'typescript-recommended-restore-basic': {
     extends: [
-      './typescript-eslint-recommended.js'
+      './typescript-recommended-restore-basic.js'
     ]
   },
   
