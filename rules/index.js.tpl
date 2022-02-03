@@ -1,4 +1,5 @@
 #!/usr/bin/env node-esm
+// -*- mode: js -*-
 
 import _ from 'lodash';
 import fs from 'fs';
@@ -17,7 +18,6 @@ let _ruleData = _.reduce(_ruleFiles, function(acc, ruleFile) {
 
   if (_.includes([
     'index.js',
-    'tpl.index.js',
     'util.js'
   ], ruleFile)) {
     return acc;
@@ -46,4 +46,4 @@ if (require.main === module) {
 
 export {
   _ruleData as ruleData
-}
+};

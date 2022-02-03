@@ -1,24 +1,19 @@
 #!/usr/bin/env node-esm
+// -*- mode: js -*-
 
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 
-import {configData} from './configs/tpl.index';
-import {ruleData} from './rules/tpl.index';
+import {configData} from './configs/index.js.tpl';
+import {ruleData} from './rules/index.js.tpl';
 
 let _configExports = _.mapKeys(configData, function(_value, key) {
   return `configs/${key}`
 });
-let _configExportsJs = _.mapKeys(_configExports, function(_value, key) {
-  return `${key}.js`
-});
 
 let _ruleExports = _.mapKeys(ruleData, function(_value, key) {
   return `rules/${key}`
-});
-let _ruleExportsJs = _.mapKeys(_ruleExports, function(_value, key) {
-  return `${key}.js`
 });
 
 let _config = {
@@ -39,9 +34,7 @@ let _config = {
   'exports': {
     '.': './index.js',
     ..._configExports,
-    ..._configExportsJs,
-    ..._ruleExports,
-    ..._ruleExportsJs
+    ..._ruleExports
   },
   'peerDependencies': {
     '@babel/core': '^7.13.0',

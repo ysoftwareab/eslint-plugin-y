@@ -1,4 +1,5 @@
 #!/usr/bin/env node-esm
+// -*- mode: js -*-
 
 import _ from 'lodash';
 import fs from 'fs';
@@ -14,7 +15,6 @@ let _configData = _.reduce(_configFiles, function(acc, configFile) {
   if (_.includes([
     '.eslintrc.js',
     'index.js',
-    'tpl.index.js',
     'util.js'
   ], configFile)) {
     return acc;
@@ -47,4 +47,4 @@ if (require.main === module) {
 
 export {
   _configData as configData
-}
+};

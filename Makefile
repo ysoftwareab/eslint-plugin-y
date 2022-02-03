@@ -65,7 +65,7 @@ YP_TEST_TARGETS += \
 
 
 configs/index.js: $(JS_CONFIG_FILES)
-configs/index.js: configs/tpl.index.js
+configs/index.js: configs/index.js.tpl
 	$(call yp-generate-from-template)
 
 
@@ -75,7 +75,7 @@ package.json: package.json.tpl
 
 
 rules/index.js: $(JS_RULE_FILES)
-rules/index.js: rules/tpl.index.js
+rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
 
 
