@@ -1,0 +1,5 @@
+jest/max-nested-describe
+jest/prefer-hooks-on-top
+jest/prefer-to-be
+jest/prefer-todo
+jest/unbound-method

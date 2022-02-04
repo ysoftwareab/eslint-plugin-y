@@ -1,0 +1,6 @@
+import/default
+import/imports-first
+import/no-dynamic-require
+import/no-import-module-exports
+import/no-named-default
+import/no-relative-packages

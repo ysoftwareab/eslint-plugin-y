@@ -1,0 +1,5 @@
+@getify/proper-arrows/name
+@getify/proper-arrows/params
+@getify/proper-arrows/return
+@getify/proper-arrows/this
+@getify/proper-arrows/where

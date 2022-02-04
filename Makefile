@@ -73,6 +73,7 @@ YP_VENDOR_FILES_IGNORE += \
 	-e "^configs/index\.js$$" \
 	-e "^package\.json$$" \
 	-e "^rules/index\.js$$" \
+	-e "^snapshots/" \
 
 YP_ECLINT_FILES_IGNORE += \
 	-e "^rules/.*\.original\.js$$" \
@@ -101,8 +102,8 @@ YP_CHECK_TPL_FILES += \
 	rules/index.js \
 
 YP_CHECK_TARGETS += \
-	skip/check-outdated-rules \
-	skip/check-not-configured-rules \
+	check-outdated-rules \
+	check-not-configured-rules \
 	check-configured-overrides-rules \
 	check-y-config \
 

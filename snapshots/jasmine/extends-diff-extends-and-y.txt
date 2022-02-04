@@ -1,0 +1,8 @@
+@ ["env","jasmine"]
++ true
+@ ["plugins",0]
++ "jasmine"
+@ ["rules","class-methods-use-this"]
++ ["off"]
+@ ["rules","max-classes-per-file"]
++ ["off"]
