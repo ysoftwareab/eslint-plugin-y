@@ -2,163 +2,163 @@ module.exports = {
   
   'async-await': {
     extends: [
-      './async-await.js'
+      './async-await'
     ]
   },
   
   'babel': {
     extends: [
-      './babel.js'
+      './babel'
     ]
   },
   
   'env-browser': {
     extends: [
-      './env-browser.js'
+      './env-browser'
     ]
   },
   
   'env-node': {
     extends: [
-      './env-node.js'
+      './env-node'
     ]
   },
   
   'eslint-comments': {
     extends: [
-      './eslint-comments.js'
+      './eslint-comments'
     ]
   },
   
   'eslint': {
     extends: [
-      './eslint.js'
+      './eslint'
     ]
   },
   
   'fp': {
     extends: [
-      './fp.js'
+      './fp'
     ]
   },
   
   'import': {
     extends: [
-      './import.js'
+      './import'
     ]
   },
   
   'jasmine': {
     extends: [
-      './jasmine.js'
+      './jasmine'
     ]
   },
   
   'jest': {
     extends: [
-      './jest.js'
+      './jest'
     ]
   },
   
   'jsdoc-typescript': {
     extends: [
-      './jsdoc-typescript.js'
+      './jsdoc-typescript'
     ]
   },
   
   'jsdoc': {
     extends: [
-      './jsdoc.js'
+      './jsdoc'
     ]
   },
   
   'lodash-typescript': {
     extends: [
-      './lodash-typescript.js'
+      './lodash-typescript'
     ]
   },
   
   'lodash': {
     extends: [
-      './lodash.js'
+      './lodash'
     ]
   },
   
   'mocha': {
     extends: [
-      './mocha.js'
+      './mocha'
     ]
   },
   
   'no-null': {
     extends: [
-      './no-null.js'
+      './no-null'
     ]
   },
   
   'proper-arrows': {
     extends: [
-      './proper-arrows.js'
+      './proper-arrows'
     ]
   },
   
   'protractor': {
     extends: [
-      './protractor.js'
+      './protractor'
     ]
   },
   
   'recommended-browser-typescript': {
     extends: [
-      './recommended-browser-typescript.js'
+      './recommended-browser-typescript'
     ]
   },
   
   'recommended-browser': {
     extends: [
-      './recommended-browser.js'
+      './recommended-browser'
     ]
   },
   
   'recommended-node-typescript': {
     extends: [
-      './recommended-node-typescript.js'
+      './recommended-node-typescript'
     ]
   },
   
   'recommended-node': {
     extends: [
-      './recommended-node.js'
+      './recommended-node'
     ]
   },
   
   'recommended-typescript': {
     extends: [
-      './recommended-typescript.js'
+      './recommended-typescript'
     ]
   },
   
   'recommended': {
     extends: [
-      './recommended.js'
+      './recommended'
     ]
   },
   
   'typescript': {
     extends: [
-      './typescript.js'
+      './typescript'
     ]
   },
   
   'vue': {
     extends: [
-      './vue.js'
+      './vue'
     ]
   },
   
   'y': {
     extends: [
-      './y.js'
+      './y'
     ]
   },
   

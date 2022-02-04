@@ -1,9 +1,9 @@
 module.exports = {
   extends: [
-    './typescript.js',
+    './typescript',
     // NOTE we assume eslint-plugin-lodash is loaded
-    './jsdoc-typescript.js',
+    './jsdoc-typescript',
     // NOTE we assume eslint-plugin-jsdoc is still loaded
-    './lodash-typescript.js'
+    './lodash-typescript'
   ]
 };

@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    './recommended-browser.js',
-    './recommended-typescript.js'
+    './recommended-browser',
+    './recommended-typescript'
   ]
 };

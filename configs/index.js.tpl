@@ -25,8 +25,8 @@ let _configData = _.reduce(_configFiles, function(acc, configFile) {
     return acc;
   }
 
-  let config = path.basename(configFile, '.js');
-  configFile = `./${configFile}`;
+  let config = path.basename(configFile, path.extname(configFile));
+  configFile = `${path.dirname(configFile)}/${config}`;
 
   acc[config] = configFile;
   return acc;
