@@ -8,4 +8,4 @@ source ${DIR}/config.inc.sh
 cd ${DIR}/..
 
 eslint --no-eslintrc -c ${DIR}/../configs/.eslintrc.${CONFIG}.js --print-config foo.js | \
-    jq -r ".rules | keys[]" | sort
+    jq -r ".rules | keys[]" | sort | grep "^${PLUGIN_RULE_PREFIX}"

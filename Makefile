@@ -19,6 +19,27 @@ JS_RULE_FILES := $(shell $(FIND_Q) rules -type f -name "*.js" -print)
 JS_RULE_FILES := $(filter-out rules/index.js,$(JS_RULE_FILES))
 JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 
+PLUGINS += \
+	async-await \
+	babel \
+	basic \
+	eslint-comments \
+	fp \
+	import \
+	jasmine \
+	jest \
+	jsdoc \
+	lodash \
+	mocha \
+	no-null \
+	proper-arrows \
+	protractor \
+	typescript \
+	vue \
+
+TARGETS_CHECK_NO_NEW_RULES = $(patsubst %,check-no-new-rules/%,$(PLUGINS))
+TARGETS_CHECK_NO_OUTDATED_RULES = $(patsubst %,check-no-outdated-rules/%,$(PLUGINS))
+
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
 	-e "^configs/index\.js$$" \
@@ -54,6 +75,7 @@ YP_CHECK_TPL_FILES += \
 	rules/index.js \
 
 YP_CHECK_TARGETS += \
+	check-no-outdated-rules \
 	check-no-new-rules \
 
 YP_TEST_TARGETS += \
@@ -85,8 +107,8 @@ rules/index.js: rules/index.js.tpl
 .PHONY: check-no-new-rules/%
 check-no-new-rules/%:
 	$(COMM) -23 \
-		<(${GIT_ROOT}/bin/list-available-rules $* | sort) \
-		<(${GIT_ROOT}/bin/list-configured-rules $* | sort) | \
+		<(${GIT_ROOT}/bin/list-own-rules $*) \
+		<(${GIT_ROOT}/bin/list-configured-own-rules $*) | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_ERR) "The above rules are available in the $* eslint rule set, but are not configured."; \
 			exit 1; \
@@ -94,23 +116,23 @@ check-no-new-rules/%:
 
 
 .PHONY: check-no-new-rules
-# check-no-new-rules: check-no-new-rules/async-await
-# check-no-new-rules: check-no-new-rules/babel
-# check-no-new-rules: check-no-new-rules/basic
-# check-no-new-rules: check-no-new-rules/eslint-comments
-# check-no-new-rules: check-no-new-rules/fp
-# check-no-new-rules: check-no-new-rules/import
-# check-no-new-rules: check-no-new-rules/jasmine
-# check-no-new-rules: check-no-new-rules/jest
-# check-no-new-rules: check-no-new-rules/jsdoc
-# check-no-new-rules: check-no-new-rules/lodash
-# check-no-new-rules: check-no-new-rules/mocha
-# check-no-new-rules: check-no-new-rules/no-null
-# check-no-new-rules: check-no-new-rules/proper-arrows
-# check-no-new-rules: check-no-new-rules/protractor
-# check-no-new-rules: check-no-new-rules/typescript
-# check-no-new-rules: check-no-new-rules/vue
-check-no-new-rules:
+check-no-new-rules: $(TARGETS_CHECK_NO_NEW_RULES)
+	:
+
+
+.PHONY: check-no-outdated-rules/%
+check-no-outdated-rules/%:
+	$(COMM) -23 \
+		<(${GIT_ROOT}/bin/list-configured-own-rules $*) \
+		<(${GIT_ROOT}/bin/list-own-rules $*) | \
+		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+			$(ECHO_ERR) "The above rules are configured, but are not available in the $* eslint rule set."; \
+			exit 1; \
+		}
+
+
+.PHONY: check-no-outdated-rules
+check-no-outdated-rules: $(TARGETS_CHECK_NO_OUTDATED_RULES)
 	:
 
 
