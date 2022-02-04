@@ -8,6 +8,10 @@ case ${CONFIG} in
         PLUGIN=@babel/eslint-plugin
         PLUGIN_RULE_PREFIX=@babel/
         ;;
+    basic)
+        PLUGIN=
+        PLUGIN_RULE_PREFIX=
+        ;;
     jsdoc|jsdoc-*)
         PLUGIN=eslint-plugin-jsdoc
         PLUGIN_RULE_PREFIX=jsdoc/
