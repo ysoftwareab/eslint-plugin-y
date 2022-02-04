@@ -39,13 +39,13 @@ CONFIGS += \
 	typescript \
 	vue \
 
-CONFIGS_CHECK_NO_NEW_RULES += \
+CONFIGS_CHECK_NOT_CONFIGURED_RULES += \
 	$(CONFIGS) \
 
-CONFIGS_CHECK_NO_OUTDATED_RULES += \
+CONFIGS_CHECK_OUTDATED_RULES += \
 	$(CONFIGS) \
 
-CONFIGS_CHECK_OVERRIDES_RULES += \
+CONFIGS_CHECK_CONFIGURED_OVERRIDES_RULES += \
 	$(CONFIGS) \
 
 CONFIGS_CHECK_Y_CONFIG += \
@@ -59,10 +59,14 @@ CONFIGS_CHECK_Y_CONFIG += \
 	typescript \
 	vue \
 
-TARGETS_CHECK_NO_NEW_RULES = $(patsubst %,check-no-new-rules/%,$(CONFIGS_CHECK_NO_NEW_RULES))
-TARGETS_CHECK_NO_OUTDATED_RULES = $(patsubst %,check-no-outdated-rules/%,$(CONFIGS_CHECK_NO_OUTDATED_RULES))
-TARGETS_CHECK_OVERRIDES_RULES = $(patsubst %,check-overrides-rules/%,$(CONFIGS_CHECK_OVERRIDES_RULES))
-TARGETS_CHECK_Y_CONFIG = $(patsubst %,check-y-config/%,$(CONFIGS_CHECK_Y_CONFIG))
+TARGETS_CHECK_NOT_CONFIGURED_RULES = \
+	$(patsubst %,check-not-configured-rules/%,$(CONFIGS_CHECK_NOT_CONFIGURED_RULES))
+TARGETS_CHECK_OUTDATED_RULES = \
+	$(patsubst %,check-outdated-rules/%,$(CONFIGS_CHECK_OUTDATED_RULES))
+TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES = \
+	$(patsubst %,check-configured-overrides-rules/%,$(CONFIGS_CHECK_CONFIGURED_OVERRIDES_RULES))
+TARGETS_CHECK_Y_CONFIG = \
+	$(patsubst %,check-y-config/%,$(CONFIGS_CHECK_Y_CONFIG))
 
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
@@ -97,9 +101,9 @@ YP_CHECK_TPL_FILES += \
 	rules/index.js \
 
 YP_CHECK_TARGETS += \
-	skip/check-no-outdated-rules \
-	skip/check-no-new-rules \
-	check-overrides-rules \
+	skip/check-outdated-rules \
+	skip/check-not-configured-rules \
+	check-configured-overrides-rules \
 	check-y-config \
 
 YP_TEST_TARGETS += \
@@ -123,8 +127,8 @@ rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
 
 
-.PHONY: check-no-outdated-rules/%
-check-no-outdated-rules/%:
+.PHONY: check-outdated-rules/%
+check-outdated-rules/%:
 	$(MKDIR) snapshots/$*
 	$(COMM) -23 \
 		<($(GIT_ROOT)/bin/list-configured-own-rules $* | $(TEE) snapshots/$*/configured-own.txt) \
@@ -136,40 +140,40 @@ check-no-outdated-rules/%:
 		}
 
 
-.PHONY: check-no-outdated-rules
-check-no-outdated-rules: $(TARGETS_CHECK_NO_OUTDATED_RULES)
+.PHONY: check-outdated-rules
+check-outdated-rules: $(TARGETS_CHECK_OUTDATED_RULES)
 	:
 
 
-.PHONY: check-no-new-rules/%
-check-no-new-rules/%:
+.PHONY: check-not-configured-rules/%
+check-not-configured-rules/%:
 	$(MKDIR) snapshots/$*
 	$(COMM) -23 \
 		<($(GIT_ROOT)/bin/list-own-rules $* | $(TEE) snapshots/$*/own.txt) \
 		<($(GIT_ROOT)/bin/list-configured-own-rules $* | $(TEE) snapshots/$*/configured-own.txt) | \
-		$(TEE) snapshots/$*/new.txt | \
+		$(TEE) snapshots/$*/not-configured.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above rules are available in the $* eslint config, but are not configured."; \
 			exit 0; \
 		}
 
 
-.PHONY: check-no-new-rules
-check-no-new-rules: $(TARGETS_CHECK_NO_NEW_RULES)
+.PHONY: check-not-configured-rules
+check-not-configured-rules: $(TARGETS_CHECK_NOT_CONFIGURED_RULES)
 	:
 
 
-.PHONY: check-overrides-rules/%
-check-overrides-rules/%:
+.PHONY: check-configured-overrides-rules/%
+check-configured-overrides-rules/%:
 	$(MKDIR) snapshots/$*
-	$(GIT_ROOT)/bin/list-configured-overrides-rules $* | $(TEE) snapshots/$*/overrides.txt | \
+	$(GIT_ROOT)/bin/list-configured-overrides-rules $* | $(TEE) snapshots/$*/configured-overrides.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
 		}
 
 
-.PHONY: check-overrides-rules
-check-overrides-rules: $(TARGETS_CHECK_OVERRIDES_RULES)
+.PHONY: check-configured-overrides-rules
+check-configured-overrides-rules: $(TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES)
 	:
 
 
