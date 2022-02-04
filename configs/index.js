@@ -18,21 +18,15 @@ module.exports = {
     ]
   },
   
-  'browser-only': {
+  'env-browser': {
     extends: [
-      './browser-only.js'
+      './env-browser.js'
     ]
   },
   
-  'browser': {
+  'env-node': {
     extends: [
-      './browser.js'
-    ]
-  },
-  
-  'eslint-all': {
-    extends: [
-      './eslint-all.js'
+      './env-node.js'
     ]
   },
   
@@ -102,18 +96,6 @@ module.exports = {
     ]
   },
   
-  'node-only': {
-    extends: [
-      './node-only.js'
-    ]
-  },
-  
-  'node': {
-    extends: [
-      './node.js'
-    ]
-  },
-  
   'proper-arrows': {
     extends: [
       './proper-arrows.js'
@@ -126,9 +108,39 @@ module.exports = {
     ]
   },
   
-  'typescript-only': {
+  'recommended-browser-typescript': {
     extends: [
-      './typescript-only.js'
+      './recommended-browser-typescript.js'
+    ]
+  },
+  
+  'recommended-browser': {
+    extends: [
+      './recommended-browser.js'
+    ]
+  },
+  
+  'recommended-node-typescript': {
+    extends: [
+      './recommended-node-typescript.js'
+    ]
+  },
+  
+  'recommended-node': {
+    extends: [
+      './recommended-node.js'
+    ]
+  },
+  
+  'recommended-typescript': {
+    extends: [
+      './recommended-typescript.js'
+    ]
+  },
+  
+  'recommended': {
+    extends: [
+      './recommended.js'
     ]
   },
   
