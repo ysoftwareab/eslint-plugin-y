@@ -48,9 +48,21 @@ CONFIGS_CHECK_NO_OUTDATED_RULES += \
 CONFIGS_CHECK_OVERRIDES_RULES += \
 	$(CONFIGS) \
 
+CONFIGS_CHECK_Y_CONFIG += \
+	basic \
+	jasmine \
+	jest \
+	jsdoc \
+	lodash \
+	mocha \
+	protractor \
+	typescript \
+	vue \
+
 TARGETS_CHECK_NO_NEW_RULES = $(patsubst %,check-no-new-rules/%,$(CONFIGS_CHECK_NO_NEW_RULES))
 TARGETS_CHECK_NO_OUTDATED_RULES = $(patsubst %,check-no-outdated-rules/%,$(CONFIGS_CHECK_NO_OUTDATED_RULES))
 TARGETS_CHECK_OVERRIDES_RULES = $(patsubst %,check-overrides-rules/%,$(CONFIGS_CHECK_OVERRIDES_RULES))
+TARGETS_CHECK_Y_CONFIG = $(patsubst %,check-y-config/%,$(CONFIGS_CHECK_Y_CONFIG))
 
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
@@ -88,6 +100,7 @@ YP_CHECK_TARGETS += \
 	skip/check-no-outdated-rules \
 	skip/check-no-new-rules \
 	check-overrides-rules \
+	check-y-config \
 
 YP_TEST_TARGETS += \
 	test-rules \
@@ -112,13 +125,14 @@ rules/index.js: rules/index.js.tpl
 
 .PHONY: check-no-outdated-rules/%
 check-no-outdated-rules/%:
+	$(MKDIR) snapshots/$*
 	$(COMM) -23 \
-		<(${GIT_ROOT}/bin/list-configured-own-rules $* | $(TEE) snapshots/$*.configured-own.txt) \
-		<(${GIT_ROOT}/bin/list-own-rules $* | $(TEE) snapshots/$*.own.txt) | \
-		$(TEE) snapshots/$*.outdated.txt | \
+		<($(GIT_ROOT)/bin/list-configured-own-rules $* | $(TEE) snapshots/$*/configured-own.txt) \
+		<($(GIT_ROOT)/bin/list-own-rules $* | $(TEE) snapshots/$*/own.txt) | \
+		$(TEE) snapshots/$*/outdated.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_ERR) "The above rules are configured, but are not available in the $* eslint config."; \
-			exit 1; \
+			$(ECHO_WARN) "The above rules are configured, but are not available in the $* eslint config."; \
+			exit 0; \
 		}
 
 
@@ -129,13 +143,14 @@ check-no-outdated-rules: $(TARGETS_CHECK_NO_OUTDATED_RULES)
 
 .PHONY: check-no-new-rules/%
 check-no-new-rules/%:
+	$(MKDIR) snapshots/$*
 	$(COMM) -23 \
-		<(${GIT_ROOT}/bin/list-own-rules $* | $(TEE) snapshots/$*.own.txt) \
-		<(${GIT_ROOT}/bin/list-configured-own-rules $* | $(TEE) snapshots/$*.configured-own.txt) | \
-		$(TEE) snapshots/$*.new.txt | \
+		<($(GIT_ROOT)/bin/list-own-rules $* | $(TEE) snapshots/$*/own.txt) \
+		<($(GIT_ROOT)/bin/list-configured-own-rules $* | $(TEE) snapshots/$*/configured-own.txt) | \
+		$(TEE) snapshots/$*/new.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_ERR) "The above rules are available in the $* eslint config, but are not configured."; \
-			exit 1; \
+			$(ECHO_WARN) "The above rules are available in the $* eslint config, but are not configured."; \
+			exit 0; \
 		}
 
 
@@ -146,7 +161,8 @@ check-no-new-rules: $(TARGETS_CHECK_NO_NEW_RULES)
 
 .PHONY: check-overrides-rules/%
 check-overrides-rules/%:
-	${GIT_ROOT}/bin/list-configured-overrides-rules $* | $(TEE) snapshots/$*.overrides.txt | \
+	$(MKDIR) snapshots/$*
+	$(GIT_ROOT)/bin/list-configured-overrides-rules $* | $(TEE) snapshots/$*/overrides.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
 		}
@@ -154,6 +170,24 @@ check-overrides-rules/%:
 
 .PHONY: check-overrides-rules
 check-overrides-rules: $(TARGETS_CHECK_OVERRIDES_RULES)
+	:
+
+
+.PHONY: check-y-config/%
+check-y-config/%:
+	$(MKDIR) snapshots/$*
+	$(JD) \
+		<($(ESLINT) --no-eslintrc -c configs/$*.extends.js --print-config foo.js | $(TEE) snapshots/$*/extends.txt) \
+		<($(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js | $(TEE) snapshots/$*/extends-and-y.txt) | \
+		$(TEE) snapshots/$*/extends-diff-extends-and-y.txt | \
+		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+			$(ECHO_WARN) "The above diffs are is our custom config on top of the extended $* eslint config."; \
+			exit 0; \
+		}
+
+
+.PHONY: check-y-config
+check-y-config: $(TARGETS_CHECK_Y_CONFIG)
 	:
 
 

@@ -1,5 +1,5 @@
 /BUILD
 /VERSION
 /node_modules
-/snapshots/*.new.txt
-/snapshots/*.outdated.txt
+/snapshots/*/new.txt
+/snapshots/*/outdated.txt
