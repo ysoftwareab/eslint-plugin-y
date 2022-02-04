@@ -114,7 +114,8 @@ snapshots/%: noop
 	$(MKDIR) snapshots/$*
 	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
 	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
-	$(COMM) -23 snapshots/$*/rules.configured-own.txt snapshots/$*/rules.own.txt > snapshots/$*/rules.configured-outdated.txt
+	$(COMM) -23 snapshots/$*/rules.configured-own.txt snapshots/$*/rules.own.txt > \
+		snapshots/$*/rules.configured-outdated.txt
 	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
 	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
 	$(COMM) -23 snapshots/$*/rules.own.txt snapshots/$*/rules.configured-own.txt > snapshots/$*/rules.not-configured.txt
