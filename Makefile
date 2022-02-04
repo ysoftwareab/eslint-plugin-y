@@ -19,7 +19,7 @@ JS_RULE_FILES := $(shell $(FIND_Q) rules -type f -name "*.js" -print)
 JS_RULE_FILES := $(filter-out rules/index.js,$(JS_RULE_FILES))
 JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 
-PLUGINS += \
+CONFIGS += \
 	async-await \
 	babel \
 	basic \
@@ -34,11 +34,21 @@ PLUGINS += \
 	no-null \
 	proper-arrows \
 	protractor \
-	typescript \
+	typescript-only \
 	vue \
 
-TARGETS_CHECK_NO_NEW_RULES = $(patsubst %,check-no-new-rules/%,$(PLUGINS))
-TARGETS_CHECK_NO_OUTDATED_RULES = $(patsubst %,check-no-outdated-rules/%,$(PLUGINS))
+CONFIGS_CHECK_NO_NEW_RULES += \
+	$(CONFIGS) \
+
+CONFIGS_CHECK_NO_OUTDATED_RULES += \
+	$(CONFIGS) \
+
+CONFIGS_CHECK_OVERRIDES_RULES += \
+	$(CONFIGS) \
+
+TARGETS_CHECK_NO_NEW_RULES = $(patsubst %,check-no-new-rules/%,$(CONFIGS_CHECK_NO_NEW_RULES))
+TARGETS_CHECK_NO_OUTDATED_RULES = $(patsubst %,check-no-outdated-rules/%,$(CONFIGS_CHECK_NO_OUTDATED_RULES))
+TARGETS_CHECK_OVERRIDES_RULES = $(patsubst %,check-overrides-rules/%,$(CONFIGS_CHECK_OVERRIDES_RULES))
 
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
@@ -75,8 +85,9 @@ YP_CHECK_TPL_FILES += \
 	rules/index.js \
 
 YP_CHECK_TARGETS += \
-	check-no-outdated-rules \
-	check-no-new-rules \
+	skip/check-no-outdated-rules \
+	skip/check-no-new-rules \
+	check-overrides-rules \
 
 YP_TEST_TARGETS += \
 	test-rules \
@@ -107,10 +118,11 @@ rules/index.js: rules/index.js.tpl
 .PHONY: check-no-outdated-rules/%
 check-no-outdated-rules/%:
 	$(COMM) -23 \
-		<(${GIT_ROOT}/bin/list-configured-own-rules $*) \
-		<(${GIT_ROOT}/bin/list-own-rules $*) | \
+		<(${GIT_ROOT}/bin/list-configured-own-rules $* | $(TEE) snapshots/$*.configured-own.txt) \
+		<(${GIT_ROOT}/bin/list-own-rules $* | $(TEE) snapshots/$*.own.txt) | \
+		$(TEE) snapshots/$*.outdated.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_ERR) "The above rules are configured, but are not available in the $* eslint rule set."; \
+			$(ECHO_ERR) "The above rules are configured, but are not available in the $* eslint config."; \
 			exit 1; \
 		}
 
@@ -123,10 +135,11 @@ check-no-outdated-rules: $(TARGETS_CHECK_NO_OUTDATED_RULES)
 .PHONY: check-no-new-rules/%
 check-no-new-rules/%:
 	$(COMM) -23 \
-		<(${GIT_ROOT}/bin/list-own-rules $*) \
-		<(${GIT_ROOT}/bin/list-configured-own-rules $*) | \
+		<(${GIT_ROOT}/bin/list-own-rules $* | $(TEE) snapshots/$*.own.txt) \
+		<(${GIT_ROOT}/bin/list-configured-own-rules $* | $(TEE) snapshots/$*.configured-own.txt) | \
+		$(TEE) snapshots/$*.new.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_ERR) "The above rules are available in the $* eslint rule set, but are not configured."; \
+			$(ECHO_ERR) "The above rules are available in the $* eslint config, but are not configured."; \
 			exit 1; \
 		}
 
@@ -136,9 +149,28 @@ check-no-new-rules: $(TARGETS_CHECK_NO_NEW_RULES)
 	:
 
 
+.PHONY: check-overrides-rules/%
+check-overrides-rules/%:
+	${GIT_ROOT}/bin/list-configured-overrides-rules $* | $(TEE) snapshots/$*.overrides.txt | \
+		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+			$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
+		}
+
+
+.PHONY: check-overrides-rules
+check-overrides-rules: $(TARGETS_CHECK_OVERRIDES_RULES)
+	:
+
+
 .PHONY: test-rules
 test-rules:
 	for f in $(JS_RULE_TEST_FILES); do \
 		$(ECHO) "Running $${f}..." ; \
 		$(NODE) $${f} ; \
 	done
+
+
+# TODO should be moved to yplatform
+.PHONY: skip/%
+skip/%:
+	:
