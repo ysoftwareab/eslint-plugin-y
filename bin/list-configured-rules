@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PLUGIN=${1:-basic}
+
+cd ${DIR}/..
+
+eslint --no-eslintrc -c ${DIR}/../configs/.eslintrc.${PLUGIN}.js --print-config foo.js | \
+    jq -r ".rules | keys[]"

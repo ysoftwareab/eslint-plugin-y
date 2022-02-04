@@ -53,6 +53,9 @@ YP_CHECK_TPL_FILES += \
 	package.json \
 	rules/index.js \
 
+YP_CHECK_TARGETS += \
+	check-all-rules-configured \
+
 YP_TEST_TARGETS += \
 	test-rules \
 
@@ -77,6 +80,38 @@ package.json: package.json.tpl
 rules/index.js: $(JS_RULE_FILES)
 rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
+
+
+.PHONY: check-all-rules-configured/%
+check-all-rules-configured/%:
+	$(COMM) -23 \
+		<(${GIT_ROOT}/bin/list-available-rules $* | sort) \
+		<(${GIT_ROOT}/bin/list-configured-rules $* | sort) | \
+		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+			$(ECHO_ERR) "The above rules are available in the $* eslint rule set, but are not configured."; \
+			exit 1; \
+		}
+
+
+.PHONY: check-all-rules-configured
+# check-all-rules-configured: check-all-rules-configured/async-await
+# check-all-rules-configured: check-all-rules-configured/babel
+# check-all-rules-configured: check-all-rules-configured/basic
+# check-all-rules-configured: check-all-rules-configured/eslint-comments
+# check-all-rules-configured: check-all-rules-configured/fp
+# check-all-rules-configured: check-all-rules-configured/import
+# check-all-rules-configured: check-all-rules-configured/jasmine
+# check-all-rules-configured: check-all-rules-configured/jest
+# check-all-rules-configured: check-all-rules-configured/jsdoc
+# check-all-rules-configured: check-all-rules-configured/lodash
+# check-all-rules-configured: check-all-rules-configured/mocha
+# check-all-rules-configured: check-all-rules-configured/no-null
+# check-all-rules-configured: check-all-rules-configured/proper-arrows
+# check-all-rules-configured: check-all-rules-configured/protractor
+# check-all-rules-configured: check-all-rules-configured/typescript
+# check-all-rules-configured: check-all-rules-configured/vue
+check-all-rules-configured:
+	:
 
 
 .PHONY: test-rules
