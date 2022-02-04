@@ -53,9 +53,6 @@ YP_CHECK_TPL_FILES += \
 	package.json \
 	rules/index.js \
 
-YP_CHECK_TARGETS += \
-	check-synced-peer-deps \
-
 YP_TEST_TARGETS += \
 	test-rules \
 
@@ -80,17 +77,6 @@ package.json: package.json.tpl
 rules/index.js: $(JS_RULE_FILES)
 rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
-
-
-.PHONY: check-synced-peer-deps
-check-synced-peer-deps:
-	$(COMM) -23 \
-		<($(CAT) package.json| $(JQ) -r '.peerDependencies | keys[] as $$k | "\($$k)@\(.[$$k])"' | sort) \
-		<($(CAT) package.json| $(JQ) -r '.devDependencies | keys[] as $$k | "\($$k)@\(.[$$k])"' | sort) | \
-		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_ERR) "The above peerDependencies are not in sync with devDependencies."; \
-			exit 1; \
-		}
 
 
 .PHONY: test-rules
