@@ -104,22 +104,6 @@ rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
 
 
-.PHONY: check-no-new-rules/%
-check-no-new-rules/%:
-	$(COMM) -23 \
-		<(${GIT_ROOT}/bin/list-own-rules $*) \
-		<(${GIT_ROOT}/bin/list-configured-own-rules $*) | \
-		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_ERR) "The above rules are available in the $* eslint rule set, but are not configured."; \
-			exit 1; \
-		}
-
-
-.PHONY: check-no-new-rules
-check-no-new-rules: $(TARGETS_CHECK_NO_NEW_RULES)
-	:
-
-
 .PHONY: check-no-outdated-rules/%
 check-no-outdated-rules/%:
 	$(COMM) -23 \
@@ -133,6 +117,22 @@ check-no-outdated-rules/%:
 
 .PHONY: check-no-outdated-rules
 check-no-outdated-rules: $(TARGETS_CHECK_NO_OUTDATED_RULES)
+	:
+
+
+.PHONY: check-no-new-rules/%
+check-no-new-rules/%:
+	$(COMM) -23 \
+		<(${GIT_ROOT}/bin/list-own-rules $*) \
+		<(${GIT_ROOT}/bin/list-configured-own-rules $*) | \
+		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+			$(ECHO_ERR) "The above rules are available in the $* eslint rule set, but are not configured."; \
+			exit 1; \
+		}
+
+
+.PHONY: check-no-new-rules
+check-no-new-rules: $(TARGETS_CHECK_NO_NEW_RULES)
 	:
 
 
