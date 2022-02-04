@@ -39,34 +39,11 @@ CONFIGS += \
 	typescript \
 	vue \
 
-CONFIGS_CHECK_NOT_CONFIGURED_RULES += \
-	$(CONFIGS) \
-
-CONFIGS_CHECK_OUTDATED_RULES += \
-	$(CONFIGS) \
-
-CONFIGS_CHECK_CONFIGURED_OVERRIDES_RULES += \
-	$(CONFIGS) \
-
-CONFIGS_CHECK_Y_CONFIG += \
-	basic \
-	jasmine \
-	jest \
-	jsdoc \
-	lodash \
-	mocha \
-	protractor \
-	typescript \
-	vue \
-
-TARGETS_CHECK_NOT_CONFIGURED_RULES = \
-	$(patsubst %,check-not-configured-rules/%,$(CONFIGS_CHECK_NOT_CONFIGURED_RULES))
-TARGETS_CHECK_OUTDATED_RULES = \
-	$(patsubst %,check-outdated-rules/%,$(CONFIGS_CHECK_OUTDATED_RULES))
-TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES = \
-	$(patsubst %,check-configured-overrides-rules/%,$(CONFIGS_CHECK_CONFIGURED_OVERRIDES_RULES))
-TARGETS_CHECK_Y_CONFIG = \
-	$(patsubst %,check-y-config/%,$(CONFIGS_CHECK_Y_CONFIG))
+TARGETS_SNAPSHOTS = $(patsubst %,snapshots/%,$(CONFIGS))
+TARGETS_CHECK_NOT_CONFIGURED_RULES = $(patsubst %,check-not-configured-rules/%,$(CONFIGS))
+TARGETS_CHECK_OUTDATED_RULES = $(patsubst %,check-outdated-rules/%,$(CONFIGS))
+TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES = $(patsubst %,check-configured-overrides-rules/%,$(CONFIGS))
+TARGETS_CHECK_Y_CONFIG = $(patsubst %,check-y-config/%,$(CONFIGS))
 
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
@@ -100,6 +77,7 @@ YP_CHECK_TPL_FILES += \
 	.github/workflows/main.yml \
 	configs/index.js \
 	rules/index.js \
+	snapshots \
 
 YP_CHECK_TARGETS += \
 	check-outdated-rules \
@@ -130,17 +108,39 @@ rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
 
 
+.PHONY: snapshots/%
+snapshots/%:
+	$(ECHO_DO) "Snapshot $* config..."
+	$(MKDIR) snapshots/$*
+	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/configured-own.txt
+	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/own.txt
+	$(COMM) -23 snapshots/$*/configured-own.txt snapshots/$*/own.txt > snapshots/$*/outdated.txt
+	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/own.txt
+	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/configured-own.txt
+	$(COMM) -23 snapshots/$*/own.txt snapshots/$*/configured-own.txt > snapshots/$*/not-configured.txt
+	$(GIT_ROOT)/bin/list-configured-overrides-rules $* > snapshots/$*/configured-overrides.txt
+	if [[ -f "configs/$*.extends.js" ]]; then \
+		$(ESLINT) --no-eslintrc -c configs/$*.extends.js --print-config foo.js > snapshots/$*/config.extends.txt; \
+		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.extends-and-y.txt; \
+		$(JD) snapshots/$*/config.extends.txt snapshots/$*/config.extends-and-y.txt > \
+			snapshots/$*/config.extends-diff-extends-and-y.txt; \
+	else \
+		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.y.txt; \
+	fi
+	$(ECHO_DONE)
+
+
+.PHONY: snapshots
+snapshots: $(TARGETS_SNAPSHOTS)
+	:
+
+
 .PHONY: check-outdated-rules/%
 check-outdated-rules/%:
-	$(MKDIR) snapshots/$*
-	$(COMM) -23 \
-		<($(GIT_ROOT)/bin/list-configured-own-rules $* | $(TEE) snapshots/$*/configured-own.txt) \
-		<($(GIT_ROOT)/bin/list-own-rules $* | $(TEE) snapshots/$*/own.txt) | \
-		$(TEE) snapshots/$*/outdated.txt | \
-		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_WARN) "The above rules are configured, but are not available in the $* eslint config."; \
-			exit 0; \
-		}
+	$(CAT) snapshots/$*/outdated.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+		$(ECHO_WARN) "The above rules are configured, but are not available in the $* eslint config."; \
+		exit 0; \
+	}
 
 
 .PHONY: check-outdated-rules
@@ -150,15 +150,10 @@ check-outdated-rules: $(TARGETS_CHECK_OUTDATED_RULES)
 
 .PHONY: check-not-configured-rules/%
 check-not-configured-rules/%:
-	$(MKDIR) snapshots/$*
-	$(COMM) -23 \
-		<($(GIT_ROOT)/bin/list-own-rules $* | $(TEE) snapshots/$*/own.txt) \
-		<($(GIT_ROOT)/bin/list-configured-own-rules $* | $(TEE) snapshots/$*/configured-own.txt) | \
-		$(TEE) snapshots/$*/not-configured.txt | \
-		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_WARN) "The above rules are available in the $* eslint config, but are not configured."; \
-			exit 0; \
-		}
+	$(CAT) snapshots/$*/not-configured.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+		$(ECHO_WARN) "The above rules are available in the $* eslint config, but are not configured."; \
+		exit 0; \
+	}
 
 
 .PHONY: check-not-configured-rules
@@ -168,11 +163,9 @@ check-not-configured-rules: $(TARGETS_CHECK_NOT_CONFIGURED_RULES)
 
 .PHONY: check-configured-overrides-rules/%
 check-configured-overrides-rules/%:
-	$(MKDIR) snapshots/$*
-	$(GIT_ROOT)/bin/list-configured-overrides-rules $* | $(TEE) snapshots/$*/configured-overrides.txt | \
-		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
-			$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
-		}
+	$(CAT) snapshots/$*/configured-overrides.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+		$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
+	}
 
 
 .PHONY: check-configured-overrides-rules
@@ -182,12 +175,8 @@ check-configured-overrides-rules: $(TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES)
 
 .PHONY: check-y-config/%
 check-y-config/%:
-	$(MKDIR) snapshots/$*
-	$(JD) \
-		<($(ESLINT) --no-eslintrc -c configs/$*.extends.js --print-config foo.js | $(TEE) snapshots/$*/extends.txt) \
-		<($(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js | $(TEE) snapshots/$*/extends-and-y.txt) | \
-		$(TEE) snapshots/$*/extends-diff-extends-and-y.txt | \
-		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	[[ ! -f "snapshots/$*/config.extends-diff-extends-and-y.txt" ]] || \
+		$(CAT) snapshots/$*/config.extends-diff-extends-and-y.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above diffs are is our custom config on top of the extended $* eslint config."; \
 			exit 0; \
 		}
