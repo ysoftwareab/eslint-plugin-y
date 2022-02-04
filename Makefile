@@ -106,6 +106,8 @@ YP_CHECK_TARGETS += \
 	check-not-configured-rules \
 	check-configured-overrides-rules \
 	check-y-config \
+	list-outdated \
+	list-not-configured \
 
 YP_TEST_TARGETS += \
 	test-rules \
@@ -202,3 +204,13 @@ test-rules:
 		$(ECHO) "Running $${f}..." ; \
 		$(NODE) $${f} ; \
 	done
+
+
+.PHONY: list-not-configured ## List not-configured rules (possibly new).
+list-not-configured:
+	$(LS) -la snapshots/*/not-configured.txt
+
+
+.PHONY: list-outdated ## List outdated rules.
+list-outdated:
+	$(LS) -la snapshots/*/outdated.txt
