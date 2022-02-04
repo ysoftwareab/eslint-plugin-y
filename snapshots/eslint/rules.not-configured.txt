@@ -1,3 +1,0 @@
-lines-around-directive
-newline-after-var
-newline-before-return

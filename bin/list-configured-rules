@@ -8,5 +8,5 @@ source ${DIR}/config.inc.sh
 
 cd ${DIR}/..
 
-eslint --no-eslintrc -c ${DIR}/../snapshots.src/${CONFIG}.eslintrc.js --print-config foo.js | \
+eslint --no-eslintrc -c ${DIR}/../${ESLINTRC} --print-config foo.js | \
     jq -r ".rules | keys[]" | sort

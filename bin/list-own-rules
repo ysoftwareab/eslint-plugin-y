@@ -6,6 +6,11 @@ CONFIG=${1:-eslint}
 # shellcheck disable=SC1091
 source ${DIR}/config.inc.sh
 
+[[ -n "${PLUGIN}" ]] || {
+    >&2 echo "[WARN] ${CONFIG} is a 0 or multi-plugin config."
+    exit 0
+}
+
 [[ "${CONFIG}" != "eslint" ]] || {
     SCRIPT="$(cat <<EOF
 let {Linter} = require('eslint');

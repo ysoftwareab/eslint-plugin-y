@@ -6,7 +6,12 @@ CONFIG=${1:-eslint}
 # shellcheck disable=SC1091
 source ${DIR}/config.inc.sh
 
+[[ -n "${PLUGIN}" ]] || {
+    >&2 echo "[WARN] ${CONFIG} is a 0 or multi-plugin config."
+    exit 0
+}
+
 cd ${DIR}/..
 
-eslint --no-eslintrc -c ${DIR}/../snapshots.src/${CONFIG}.eslintrc.js --print-config foo.js | \
+eslint --no-eslintrc -c ${DIR}/../${ESLINTRC} --print-config foo.js | \
     jq -r ".rules | keys[]" | sort | { grep -v "^${PLUGIN_RULE_PREFIX:-.}" || true; }

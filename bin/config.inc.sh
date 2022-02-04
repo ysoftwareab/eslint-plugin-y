@@ -3,6 +3,7 @@
 
 PLUGIN=eslint-plugin-${CONFIG}
 PLUGIN_RULE_PREFIX=${CONFIG}/
+ESLINTRC=eslintrc/${CONFIG}.eslintrc.js
 case ${CONFIG} in
     babel)
         PLUGIN=@babel/eslint-plugin
@@ -27,6 +28,10 @@ case ${CONFIG} in
     typescript|typescript-*)
         PLUGIN=@typescript-eslint/eslint-plugin
         PLUGIN_RULE_PREFIX=@typescript-eslint/
+        ;;
+    env-*|recommended|recommended-*)
+        PLUGIN=
+        PLUGIN_RULE_PREFIX=
         ;;
     *)
         ;;

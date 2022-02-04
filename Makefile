@@ -19,26 +19,15 @@ JS_RULE_FILES := $(shell $(FIND_Q) rules -type f -name "*.js" -print)
 JS_RULE_FILES := $(filter-out rules/index.js,$(JS_RULE_FILES))
 JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 
-CONFIGS += \
-	async-await \
-	babel \
-	eslint \
-	eslint-comments \
-	fp \
-	import \
-	jasmine \
-	jest \
-	jsdoc \
-	jsdoc-typescript \
-	lodash \
-	lodash-typescript \
-	mocha \
-	no-null \
-	proper-arrows \
-	protractor \
-	typescript \
-	vue \
+CONFIGS := $(wildcard configs/*)
+CONFIGS := $(filter-out configs/%.extends.js,$(CONFIGS))
+CONFIGS := $(filter-out configs/index.js,$(CONFIGS))
+CONFIGS := $(filter-out configs/index.js.tpl,$(CONFIGS))
+CONFIGS := $(filter-out configs/typescript-recommended-restore-eslint.js,$(CONFIGS))
+CONFIGS := $(filter-out configs/util.js,$(CONFIGS))
+CONFIGS := $(patsubst configs/%.js,%,$(CONFIGS))
 
+TARGETS_ESLINTRC = $(patsubst %,eslintrc/%,$(CONFIGS))
 TARGETS_SNAPSHOTS = $(patsubst %,snapshots/%,$(CONFIGS))
 TARGETS_CHECK_NOT_CONFIGURED_RULES = $(patsubst %,check-not-configured-rules/%,$(CONFIGS))
 TARGETS_CHECK_OUTDATED_RULES = $(patsubst %,check-outdated-rules/%,$(CONFIGS))
@@ -72,12 +61,13 @@ YP_DEPS_TARGETS += \
 	.github/workflows/main.yml \
 	configs/index.js \
 	rules/index.js \
+	eslintrc \
+	snapshots \
 
 YP_CHECK_TPL_FILES += \
 	.github/workflows/main.yml \
 	configs/index.js \
 	rules/index.js \
-	snapshots \
 
 YP_CHECK_TARGETS += \
 	check-outdated-rules \
@@ -108,8 +98,19 @@ rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
 
 
+.PHONY: eslintrc/%
+eslintrc/%: noop
+	$(MKDIR) $$(dirname $@)
+	$(ECHO) "module.exports = {root: true, extends: ['plugin:y/$*']};" > $@.eslintrc.js
+
+
+.PHONY: eslintrc
+eslintrc: $(TARGETS_ESLINTRC)
+	:
+
+
 .PHONY: snapshots/%
-snapshots/%: noop
+snapshots/%: noop ## Generate snapshots for a specific config.
 	$(ECHO_DO) "Snapshot $* config..."
 	$(MKDIR) snapshots/$*
 	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
@@ -135,7 +136,7 @@ snapshots/%: noop
 
 
 .PHONY: snapshots
-snapshots: $(TARGETS_SNAPSHOTS)
+snapshots: $(TARGETS_SNAPSHOTS) ## Generate snapshots.
 	:
 
 

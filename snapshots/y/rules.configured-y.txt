@@ -1,0 +1,15 @@
+array-bracket-newline
+array-element-newline
+object-curly-newline
+object-property-newline
+y/array-bracket-newline
+y/array-element-newline
+y/import-specifier-newline
+y/no-const
+y/no-for
+y/no-underscore-prefix-exported
+y/object-curly-newline
+y/object-property-newline
+y/order-imports
+y/padding-line-import-multiple
+y/underscore-prefix-non-exported
