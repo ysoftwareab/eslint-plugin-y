@@ -13,7 +13,7 @@ if (!_semver.satisfies(_pluginActualVsn.replace(/.*#semver:/, ''), _pluginVsn.re
 
 module.exports = {
   extends: [
-    'plugin:jasmine/recommended'
+    './jasmine.extends'
   ],
 
   // not set by 'plugin:jasmine/recommended'

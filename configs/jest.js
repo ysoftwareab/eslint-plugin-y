@@ -21,7 +21,7 @@ if (!_semver.satisfies(_typescriptActualVsn.replace(/.*#semver:/, ''), _typescri
 
 module.exports = {
   extends: [
-    'plugin:jest/recommended'
+    './jest.extends'
   ],
 
   rules: {

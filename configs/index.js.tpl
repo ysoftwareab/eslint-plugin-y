@@ -16,6 +16,10 @@ let _configData = _.reduce(_configFiles, function(acc, configFile) {
     return acc;
   }
 
+  if (/\.extends\.js$/.test(configFile)) {
+    return acc;
+  }
+
   if (_.includes([
     '.eslintrc.js',
     'index.js',

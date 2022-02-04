@@ -11,7 +11,7 @@ if (!_semver.satisfies(_pluginActualVsn.replace(/.*#semver:/, ''), _pluginVsn.re
 
 module.exports = {
   extends: [
-    'plugin:lodash/recommended'
+    './lodash.extends'
   ],
 
   settings: {

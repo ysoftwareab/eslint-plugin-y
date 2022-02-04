@@ -30,7 +30,7 @@ let isIde = process.env.VSCODE_PID !== undefined;
 
 module.exports = {
   extends: [
-    'plugin:@typescript-eslint/eslint-plugin/recommended'
+    './typescript.extends'
   ],
 
   parserOptions: {

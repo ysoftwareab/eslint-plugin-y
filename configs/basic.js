@@ -7,7 +7,7 @@ module.exports = {
   plugins: [],
 
   extends: [
-    'eslint:all'
+    './basic.extends'
   ],
 
   parser: 'espree',

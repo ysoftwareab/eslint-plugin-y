@@ -13,7 +13,7 @@ if (!_semver.satisfies(_pluginActualVsn.replace(/.*#semver:/, ''), _pluginVsn.re
 
 module.exports = {
   extends: [
-    'plugin:vue/recommended'
+    './vue.extends'
   ],
 
   rules: {

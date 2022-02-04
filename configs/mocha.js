@@ -13,7 +13,7 @@ if (!_semver.satisfies(_pluginActualVsn.replace(/.*#semver:/, ''), _pluginVsn.re
 
 module.exports = {
   extends: [
-    'plugin:mocha/recommended'
+    './mocha.extends'
   ],
 
   // not set by 'plugin:mocha/recommended'

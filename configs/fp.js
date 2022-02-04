@@ -13,6 +13,7 @@ module.exports = {
   plugins: [
     'fp'
   ],
+
   rules: {
     'fp/no-arguments': 'error',
     'fp/no-class': 'off',
