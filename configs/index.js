@@ -66,9 +66,21 @@ module.exports = {
     ]
   },
   
+  'jsdoc-typescript': {
+    extends: [
+      './jsdoc-typescript.js'
+    ]
+  },
+  
   'jsdoc': {
     extends: [
       './jsdoc.js'
+    ]
+  },
+  
+  'lodash-typescript': {
+    extends: [
+      './lodash-typescript.js'
     ]
   },
   
@@ -111,6 +123,12 @@ module.exports = {
   'protractor': {
     extends: [
       './protractor.js'
+    ]
+  },
+  
+  'typescript-only': {
+    extends: [
+      './typescript-only.js'
     ]
   },
   

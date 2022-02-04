@@ -257,28 +257,6 @@ module.exports = {
     '@typescript-eslint/require-await': _basic.rules['require-await'],
 
     semi: 'off',
-    '@typescript-eslint/semi': _basic.rules.semi,
-
-    // -------------------------------------------------------------------------
-
-    // NOTE we assume eslint-plugin-lodash is still loaded
-
-    'lodash/prefer-noop': 'off',
-    // bad for typescript, lowers type inference
-    'lodash/matches-prop-shorthand': ['error', 'never'],
-    'lodash/matches-shorthand': ['error', 'never'],
-    'lodash/prefer-matches': 'off',
-    'lodash/prop-shorthand': ['error', 'never'],
-
-    // -------------------------------------------------------------------------
-
-    // NOTE we assume eslint-plugin-jsdoc is still loaded
-
-    'jsdoc/no-types': 'error',
-    'jsdoc/require-param-description': 'error',
-    'jsdoc/require-param-type': 'off',
-    'jsdoc/require-param': 'off',
-    'jsdoc/require-returns': 'off',
-    'jsdoc/require-returns-type': 'off'
+    '@typescript-eslint/semi': _basic.rules.semi
   }
 };
