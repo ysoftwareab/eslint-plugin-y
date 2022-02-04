@@ -109,6 +109,7 @@ rules/index.js: rules/index.js.tpl
 
 
 .PHONY: snapshots/%
+snapshots/%: noop
 	$(ECHO_DO) "Snapshot $* config..."
 	$(MKDIR) snapshots/$*
 	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
@@ -138,7 +139,7 @@ snapshots: $(TARGETS_SNAPSHOTS)
 
 
 .PHONY: check-outdated-rules/%
-check-outdated-rules/%:
+check-outdated-rules/%: noop
 	$(CAT) snapshots/$*/rules.outdated.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 		$(ECHO_WARN) "The above rules are configured, but are not available in the $* eslint config."; \
 		exit 0; \
@@ -151,7 +152,7 @@ check-outdated-rules: $(TARGETS_CHECK_OUTDATED_RULES)
 
 
 .PHONY: check-not-configured-rules/%
-check-not-configured-rules/%:
+check-not-configured-rules/%: noop
 	$(CAT) snapshots/$*/rules.not-configured.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 		$(ECHO_WARN) "The above rules are available in the $* eslint config, but are not configured."; \
 		exit 0; \
@@ -164,7 +165,7 @@ check-not-configured-rules: $(TARGETS_CHECK_NOT_CONFIGURED_RULES)
 
 
 .PHONY: check-configured-overrides-rules/%
-check-configured-overrides-rules/%:
+check-configured-overrides-rules/%: noop
 	$(CAT) snapshots/$*/rules.configured-overrides.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 		$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
 	}
@@ -176,7 +177,7 @@ check-configured-overrides-rules: $(TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES)
 
 
 .PHONY: check-y-config/%
-check-y-config/%:
+check-y-config/%: noop
 	[[ ! -f "snapshots/$*/config.extends-diff-extends-and-y.txt" ]] || \
 		$(CAT) snapshots/$*/config.extends-diff-extends-and-y.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above diffs are is our custom config on top of the extended $* eslint config."; \
