@@ -1,0 +1,5 @@
+new-cap
+no-invalid-this
+no-unused-expressions
+object-curly-spacing
+semi
