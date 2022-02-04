@@ -201,9 +201,13 @@ test-rules:
 
 .PHONY: list-not-configured ## List not-configured rules (possibly new).
 list-not-configured:
+	$(ECHO_DO) "Listing rules.not-configured..."
 	$(LS) -la snapshots/*/rules.not-configured.txt
+	$(ECHO_DONE
 
 
 .PHONY: list-outdated ## List outdated rules.
 list-outdated:
+	$(ECHO_DO) "Listing rules.configured-outdated..."
 	$(LS) -la snapshots/*/rules.configured-outdated.txt
+	$(ECHO_DONE
