@@ -1,8 +1,6 @@
-let _ = require('lodash');
-let _nodeOnlyConfig = require('./node-only');
-
-let _nodeConfig = {
+module.exports = {
   extends: [
+    './node-only.js',
     './basic.js',
     './babel.js',
     './async-await.js',
@@ -16,5 +14,3 @@ let _nodeConfig = {
     './y.js'
   ]
 };
-
-module.exports = _.merge(_nodeConfig, _nodeOnlyConfig);
