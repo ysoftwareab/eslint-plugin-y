@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG=${1:-basic}
+# shellcheck disable=SC1091
+source ${DIR}/config.inc.sh
+
+cd ${DIR}/..
+
+if [[ -f "${DIR}/../configs/${CONFIG}.extends.js" ]]; then
+    comm -23 \
+        <(eslint --no-eslintrc -c ${DIR}/../configs/${CONFIG}.extends.js --print-config foo.js | jq -r ".rules | keys[]" | sort) \
+        <(eslint --no-eslintrc -c ${DIR}/../configs/${CONFIG}.eslintrc.js --print-config foo.js | jq -r ".rules | keys[]" | sort)
+else
+    eslint --no-eslintrc -c ${DIR}/../configs/${CONFIG}.eslintrc.js --print-config foo.js | jq -r ".rules | keys[]" | sort
+fi
