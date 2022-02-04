@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-// -*- mode: js -*-
 
 let _ = require('lodash');
 let fs = require('fs');
