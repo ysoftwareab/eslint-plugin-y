@@ -5,11 +5,11 @@ let _ = require('lodash');
 let saneRequire = function(request, options = undefined) {
   let requestParts = _.split(request, '/');
   if (_.startsWith(request, '.') || _.startsWith(request, '/')) {
-    return require(request, options);
+    return require(request);
   }
 
   try {
-    return require(request, options);
+    return require(request);
   } catch (err) {
     // MODULE_NOT_FOUND for v13.1-v13.9
     // ERR_PACKAGE_PATH_NOT_EXPORTED for newer
@@ -34,7 +34,7 @@ Searched inside the resolved main file path "${moduleMainFilePath}" using "${sea
   }
 
   let moduleBasePath = moduleMainFilePath.slice(0, lastIndex + searchForPathSection.length);
-  return require(`${moduleBasePath}/${deepRequest}`, options);
+  return require(`${moduleBasePath}/${deepRequest}`);
 };
 
 let _eslintResolve = saneRequire('eslint/lib/shared/relative-module-resolver').resolve;

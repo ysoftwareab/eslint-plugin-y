@@ -9,6 +9,7 @@ include yplatform/build.mk/generic.common.mk
 include yplatform/build.mk/sh.check.shellcheck.mk
 include yplatform/build.mk/node.common.mk
 include yplatform/build.mk/js.check.eslint.mk
+include yplatform/build.mk/js.check.tsc.mk
 include yplatform/build.mk/core.misc.release.npg.mk
 
 # ------------------------------------------------------------------------------

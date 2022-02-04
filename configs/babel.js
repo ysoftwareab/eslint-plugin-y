@@ -13,6 +13,7 @@ let _ = require('lodash');
 let _eslint = require('./eslint');
 
 // see https://github.com/eslint/eslint/issues/12592
+// @ts-ignore
 _eslint = _.cloneDeep(_eslint);
 
 module.exports = {

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /* eslint-disable */
 // based on https://github.com/eslint/eslint/blob/master/lib/rules/object-property-newline.js

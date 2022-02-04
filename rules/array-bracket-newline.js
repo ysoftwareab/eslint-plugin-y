@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /* eslint-disable eslint-comments/no-unlimited-disable */
 /* eslint-disable */
 // based on https://raw.githubusercontent.com/eslint/eslint/master/lib/rules/array-bracket-newline.js

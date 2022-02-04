@@ -1,20 +1,19 @@
-/* eslint-disable lodash/prefer-lodash-method */
-
+let _ = require('lodash');
 let configs = require('./configs');
 let rules = require('./rules');
 
-configs = JSON.parse(JSON.stringify(configs));
-Object.entries(configs).forEach(function([
-  _key,
-  value
-]) {
-  value.extends = value.extends.map(function(path) {
-    path = path.replace(/^\.\//, './configs/');
+let configsWithFixedPath = _.cloneDeep(configs);
+_.forEach(configsWithFixedPath, function(value, _key) {
+  if (_.isEmpty(value) || _.isEmpty(value.extends)) {
+    return;
+  }
+  value.extends = _.map(value.extends, function(path) {
+    path = _.replace(path, /^\.\//, './configs/');
     return path;
   });
 });
 
 module.exports = {
-  configs,
+  configs: configsWithFixedPath,
   rules
 };

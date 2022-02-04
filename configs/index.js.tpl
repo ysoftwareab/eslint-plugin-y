@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// @ts-check
+
 let _ = require('lodash');
 let fs = require('fs');
 let outdent = require('outdent');
@@ -31,6 +33,7 @@ let _configData = _.reduce(_configFiles, function(acc, configFile) {
   return acc;
 }, {});
 
+// @ts-ignore
 let _tpl = _.template(outdent`
   module.exports = {
     <% _.forEach(_configData, function(configFile, config) { %>
