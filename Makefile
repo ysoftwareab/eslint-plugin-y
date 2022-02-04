@@ -29,7 +29,9 @@ CONFIGS += \
 	jasmine \
 	jest \
 	jsdoc \
+	jsdoc-typescript \
 	lodash \
+	lodash-typescript \
 	mocha \
 	no-null \
 	proper-arrows \
