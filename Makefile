@@ -118,7 +118,7 @@ check-no-outdated-rules/%:
 		$(TEE) snapshots/$*.outdated.txt | \
 		$(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_ERR) "The above rules are configured, but are not available in the $* eslint config."; \
-			exit 0; \
+			exit 1; \
 		}
 
 
