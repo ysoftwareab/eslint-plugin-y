@@ -3,6 +3,7 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG=${1:-basic}
+# shellcheck disable=SC1091
 source ${DIR}/config.inc.sh
 
 cd ${DIR}/..
