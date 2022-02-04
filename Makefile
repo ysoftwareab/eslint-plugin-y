@@ -22,7 +22,7 @@ JS_RULE_TEST_FILES := $(shell $(FIND_Q) test -type f -name "*.test.js" -print)
 CONFIGS += \
 	async-await \
 	babel \
-	basic \
+	eslint \
 	eslint-comments \
 	fp \
 	import \

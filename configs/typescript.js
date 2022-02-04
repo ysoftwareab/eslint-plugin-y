@@ -20,11 +20,11 @@ if (!_semver.satisfies(_typescriptActualVsn.replace(/.*#semver:/, ''), _typescri
 }
 
 let _ = require('lodash');
-let _basic = require('./basic');
-let _typescriptRestoreBasic = require('./typescript-recommended-restore-basic');
+let _eslint = require('./eslint');
+let _typescriptRestoreEslint = require('./typescript-recommended-restore-eslint');
 
 // see https://github.com/eslint/eslint/issues/12592
-_basic = _.cloneDeep(_basic);
+_eslint = _.cloneDeep(_eslint);
 
 let isIde = process.env.VSCODE_PID !== undefined;
 
@@ -44,8 +44,8 @@ module.exports = {
   },
 
   rules: {
-    // restore all rules in @typescript-eslint/recommended that are not @typescript-eslint i.e. basic
-    ..._typescriptRestoreBasic.rules,
+    // restore all rules in @typescript-eslint/recommended that are not @typescript-eslint i.e. eslint
+    ..._typescriptRestoreEslint.rules,
 
     // -------------------------------------------------------------------------
 
@@ -110,17 +110,17 @@ module.exports = {
     // rules in tslint (overriding eslint rules)
 
     'consistent-this': 'off',
-    '@typescript-eslint/no-this-alias': _basic.rules['consistent-this'], // tslint:no-this-assignment
+    '@typescript-eslint/no-this-alias': _eslint.rules['consistent-this'], // tslint:no-this-assignment
 
     // marked as, but not really typescriptOnly
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': _basic.rules['no-use-before-define'], // tslint:no-use-before-declare
+    '@typescript-eslint/no-use-before-define': _eslint.rules['no-use-before-define'], // tslint:no-use-before-declare
 
     '@typescript-eslint/no-extraneous-class': 'error', // tslint: no-unnecessary-class
 
     // marked as, but not really typescriptOnly
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': _basic.rules['no-unused-vars'], // tslint:no-unused-variable
+    '@typescript-eslint/no-unused-vars': _eslint.rules['no-unused-vars'], // tslint:no-unused-variable
 
     // -------------------------------------------------------------------------
 
@@ -150,11 +150,11 @@ module.exports = {
     // rules not in tslint, not specific to the typescript plugin
 
     'brace-style': 'off',
-    '@typescript-eslint/brace-style': _basic.rules['brace-style'],
+    '@typescript-eslint/brace-style': _eslint.rules['brace-style'],
 
     // replaced by @typescript-eslint/naming-convention
     // camelcase: 'off',
-    // '@typescript-eslint/camelcase': _basic.rules.camelcase,
+    // '@typescript-eslint/camelcase': _eslint.rules.camelcase,
 
     '@typescript-eslint/explicit-function-return-type': ['error', {
       allowExpressions: true,
@@ -163,7 +163,7 @@ module.exports = {
     }],
 
     'func-call-spacing': 'off',
-    '@typescript-eslint/func-call-spacing': _basic.rules['func-call-spacing'],
+    '@typescript-eslint/func-call-spacing': _eslint.rules['func-call-spacing'],
 
     camelcase: 'off',
     '@typescript-eslint/naming-convention': ['warn', {
@@ -173,7 +173,7 @@ module.exports = {
       leadingUnderscore: 'allow',
       trailingUnderscore: 'forbid'
     }, {
-      // camelcase.properties set to never in basic.js
+      // camelcase.properties set to never in eslint.js
       selector: 'property',
       // eslint-disable-next-line no-null/no-null
       format: null
@@ -215,7 +215,7 @@ module.exports = {
     }],
 
     'global-require': 'off',
-    '@typescript-eslint/no-require-imports': _basic.rules['global-require'],
+    '@typescript-eslint/no-require-imports': _eslint.rules['global-require'],
 
     indent: 'off',
     // eslint-disable-next-line no-sparse-arrays
@@ -223,19 +223,19 @@ module.exports = {
       // maintain eslint defaults
       SwitchCase: 0,
       flatTernaryExpressions: false
-    }], _basic.rules.indent),
+    }], _eslint.rules.indent),
 
     'no-array-constructor': 'off',
-    '@typescript-eslint/no-array-constructor': _basic.rules['no-array-constructor'],
+    '@typescript-eslint/no-array-constructor': _eslint.rules['no-array-constructor'],
 
     'no-empty-function': 'off',
-    '@typescript-eslint/no-empty-function': _basic.rules['no-empty-function'],
+    '@typescript-eslint/no-empty-function': _eslint.rules['no-empty-function'],
 
     'no-extra-parens': 'off',
-    '@typescript-eslint/no-extra-parens': _basic.rules['no-extra-parens'],
+    '@typescript-eslint/no-extra-parens': _eslint.rules['no-extra-parens'],
 
     'no-magic-numbers': 'off',
-    '@typescript-eslint/no-magic-numbers': _basic.rules['no-magic-numbers'],
+    '@typescript-eslint/no-magic-numbers': _eslint.rules['no-magic-numbers'],
 
     '@typescript-eslint/no-misused-promises': ['error', {
       // NOTE this may hide serious problem if NodeJS will terminate the process on unhandled rejections.
@@ -247,16 +247,16 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'error',
 
     'no-useless-constructor': 'off',
-    '@typescript-eslint/no-useless-constructor': _basic.rules['no-useless-constructor'],
+    '@typescript-eslint/no-useless-constructor': _eslint.rules['no-useless-constructor'],
 
     '@typescript-eslint/prefer-includes': 'error',
     '@typescript-eslint/prefer-regexp-exec': 'error',
     '@typescript-eslint/prefer-string-starts-ends-with': 'error',
 
     'require-await': 'off',
-    '@typescript-eslint/require-await': _basic.rules['require-await'],
+    '@typescript-eslint/require-await': _eslint.rules['require-await'],
 
     semi: 'off',
-    '@typescript-eslint/semi': _basic.rules.semi
+    '@typescript-eslint/semi': _eslint.rules.semi
   }
 };

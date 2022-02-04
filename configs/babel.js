@@ -10,10 +10,10 @@ if (!_semver.satisfies(_pluginActualVsn.replace(/.*#semver:/, ''), _pluginVsn.re
 }
 
 let _ = require('lodash');
-let _basic = require('./basic');
+let _eslint = require('./eslint');
 
 // see https://github.com/eslint/eslint/issues/12592
-_basic = _.cloneDeep(_basic);
+_eslint = _.cloneDeep(_eslint);
 
 module.exports = {
   parser: '@babel/eslint-parser',
@@ -29,18 +29,18 @@ module.exports = {
 
   rules: {
     'new-cap': 'off',
-    '@babel/new-cap': _basic.rules['new-cap'],
+    '@babel/new-cap': _eslint.rules['new-cap'],
 
     'no-invalid-this': 'off',
-    '@babel/no-invalid-this': _basic.rules['no-invalid-this'],
+    '@babel/no-invalid-this': _eslint.rules['no-invalid-this'],
 
     'no-unused-expressions': 'off',
-    '@babel/no-unused-expressions': _basic.rules['no-unused-expressions'],
+    '@babel/no-unused-expressions': _eslint.rules['no-unused-expressions'],
 
     'object-curly-spacing': 'off',
-    '@babel/object-curly-spacing': _basic.rules['object-curly-spacing'],
+    '@babel/object-curly-spacing': _eslint.rules['object-curly-spacing'],
 
     semi: 'off',
-    '@babel/semi': _basic.rules.semi
+    '@babel/semi': _eslint.rules.semi
   }
 };

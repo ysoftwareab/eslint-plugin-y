@@ -23,6 +23,7 @@ let _configData = _.reduce(_configFiles, function(acc, configFile) {
   if (_.includes([
     '.eslintrc.js',
     'index.js',
+    'typescript-recommended-restore-eslint.js',
     'util.js'
   ], configFile)) {
     return acc;

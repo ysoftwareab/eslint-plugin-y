@@ -12,12 +12,6 @@ module.exports = {
     ]
   },
   
-  'basic': {
-    extends: [
-      './basic.js'
-    ]
-  },
-  
   'env-browser': {
     extends: [
       './env-browser.js'
@@ -33,6 +27,12 @@ module.exports = {
   'eslint-comments': {
     extends: [
       './eslint-comments.js'
+    ]
+  },
+  
+  'eslint': {
+    extends: [
+      './eslint.js'
     ]
   },
   
@@ -141,12 +141,6 @@ module.exports = {
   'recommended': {
     extends: [
       './recommended.js'
-    ]
-  },
-  
-  'typescript-recommended-restore-basic': {
-    extends: [
-      './typescript-recommended-restore-basic.js'
     ]
   },
   

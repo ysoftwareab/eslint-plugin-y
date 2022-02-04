@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    './basic.js',
+    './eslint.js',
     './babel.js',
     './async-await.js',
     './eslint-comments.js',
