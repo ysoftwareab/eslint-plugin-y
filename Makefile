@@ -114,7 +114,7 @@ snapshots/%: noop
 	$(MKDIR) snapshots/$*
 	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
 	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
-	$(COMM) -23 snapshots/$*/rules.configured-own.txt snapshots/$*/rules.own.txt > snapshots/$*/rules.outdated.txt
+	$(COMM) -23 snapshots/$*/rules.configured-own.txt snapshots/$*/rules.own.txt > snapshots/$*/rules.configured-outdated.txt
 	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
 	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
 	$(COMM) -23 snapshots/$*/rules.own.txt snapshots/$*/rules.configured-own.txt > snapshots/$*/rules.not-configured.txt
@@ -140,7 +140,7 @@ snapshots: $(TARGETS_SNAPSHOTS)
 
 .PHONY: check-outdated-rules/%
 check-outdated-rules/%: noop
-	$(CAT) snapshots/$*/rules.outdated.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	$(CAT) snapshots/$*/rules.configured-outdated.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 		$(ECHO_WARN) "The above rules are configured, but are not available in the $* eslint config."; \
 		exit 0; \
 	}
@@ -205,4 +205,4 @@ list-not-configured:
 
 .PHONY: list-outdated ## List outdated rules.
 list-outdated:
-	$(LS) -la snapshots/*/rules.outdated.txt
+	$(LS) -la snapshots/*/rules.configured-outdated.txt
