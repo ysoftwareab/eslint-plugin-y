@@ -197,9 +197,3 @@ test-rules:
 		$(ECHO) "Running $${f}..." ; \
 		$(NODE) $${f} ; \
 	done
-
-
-# TODO should be moved to yplatform
-.PHONY: skip/%
-skip/%:
-	:
