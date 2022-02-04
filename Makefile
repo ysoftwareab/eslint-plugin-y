@@ -119,14 +119,16 @@ snapshots/%:
 	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/configured-own.txt
 	$(COMM) -23 snapshots/$*/own.txt snapshots/$*/configured-own.txt > snapshots/$*/not-configured.txt
 	$(GIT_ROOT)/bin/list-configured-overrides-rules $* > snapshots/$*/configured-overrides.txt
-	$(GIT_ROOT)/bin/list-configured-y-rules $* > snapshots/$*/configured-y.txt
 	if [[ -f "configs/$*.extends.js" ]]; then \
 		$(ESLINT) --no-eslintrc -c configs/$*.extends.js --print-config foo.js > snapshots/$*/config.extends.txt; \
 		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.extends-and-y.txt; \
 		$(JD) snapshots/$*/config.extends.txt snapshots/$*/config.extends-and-y.txt > \
 			snapshots/$*/config.extends-diff-extends-and-y.txt; \
+		$(CAT) snapshots/$*/config.extends-diff-extends-and-y.txt | { $(GREP) "^@ " || true; } | \
+			$(SED) "s/^@ //" | $(JQ) -r ".[1]" | $(SORT) > snapshots/$*/configured-y.txt; \
 	else \
 		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.y.txt; \
+		$(CAT) snapshots/$*/config.y.txt | $(JQ) -r ".rules | keys[]" | $(SORT) > snapshots/$*/configured-y.txt; \
 	fi
 	$(ECHO_DONE)
 

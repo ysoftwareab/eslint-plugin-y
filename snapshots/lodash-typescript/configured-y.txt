@@ -1,0 +1,5 @@
+lodash/matches-prop-shorthand
+lodash/matches-shorthand
+lodash/prefer-matches
+lodash/prefer-noop
+lodash/prop-shorthand

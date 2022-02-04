@@ -1,0 +1,5 @@
+import/core-modules
+mocha/no-exclusive-tests
+mocha/no-pending-tests
+mocha/no-return-from-async
+mocha/no-top-level-hooks

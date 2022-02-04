@@ -1,0 +1,6 @@
+jsdoc/no-types
+jsdoc/require-param
+jsdoc/require-param-description
+jsdoc/require-param-type
+jsdoc/require-returns
+jsdoc/require-returns-type

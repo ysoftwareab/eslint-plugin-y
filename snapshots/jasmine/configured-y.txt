@@ -1,0 +1,4 @@
+0
+class-methods-use-this
+jasmine
+max-classes-per-file

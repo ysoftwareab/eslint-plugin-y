@@ -1,0 +1,10 @@
+@babel/new-cap
+@babel/no-invalid-this
+@babel/no-unused-expressions
+@babel/object-curly-spacing
+@babel/semi
+new-cap
+no-invalid-this
+no-unused-expressions
+object-curly-spacing
+semi
