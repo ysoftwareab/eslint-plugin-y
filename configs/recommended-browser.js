@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    './node.js',
-    './browser-only.js'
+    './recommended.js',
+    './env-browser.js'
   ]
 };

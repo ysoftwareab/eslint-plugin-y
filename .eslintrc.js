@@ -2,7 +2,7 @@ module.exports = {
   root: true,
 
   extends: [
-    './configs/node.js'
+    './configs/recommended-node.js'
   ],
 
   rules: {

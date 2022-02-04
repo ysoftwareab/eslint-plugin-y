@@ -34,7 +34,7 @@ CONFIGS += \
 	no-null \
 	proper-arrows \
 	protractor \
-	typescript-only \
+	typescript \
 	vue \
 
 CONFIGS_CHECK_NO_NEW_RULES += \

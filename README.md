@@ -7,7 +7,7 @@ In your project's `.eslintrc.js`
 ```js
 module.exports = {
   extends: [
-    'plugin:y/node'
+    'plugin:y/recommended-node'
   ],
   rules: {
     'override-some-rule': error
@@ -23,7 +23,7 @@ If you want to use an addon, it's as easy as doing this in `.eslintrc.js`:
 ```js
 module.exports = {
   extends: [
-    'plugin:y/node',
+    'plugin:y/recommended-node',
     'plugin:y/jest'
   ],
   rules: {
@@ -39,8 +39,10 @@ and running `npm install --dev eslint-plugin-jest`.
 
 Common bundles are provided as following:
 
-- Node.js: `plugin:y/node`
-- Browser: `plugin:y/browser`
+- Node.js: `plugin:y/recommended-node`
+- Node.js and Typescript: `plugin:y/recommended-node-typescript`
+- Browser: `plugin:y/recommended-browser`
+- Browser and TypeScript: `plugin:y/recommended-browser-typescript`
 
 These addons require you to install the plugin manually:
 
