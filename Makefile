@@ -54,7 +54,7 @@ YP_CHECK_TPL_FILES += \
 	rules/index.js \
 
 YP_CHECK_TARGETS += \
-	check-all-rules-configured \
+	check-no-new-rules \
 
 YP_TEST_TARGETS += \
 	test-rules \
@@ -82,8 +82,8 @@ rules/index.js: rules/index.js.tpl
 	$(call yp-generate-from-template)
 
 
-.PHONY: check-all-rules-configured/%
-check-all-rules-configured/%:
+.PHONY: check-no-new-rules/%
+check-no-new-rules/%:
 	$(COMM) -23 \
 		<(${GIT_ROOT}/bin/list-available-rules $* | sort) \
 		<(${GIT_ROOT}/bin/list-configured-rules $* | sort) | \
@@ -93,24 +93,24 @@ check-all-rules-configured/%:
 		}
 
 
-.PHONY: check-all-rules-configured
-# check-all-rules-configured: check-all-rules-configured/async-await
-# check-all-rules-configured: check-all-rules-configured/babel
-# check-all-rules-configured: check-all-rules-configured/basic
-# check-all-rules-configured: check-all-rules-configured/eslint-comments
-# check-all-rules-configured: check-all-rules-configured/fp
-# check-all-rules-configured: check-all-rules-configured/import
-# check-all-rules-configured: check-all-rules-configured/jasmine
-# check-all-rules-configured: check-all-rules-configured/jest
-# check-all-rules-configured: check-all-rules-configured/jsdoc
-# check-all-rules-configured: check-all-rules-configured/lodash
-# check-all-rules-configured: check-all-rules-configured/mocha
-# check-all-rules-configured: check-all-rules-configured/no-null
-# check-all-rules-configured: check-all-rules-configured/proper-arrows
-# check-all-rules-configured: check-all-rules-configured/protractor
-# check-all-rules-configured: check-all-rules-configured/typescript
-# check-all-rules-configured: check-all-rules-configured/vue
-check-all-rules-configured:
+.PHONY: check-no-new-rules
+# check-no-new-rules: check-no-new-rules/async-await
+# check-no-new-rules: check-no-new-rules/babel
+# check-no-new-rules: check-no-new-rules/basic
+# check-no-new-rules: check-no-new-rules/eslint-comments
+# check-no-new-rules: check-no-new-rules/fp
+# check-no-new-rules: check-no-new-rules/import
+# check-no-new-rules: check-no-new-rules/jasmine
+# check-no-new-rules: check-no-new-rules/jest
+# check-no-new-rules: check-no-new-rules/jsdoc
+# check-no-new-rules: check-no-new-rules/lodash
+# check-no-new-rules: check-no-new-rules/mocha
+# check-no-new-rules: check-no-new-rules/no-null
+# check-no-new-rules: check-no-new-rules/proper-arrows
+# check-no-new-rules: check-no-new-rules/protractor
+# check-no-new-rules: check-no-new-rules/typescript
+# check-no-new-rules: check-no-new-rules/vue
+check-no-new-rules:
 	:
 
 
