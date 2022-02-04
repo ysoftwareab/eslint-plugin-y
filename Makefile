@@ -109,26 +109,25 @@ rules/index.js: rules/index.js.tpl
 
 
 .PHONY: snapshots/%
-snapshots/%:
 	$(ECHO_DO) "Snapshot $* config..."
 	$(MKDIR) snapshots/$*
-	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/configured-own.txt
-	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/own.txt
-	$(COMM) -23 snapshots/$*/configured-own.txt snapshots/$*/own.txt > snapshots/$*/outdated.txt
-	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/own.txt
-	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/configured-own.txt
-	$(COMM) -23 snapshots/$*/own.txt snapshots/$*/configured-own.txt > snapshots/$*/not-configured.txt
-	$(GIT_ROOT)/bin/list-configured-overrides-rules $* > snapshots/$*/configured-overrides.txt
+	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
+	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
+	$(COMM) -23 snapshots/$*/rules.configured-own.txt snapshots/$*/rules.own.txt > snapshots/$*/rules.outdated.txt
+	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
+	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
+	$(COMM) -23 snapshots/$*/rules.own.txt snapshots/$*/rules.configured-own.txt > snapshots/$*/rules.not-configured.txt
+	$(GIT_ROOT)/bin/list-configured-overrides-rules $* > snapshots/$*/rules.configured-overrides.txt
 	if [[ -f "configs/$*.extends.js" ]]; then \
 		$(ESLINT) --no-eslintrc -c configs/$*.extends.js --print-config foo.js > snapshots/$*/config.extends.txt; \
 		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.extends-and-y.txt; \
 		$(JD) snapshots/$*/config.extends.txt snapshots/$*/config.extends-and-y.txt > \
 			snapshots/$*/config.extends-diff-extends-and-y.txt; \
 		$(CAT) snapshots/$*/config.extends-diff-extends-and-y.txt | { $(GREP) "^@ " || true; } | \
-			$(SED) "s/^@ //" | $(JQ) -r ".[1]" | $(SORT) > snapshots/$*/configured-y.txt; \
+			$(SED) "s/^@ //" | $(JQ) -r ".[1]" | $(SORT) > snapshots/$*/rules.configured-y.txt; \
 	else \
 		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.y.txt; \
-		$(CAT) snapshots/$*/config.y.txt | $(JQ) -r ".rules | keys[]" | $(SORT) > snapshots/$*/configured-y.txt; \
+		$(CAT) snapshots/$*/config.y.txt | $(JQ) -r ".rules | keys[]" | $(SORT) > snapshots/$*/rules.configured-y.txt; \
 	fi
 	$(ECHO_DONE)
 
@@ -140,7 +139,7 @@ snapshots: $(TARGETS_SNAPSHOTS)
 
 .PHONY: check-outdated-rules/%
 check-outdated-rules/%:
-	$(CAT) snapshots/$*/outdated.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	$(CAT) snapshots/$*/rules.outdated.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 		$(ECHO_WARN) "The above rules are configured, but are not available in the $* eslint config."; \
 		exit 0; \
 	}
@@ -153,7 +152,7 @@ check-outdated-rules: $(TARGETS_CHECK_OUTDATED_RULES)
 
 .PHONY: check-not-configured-rules/%
 check-not-configured-rules/%:
-	$(CAT) snapshots/$*/not-configured.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	$(CAT) snapshots/$*/rules.not-configured.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 		$(ECHO_WARN) "The above rules are available in the $* eslint config, but are not configured."; \
 		exit 0; \
 	}
@@ -166,7 +165,7 @@ check-not-configured-rules: $(TARGETS_CHECK_NOT_CONFIGURED_RULES)
 
 .PHONY: check-configured-overrides-rules/%
 check-configured-overrides-rules/%:
-	$(CAT) snapshots/$*/configured-overrides.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	$(CAT) snapshots/$*/rules.configured-overrides.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 		$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
 	}
 
@@ -200,9 +199,9 @@ test-rules:
 
 .PHONY: list-not-configured ## List not-configured rules (possibly new).
 list-not-configured:
-	$(LS) -la snapshots/*/not-configured.txt
+	$(LS) -la snapshots/*/rules.not-configured.txt
 
 
 .PHONY: list-outdated ## List outdated rules.
 list-outdated:
-	$(LS) -la snapshots/*/outdated.txt
+	$(LS) -la snapshots/*/rules.outdated.txt
