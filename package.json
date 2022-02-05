@@ -8,6 +8,10 @@
     "node": ">=12",
     "npm": ">=6"
   },
+  "exports": {
+    ".": "./index.js",
+    "./*": "./*"
+  },
   "files": [
     "/*.js",
     "/BUILD",
@@ -17,10 +21,6 @@
     "/npm-install-peer-dependencies",
     "/rules/"
   ],
-  "exports": {
-    ".": "./index.js",
-    "./": "./"
-  },
   "peerDependencies": {
     "@babel/core": "^7.13.0",
     "@babel/eslint-parser": "^7.13.0",
