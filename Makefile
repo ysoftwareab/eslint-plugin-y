@@ -14,6 +14,11 @@ include yplatform/build.mk/core.misc.release.npg.mk
 
 # ------------------------------------------------------------------------------
 
+RULES_PLUGIN_OVERRIDES_TXT = 22.rules.plugin-overrides.txt
+RULES_PLUGIN_CONFIGURED_OUTDATED_TXT = 23.rules.plugin-configured-outdated.txt
+RULES_PLUGIN_NOT_CONFIGURED_TXT = 24.rules.plugin-not-configured.txt
+CONFIG_EXTENDS_DIFF_TXT = 32.config.extends-diff.txt
+
 JS_CONFIG_FILES := $(shell $(FIND_Q) configs -type f -name "*.js" -print)
 JS_CONFIG_FILES := $(filter-out configs/index.js,$(JS_CONFIG_FILES))
 JS_RULE_FILES := $(shell $(FIND_Q) rules -type f -name "*.js" -print)
@@ -145,8 +150,8 @@ snapshots/external: $(TARGETS_SNAPSHOTS_EXTERNAL) ## Generate snapshots (externa
 
 .PHONY: check-outdated-rules/%
 check-outdated-rules/%: noop
-	[[ ! -f "snapshots/$*/21.rules.plugin-configured-outdated.txt" ]] || \
-		$(CAT) snapshots/$*/*.rules.plugin-configured-outdated.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	[[ ! -f "snapshots/$*/${RULES_PLUGIN_CONFIGURED_OUTDATED_TXT}" ]] || \
+		$(CAT) snapshots/$*/${RULES_PLUGIN_CONFIGURED_OUTDATED_TXT} | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above rules are configured, but are not available in the $* eslint config."; \
 			exit 0; \
 		}
@@ -159,8 +164,8 @@ check-outdated-rules: $(TARGETS_CHECK_OUTDATED_RULES)
 
 .PHONY: check-not-configured-rules/%
 check-not-configured-rules/%: noop
-	[[ ! -f "snapshots/$*/21.rules.plugin-not-configured.txt" ]] || \
-		$(CAT) snapshots/$*/*.rules.plugin-not-configured.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	[[ ! -f "snapshots/$*/${RULES_PLUGIN_NOT_CONFIGURED_TXT}" ]] || \
+		$(CAT) snapshots/$*/${RULES_PLUGIN_NOT_CONFIGURED_TXT} | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above rules are available in the $* eslint config, but are not configured."; \
 			exit 0; \
 		}
@@ -173,8 +178,8 @@ check-not-configured-rules: $(TARGETS_CHECK_NOT_CONFIGURED_RULES)
 
 .PHONY: check-configured-overrides-rules/%
 check-configured-overrides-rules/%: noop
-	[[ ! -f "snapshots/$*/22.rules.plugin-overrides.txt" ]] || \
-		$(CAT) snapshots/$*/*.rules.plugin-overrides.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	[[ ! -f "snapshots/$*/${RULES_PLUGIN_OVERRIDES_TXT}" ]] || \
+		$(CAT) snapshots/$*/${RULES_PLUGIN_OVERRIDES_TXT} | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above rules are overriden in the $* eslint config."; \
 		}
 
@@ -186,8 +191,8 @@ check-configured-overrides-rules: $(TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES)
 
 .PHONY: check-y-config/%
 check-y-config/%: noop
-	[[ ! -f "snapshots/$*/32.config.extends-diff.txt" ]] || \
-		$(CAT) snapshots/$*/*.config.extends-diff.txt | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
+	[[ ! -f "snapshots/$*/${CONFIG_EXTENDS_DIFF_TXT}" ]] || \
+		$(CAT) snapshots/$*/${CONFIG_EXTENDS_DIFF_TXT} | $(YP_DIR)/bin/ifne --not --fail --print-on-fail || { \
 			$(ECHO_WARN) "The above diffs are is our custom config on top of the extended $* eslint config."; \
 			exit 0; \
 		}
@@ -209,12 +214,12 @@ test-rules:
 .PHONY: list-not-configured ## List not-configured rules (possibly new).
 list-not-configured:
 	$(ECHO_DO) "Listing rules.not-configured..."
-	$(LS) -la snapshots/*/rules.not-configured.txt
+	$(LS) -la snapshots/*/${RULES_PLUGIN_NOT_CONFIGURED_TXT}
 	$(ECHO_DONE)
 
 
 .PHONY: list-outdated ## List outdated rules.
 list-outdated:
 	$(ECHO_DO) "Listing rules.configured-outdated..."
-	$(LS) -la snapshots/*/rules.configured-outdated.txt
+	$(LS) -la snapshots/*/${RULES_PLUGIN_CONFIGURED_OUTDATED_TXT}
 	$(ECHO_DONE)
