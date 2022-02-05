@@ -1,0 +1,76 @@
+eslint-plugin-y v0.14.0-rc.6 Release Notes
+
+Highlights since v0.14.0-rc.5-src:
+
+* None
+
+Breaking commits since v0.14.0-rc.5-src:
+
+* 0b0f224 2022-02-04 breaking: configs have been restructured
+* c6594ab 2022-02-04 breaking: rename
+* 8f3c2b5 2022-02-04 breaking: rename
+* d993a29 2022-02-04 breaking: rename
+
+
+Commits since v0.14.0-rc.5-src:
+
+* 1a58c96 2022-02-05 handle more renames. use consts
+* d853d4f 2022-02-05 fixup! more verbose
+* e5d8b71 2022-02-05 handle renames
+* d20668b 2022-02-05 lint
+* 0043107 2022-02-05 snapshots. add externals for all our plugins
+* 449545c 2022-02-05 add externals for all our plugins
+* fdd8526 2022-02-05 snapshots. sort json keys to create stable diffs
+* 7896f2e 2022-02-05 sort json keys to create stable diffs
+* 803cb28 2022-02-05 lint
+* 32c2fbe 2022-02-05 add diff utils
+* 94ecf54 2022-02-05 add airbnb and standard externals
+* e42db2d 2022-02-05 move to snapshots.external
+* 77a490c 2022-02-05 refactor
+* 281c7a0 2022-02-05 snapshots
+* 0038b7e 2022-02-05 canonical snapshots
+* 74bb55a 2022-02-04 enable typescript
+* 05cafad 2022-02-04 refactor yet again,, generate eslintrcs
+* 4f45076 2022-02-04 no need for mode, given the new shebang
+* 9c0e877 2022-02-04 .js is not needed is it
+* e5b4a24 2022-02-04 clean up configs folder
+* d15db1b 2022-02-04 more verbose
+* 2f80dc9 2022-02-04 lint
+* 0fcc885 2022-02-04 fix renames
+* 890fe8a 2022-02-04 rename basic to eslint
+* b09be21 2022-02-04 rename
+* d1b90d9 2022-02-04 need noop to trigger PHONY
+* 78efb1d 2022-02-04 rename
+* 3aa3d92 2022-02-04 better list of y-rules. includes modified rules, not just added rules
+* 80ab483 2022-02-04 new list-configured-y-rules
+* 0a8208f 2022-02-04 refactor yet again
+* c3ea7dc 2022-02-04 add list targets
+* 92e482f 2022-02-04 fix snapshots for basic
+* 5c4538c 2022-02-04 snapshot all
+* cc62c52 2022-02-04 naming
+* 4bbb4ec 2022-02-04 skip/% now in yplatform
+* 127e69d 2022-02-04 refactor again rules utils, add y-config
+* ec68119 2022-02-04 rm snapshots
+* e890d91 2022-02-04 split into extends configs
+* 9618e2a 2022-02-04 fixup! fixup! didn't realize there's a trick to maintain pre-exports behavior
+* 8bbf04a 2022-02-04 add *-typescript configs
+* 9ac4b00 2022-02-04 shellcheck
+* b9b68d0 2022-02-04 whistespace
+* d2f0a28 2022-02-04 fixup! didn't realize there's a trick to maintain pre-exports behavior
+* c48ee55 2022-02-04 remove eslint-all config. unused
+* a5ffe5e 2022-02-04 clear which configs have a test eslintrc
+* 0b0f224 2022-02-04 breaking: configs have been restructured
+* c6594ab 2022-02-04 breaking: rename
+* 8f3c2b5 2022-02-04 breaking: rename
+* d993a29 2022-02-04 breaking: rename
+* 2ba68c9 2022-02-04 snapshots
+* dc02f3f 2022-02-04 refactor rules utils
+* 0a03d88 2022-02-04 order
+* a87f06e 2022-02-04 refactor rules utils
+* 85ad85a 2022-02-04 naming
+* dc045c6 2022-02-04 split typescript config to clarify jsdoc and lodash overrides
+* b7c037c 2022-02-04 is there a need for merging configs, instead of extending
+* da16048 2022-02-04 rename
+* 7f0b4f3 2022-02-04 add skeleton for testing new rules when upgrading eslint plugins
+* f470304 2022-02-04 Revert "check that we test with the same deps as in peerDependencies"
+o 583cde1 2022-02-03 0.14.0-rc.5
