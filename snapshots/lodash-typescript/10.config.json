@@ -1,13 +1,11 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [],
   "rules": {
-    "lodash/prefer-noop": [
-      "off"
-    ],
     "lodash/matches-prop-shorthand": [
       "error",
       "never"
@@ -19,11 +17,13 @@
     "lodash/prefer-matches": [
       "off"
     ],
+    "lodash/prefer-noop": [
+      "off"
+    ],
     "lodash/prop-shorthand": [
       "error",
       "never"
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

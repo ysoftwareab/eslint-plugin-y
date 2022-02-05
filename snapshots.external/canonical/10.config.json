@@ -3,6 +3,7 @@
     "es6": true
   },
   "globals": {},
+  "ignorePatterns": [],
   "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@babel/eslint-parser/lib/index.cjs",
   "parserOptions": {
     "ecmaFeatures": {
@@ -119,11 +120,11 @@
       2,
       "(^[A-Za-z]+(?:[A-Z][a-z]*)*\\d*$)|(^[A-Z]+(_[A-Z]+)*(_\\d$)*$)|(^(_|\\$)$)",
       {
+        "classFields": false,
         "ignoreDestructuring": true,
         "ignoreNamedImports": true,
         "onlyDeclarations": true,
-        "properties": true,
-        "classFields": false
+        "properties": true
       }
     ],
     "canonical/import-specifier-newline": [
@@ -1677,6 +1678,5 @@
       ".ts",
       ".tsx"
     ]
-  },
-  "ignorePatterns": []
+  }
 }

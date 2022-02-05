@@ -1,6 +1,7 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
@@ -10,23 +11,29 @@
     "array-bracket-newline": [
       "off"
     ],
+    "array-element-newline": [
+      "off"
+    ],
+    "object-curly-newline": [
+      "off"
+    ],
+    "object-property-newline": [
+      "off"
+    ],
     "y/array-bracket-newline": [
       "error",
       {
-        "multiline": true,
+        "allowObjectCurly": true,
         "minItems": 1,
-        "allowObjectCurly": true
+        "multiline": true
       }
-    ],
-    "array-element-newline": [
-      "off"
     ],
     "y/array-element-newline": [
       "error",
       {
-        "multiline": true,
+        "allowObjectCurly": true,
         "minItems": 1,
-        "allowObjectCurly": true
+        "multiline": true
       }
     ],
     "y/import-specifier-newline": [
@@ -41,48 +48,42 @@
     "y/no-underscore-prefix-exported": [
       "error"
     ],
-    "object-curly-newline": [
-      "off"
-    ],
     "y/object-curly-newline": [
       "error",
       {
-        "OnlyParam": {
-          "multiline": true,
-          "minProperties": 0,
-          "consistent": true
-        },
-        "ObjectExpression": {
-          "multiline": true,
+        "ExportDeclaration": {
+          "consistent": true,
           "minProperties": 1,
-          "consistent": true
-        },
-        "ObjectPattern": {
-          "multiline": true,
-          "minProperties": 2,
-          "consistent": true
+          "multiline": true
         },
         "ImportDeclaration": {
-          "multiline": true,
+          "consistent": true,
           "minProperties": 1,
-          "consistent": true
+          "multiline": true
         },
-        "ExportDeclaration": {
-          "multiline": true,
+        "ObjectExpression": {
+          "consistent": true,
           "minProperties": 1,
-          "consistent": true
+          "multiline": true
+        },
+        "ObjectPattern": {
+          "consistent": true,
+          "minProperties": 2,
+          "multiline": true
+        },
+        "OnlyParam": {
+          "consistent": true,
+          "minProperties": 0,
+          "multiline": true
         }
       }
-    ],
-    "object-property-newline": [
-      "off"
     ],
     "y/object-property-newline": [
       "error",
       {
         "allowAllPropertiesOnSameLine": false,
-        "allowOnlyParamOnSameLine": true,
-        "allowMultiplePropertiesPerLine": false
+        "allowMultiplePropertiesPerLine": false,
+        "allowOnlyParamOnSameLine": true
       }
     ],
     "y/order-imports": [
@@ -95,6 +96,5 @@
       "error"
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

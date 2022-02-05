@@ -1,34 +1,26 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
     "@getify/proper-arrows"
   ],
   "rules": {
-    "@getify/proper-arrows/params": [
-      "off"
-    ],
     "@getify/proper-arrows/names": [
       "off"
     ],
-    "@getify/proper-arrows/where": [
-      "error",
-      {
-        "global": true,
-        "property": true,
-        "export": true,
-        "trivial": true
-      }
+    "@getify/proper-arrows/params": [
+      "off"
     ],
     "@getify/proper-arrows/return": [
       "error",
       {
-        "object": true,
-        "ternary": 0,
         "chained": true,
+        "object": true,
         "sequence": true,
+        "ternary": 0,
         "trivial": false
       }
     ],
@@ -39,8 +31,16 @@
         "no-global": true,
         "trivial": false
       }
+    ],
+    "@getify/proper-arrows/where": [
+      "error",
+      {
+        "export": true,
+        "global": true,
+        "property": true,
+        "trivial": true
+      }
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

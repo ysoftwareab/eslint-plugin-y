@@ -1,31 +1,13 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
     "jsdoc"
   ],
   "rules": {
-    "jsdoc/check-syntax": [
-      "error"
-    ],
-    "jsdoc/require-description-complete-sentence": [
-      "error"
-    ],
-    "jsdoc/require-hyphen-before-param-description": [
-      "error",
-      "never"
-    ],
-    "jsdoc/require-jsdoc": [
-      "off"
-    ],
-    "jsdoc/require-param-description": [
-      "off"
-    ],
-    "jsdoc/require-returns-description": [
-      "off"
-    ],
     "jsdoc/check-access": [
       "warn"
     ],
@@ -46,6 +28,9 @@
     ],
     "jsdoc/check-property-names": [
       "warn"
+    ],
+    "jsdoc/check-syntax": [
+      "error"
     ],
     "jsdoc/check-tag-names": [
       "warn"
@@ -101,14 +86,27 @@
     "jsdoc/require-description": [
       "off"
     ],
+    "jsdoc/require-description-complete-sentence": [
+      "error"
+    ],
     "jsdoc/require-example": [
       "off"
     ],
     "jsdoc/require-file-overview": [
       "off"
     ],
+    "jsdoc/require-hyphen-before-param-description": [
+      "error",
+      "never"
+    ],
+    "jsdoc/require-jsdoc": [
+      "off"
+    ],
     "jsdoc/require-param": [
       "warn"
+    ],
+    "jsdoc/require-param-description": [
+      "off"
     ],
     "jsdoc/require-param-name": [
       "warn"
@@ -134,6 +132,9 @@
     "jsdoc/require-returns-check": [
       "warn"
     ],
+    "jsdoc/require-returns-description": [
+      "off"
+    ],
     "jsdoc/require-returns-type": [
       "warn"
     ],
@@ -153,6 +154,5 @@
       "warn"
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

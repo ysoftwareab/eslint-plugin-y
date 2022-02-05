@@ -1,6 +1,7 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
@@ -176,6 +177,5 @@
     "flowtype": {
       "onlyFilesWithFlowAnnotation": true
     }
-  },
-  "ignorePatterns": []
+  }
 }

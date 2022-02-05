@@ -1,0 +1,16 @@
+{
+  "env": {},
+  "globals": {},
+  "parser": null,
+  "parserOptions": {},
+  "plugins": [
+    "no-null"
+  ],
+  "rules": {
+    "no-null/no-null": [
+      "error"
+    ]
+  },
+  "settings": {},
+  "ignorePatterns": []
+}

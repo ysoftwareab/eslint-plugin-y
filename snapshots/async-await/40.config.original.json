@@ -1,0 +1,19 @@
+{
+  "env": {},
+  "globals": {},
+  "parser": null,
+  "parserOptions": {},
+  "plugins": [
+    "async-await"
+  ],
+  "rules": {
+    "async-await/space-after-await": [
+      "error"
+    ],
+    "async-await/space-after-async": [
+      "error"
+    ]
+  },
+  "settings": {},
+  "ignorePatterns": []
+}

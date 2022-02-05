@@ -1,0 +1,16 @@
+{
+  "env": {},
+  "globals": {},
+  "parser": null,
+  "parserOptions": {},
+  "plugins": [
+    "unicorn"
+  ],
+  "rules": {
+    "unicorn/prefer-module": [
+      2
+    ]
+  },
+  "settings": {},
+  "ignorePatterns": []
+}

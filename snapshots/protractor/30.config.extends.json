@@ -3,41 +3,57 @@
     "protractor/globals": true
   },
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
     "protractor"
   ],
   "rules": {
-    "protractor/missing-perform": [
-      2
+    "protractor/array-callback-return": [
+      1
     ],
-    "protractor/no-browser-pause": [
-      2
+    "protractor/bare-element-finders": [
+      1
+    ],
+    "protractor/by-css-shortcut": [
+      0
     ],
     "protractor/correct-chaining": [
       2
     ],
-    "protractor/no-invalid-selectors": [
-      2
+    "protractor/empty-script": [
+      1
     ],
-    "protractor/no-array-finder-methods": [
-      2
+    "protractor/limit-selector-depth": [
+      1
     ],
-    "protractor/no-get-raw-id": [
-      2
-    ],
-    "protractor/valid-locator-type": [
-      2
-    ],
-    "protractor/no-compound-classes": [
-      2
-    ],
-    "protractor/no-get-inner-outer-html": [
+    "protractor/missing-perform": [
       2
     ],
     "protractor/missing-wait-message": [
       1
+    ],
+    "protractor/no-absolute-url": [
+      1
+    ],
+    "protractor/no-angular-attributes": [
+      1
+    ],
+    "protractor/no-angular-classes": [
+      1
+    ],
+    "protractor/no-array-finder-methods": [
+      2
+    ],
+    "protractor/no-bootstrap-classes": [
+      1
+    ],
+    "protractor/no-browser-driver": [
+      0
+    ],
+    "protractor/no-browser-pause": [
+      2
     ],
     "protractor/no-browser-sleep": [
       1
@@ -45,43 +61,34 @@
     "protractor/no-by-xpath": [
       1
     ],
+    "protractor/no-compound-classes": [
+      2
+    ],
     "protractor/no-describe-selectors": [
       1
     ],
-    "protractor/no-angular-classes": [
-      1
-    ],
-    "protractor/no-bootstrap-classes": [
-      1
-    ],
-    "protractor/use-angular-locators": [
-      1
-    ],
-    "protractor/use-simple-repeaters": [
-      1
-    ],
-    "protractor/no-shadowing": [
-      1
-    ],
-    "protractor/use-first-last": [
-      1
-    ],
-    "protractor/no-get-in-it": [
-      1
-    ],
-    "protractor/array-callback-return": [
-      1
-    ],
-    "protractor/no-absolute-url": [
+    "protractor/no-execute-script": [
       1
     ],
     "protractor/no-expect-in-po": [
       1
     ],
-    "protractor/no-promise-in-if": [
+    "protractor/no-get-in-it": [
       1
     ],
-    "protractor/no-execute-script": [
+    "protractor/no-get-inner-outer-html": [
+      2
+    ],
+    "protractor/no-get-location-abs-url": [
+      1
+    ],
+    "protractor/no-get-raw-id": [
+      2
+    ],
+    "protractor/no-invalid-selectors": [
+      2
+    ],
+    "protractor/no-promise-in-if": [
       1
     ],
     "protractor/no-repetitive-locators": [
@@ -90,10 +97,22 @@
     "protractor/no-repetitive-selectors": [
       1
     ],
-    "protractor/no-angular-attributes": [
+    "protractor/no-shadowing": [
+      1
+    ],
+    "protractor/use-angular-locators": [
       1
     ],
     "protractor/use-count-method": [
+      1
+    ],
+    "protractor/use-first-last": [
+      1
+    ],
+    "protractor/use-promise-all": [
+      0
+    ],
+    "protractor/use-simple-repeaters": [
       1
     ],
     "protractor/valid-by-id": [
@@ -102,28 +121,9 @@
     "protractor/valid-by-tagname": [
       1
     ],
-    "protractor/limit-selector-depth": [
-      1
-    ],
-    "protractor/no-get-location-abs-url": [
-      1
-    ],
-    "protractor/bare-element-finders": [
-      1
-    ],
-    "protractor/empty-script": [
-      1
-    ],
-    "protractor/use-promise-all": [
-      0
-    ],
-    "protractor/by-css-shortcut": [
-      0
-    ],
-    "protractor/no-browser-driver": [
-      0
+    "protractor/valid-locator-type": [
+      2
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

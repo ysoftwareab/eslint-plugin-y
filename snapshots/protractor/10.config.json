@@ -3,50 +3,66 @@
     "protractor/globals": true
   },
   "globals": {
-    "browser": false,
-    "protractor": false,
-    "by": false,
-    "By": false,
-    "element": false,
     "$": false,
     "$$": false,
-    "ExpectedConditions": false
+    "By": false,
+    "ExpectedConditions": false,
+    "browser": false,
+    "by": false,
+    "element": false,
+    "protractor": false
   },
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
     "protractor"
   ],
   "rules": {
-    "protractor/empty-script": [
+    "protractor/array-callback-return": [
       "error"
     ],
-    "protractor/no-describe-selectors": [
-      2
+    "protractor/bare-element-finders": [
+      1
     ],
-    "protractor/missing-perform": [
-      "error"
-    ],
-    "protractor/no-browser-pause": [
+    "protractor/by-css-shortcut": [
       "error"
     ],
     "protractor/correct-chaining": [
       "error"
     ],
-    "protractor/no-invalid-selectors": [
+    "protractor/empty-script": [
+      "error"
+    ],
+    "protractor/limit-selector-depth": [
+      1
+    ],
+    "protractor/missing-perform": [
+      "error"
+    ],
+    "protractor/missing-wait-message": [
+      "off"
+    ],
+    "protractor/no-absolute-url": [
+      "error"
+    ],
+    "protractor/no-angular-attributes": [
+      "error"
+    ],
+    "protractor/no-angular-classes": [
       "error"
     ],
     "protractor/no-array-finder-methods": [
       "error"
     ],
-    "protractor/valid-locator-type": [
+    "protractor/no-bootstrap-classes": [
       "error"
     ],
-    "protractor/no-compound-classes": [
+    "protractor/no-browser-driver": [
       "error"
     ],
-    "protractor/missing-wait-message": [
-      "off"
+    "protractor/no-browser-pause": [
+      "error"
     ],
     "protractor/no-browser-sleep": [
       "error"
@@ -54,40 +70,34 @@
     "protractor/no-by-xpath": [
       "error"
     ],
-    "protractor/no-angular-classes": [
+    "protractor/no-compound-classes": [
       "error"
     ],
-    "protractor/no-bootstrap-classes": [
-      "error"
+    "protractor/no-describe-selectors": [
+      2
     ],
-    "protractor/use-angular-locators": [
-      "error"
-    ],
-    "protractor/use-simple-repeaters": [
-      "error"
-    ],
-    "protractor/no-shadowing": [
-      "error"
-    ],
-    "protractor/use-first-last": [
-      "error"
-    ],
-    "protractor/no-get-in-it": [
-      "error"
-    ],
-    "protractor/array-callback-return": [
-      "error"
-    ],
-    "protractor/no-absolute-url": [
+    "protractor/no-execute-script": [
       "error"
     ],
     "protractor/no-expect-in-po": [
       "error"
     ],
-    "protractor/no-promise-in-if": [
+    "protractor/no-get-in-it": [
       "error"
     ],
-    "protractor/no-execute-script": [
+    "protractor/no-get-inner-outer-html": [
+      "error"
+    ],
+    "protractor/no-get-location-abs-url": [
+      1
+    ],
+    "protractor/no-get-raw-id": [
+      2
+    ],
+    "protractor/no-invalid-selectors": [
+      "error"
+    ],
+    "protractor/no-promise-in-if": [
       "error"
     ],
     "protractor/no-repetitive-locators": [
@@ -96,13 +106,22 @@
     "protractor/no-repetitive-selectors": [
       "error"
     ],
-    "protractor/no-get-inner-outer-html": [
+    "protractor/no-shadowing": [
       "error"
     ],
-    "protractor/no-angular-attributes": [
+    "protractor/use-angular-locators": [
       "error"
     ],
     "protractor/use-count-method": [
+      "error"
+    ],
+    "protractor/use-first-last": [
+      "error"
+    ],
+    "protractor/use-promise-all": [
+      "error"
+    ],
+    "protractor/use-simple-repeaters": [
       "error"
     ],
     "protractor/valid-by-id": [
@@ -111,28 +130,9 @@
     "protractor/valid-by-tagname": [
       "error"
     ],
-    "protractor/use-promise-all": [
+    "protractor/valid-locator-type": [
       "error"
-    ],
-    "protractor/by-css-shortcut": [
-      "error"
-    ],
-    "protractor/no-browser-driver": [
-      "error"
-    ],
-    "protractor/no-get-raw-id": [
-      2
-    ],
-    "protractor/limit-selector-depth": [
-      1
-    ],
-    "protractor/no-get-location-abs-url": [
-      1
-    ],
-    "protractor/bare-element-finders": [
-      1
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

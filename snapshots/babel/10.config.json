@@ -1,6 +1,7 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@babel/eslint-parser/lib/index.cjs",
   "parserOptions": {
     "requireConfigFile": false,
@@ -10,37 +11,36 @@
     "@babel"
   ],
   "rules": {
-    "new-cap": [
-      "off"
-    ],
     "@babel/new-cap": [
       "error"
-    ],
-    "no-invalid-this": [
-      "off"
     ],
     "@babel/no-invalid-this": [
       "warn"
     ],
-    "no-unused-expressions": [
-      "off"
-    ],
     "@babel/no-unused-expressions": [
       "warn"
-    ],
-    "object-curly-spacing": [
-      "off"
     ],
     "@babel/object-curly-spacing": [
       "error"
     ],
-    "semi": [
-      "off"
-    ],
     "@babel/semi": [
       "error"
+    ],
+    "new-cap": [
+      "off"
+    ],
+    "no-invalid-this": [
+      "off"
+    ],
+    "no-unused-expressions": [
+      "off"
+    ],
+    "object-curly-spacing": [
+      "off"
+    ],
+    "semi": [
+      "off"
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

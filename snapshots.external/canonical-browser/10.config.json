@@ -3,6 +3,7 @@
     "browser": true
   },
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
@@ -28,6 +29,5 @@
       2
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

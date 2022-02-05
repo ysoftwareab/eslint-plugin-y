@@ -3,6 +3,7 @@
     "mocha": true
   },
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
@@ -19,6 +20,9 @@
       }
     ],
     "mocha/no-async-describe": [
+      "error"
+    ],
+    "mocha/no-empty-description": [
       "error"
     ],
     "mocha/no-exclusive-tests": [
@@ -77,11 +81,7 @@
     ],
     "mocha/valid-test-description": [
       "off"
-    ],
-    "mocha/no-empty-description": [
-      "error"
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

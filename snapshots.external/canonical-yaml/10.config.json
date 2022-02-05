@@ -1,6 +1,7 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/eslint-config-canonical/node_modules/yaml-eslint-parser/lib/index.js",
   "parserOptions": {},
   "plugins": [
@@ -94,6 +95,5 @@
       2
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

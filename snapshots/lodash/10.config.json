@@ -1,12 +1,16 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
     "lodash"
   ],
   "rules": {
+    "lodash/callback-binding": [
+      2
+    ],
     "lodash/chain-style": [
       "error",
       "explicit"
@@ -15,9 +19,22 @@
       "error",
       "never"
     ],
+    "lodash/collection-method-value": [
+      2
+    ],
+    "lodash/collection-ordering": [
+      2
+    ],
+    "lodash/collection-return": [
+      2
+    ],
     "lodash/consistent-compose": [
       "error",
       "flowRight"
+    ],
+    "lodash/identity-shorthand": [
+      2,
+      "always"
     ],
     "lodash/import-scope": [
       "error",
@@ -29,59 +46,6 @@
     ],
     "lodash/matches-shorthand": [
       "error",
-      "always"
-    ],
-    "lodash/prefer-compact": [
-      "off"
-    ],
-    "lodash/prefer-constant": [
-      "off"
-    ],
-    "lodash/prefer-filter": [
-      "error",
-      3
-    ],
-    "lodash/prefer-flat-map": [
-      "off"
-    ],
-    "lodash/prefer-get": [
-      "error",
-      3
-    ],
-    "lodash/prefer-invoke-map": [
-      "off"
-    ],
-    "lodash/prefer-map": [
-      "off"
-    ],
-    "lodash/prefer-over-quantifier": [
-      "off"
-    ],
-    "lodash/prefer-reject": [
-      "off",
-      3
-    ],
-    "lodash/prefer-thru": [
-      "off"
-    ],
-    "lodash/prop-shorthand": [
-      "error",
-      "always"
-    ],
-    "lodash/callback-binding": [
-      2
-    ],
-    "lodash/collection-method-value": [
-      2
-    ],
-    "lodash/collection-ordering": [
-      2
-    ],
-    "lodash/collection-return": [
-      2
-    ],
-    "lodash/identity-shorthand": [
-      2,
       "always"
     ],
     "lodash/no-commit": [
@@ -100,8 +64,25 @@
       2,
       "string"
     ],
+    "lodash/prefer-compact": [
+      "off"
+    ],
+    "lodash/prefer-constant": [
+      "off"
+    ],
+    "lodash/prefer-filter": [
+      "error",
+      3
+    ],
     "lodash/prefer-find": [
       2
+    ],
+    "lodash/prefer-flat-map": [
+      "off"
+    ],
+    "lodash/prefer-get": [
+      "error",
+      3
     ],
     "lodash/prefer-immutable-method": [
       2
@@ -111,6 +92,9 @@
       {
         "includeNative": true
       }
+    ],
+    "lodash/prefer-invoke-map": [
+      "off"
     ],
     "lodash/prefer-is-nil": [
       2
@@ -124,12 +108,22 @@
     "lodash/prefer-lodash-typecheck": [
       2
     ],
+    "lodash/prefer-map": [
+      "off"
+    ],
     "lodash/prefer-matches": [
       2,
       3
     ],
     "lodash/prefer-noop": [
       2
+    ],
+    "lodash/prefer-over-quantifier": [
+      "off"
+    ],
+    "lodash/prefer-reject": [
+      "off",
+      3
     ],
     "lodash/prefer-some": [
       2,
@@ -140,6 +134,9 @@
     "lodash/prefer-startswith": [
       2
     ],
+    "lodash/prefer-thru": [
+      "off"
+    ],
     "lodash/prefer-times": [
       2
     ],
@@ -148,6 +145,10 @@
     ],
     "lodash/preferred-alias": [
       2
+    ],
+    "lodash/prop-shorthand": [
+      "error",
+      "always"
     ],
     "lodash/unwrap": [
       2
@@ -158,6 +159,5 @@
       "pragma": "_",
       "version": 4
     }
-  },
-  "ignorePatterns": []
+  }
 }

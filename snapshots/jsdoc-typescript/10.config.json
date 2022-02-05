@@ -1,6 +1,7 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [],
@@ -8,13 +9,13 @@
     "jsdoc/no-types": [
       "error"
     ],
+    "jsdoc/require-param": [
+      "off"
+    ],
     "jsdoc/require-param-description": [
       "error"
     ],
     "jsdoc/require-param-type": [
-      "off"
-    ],
-    "jsdoc/require-param": [
       "off"
     ],
     "jsdoc/require-returns": [
@@ -24,6 +25,5 @@
       "off"
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

@@ -3,6 +3,7 @@
     "node": true
   },
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {
     "ecmaVersion": 2020
@@ -140,6 +141,5 @@
       2
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

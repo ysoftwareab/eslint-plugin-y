@@ -1,6 +1,7 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
@@ -8,6 +9,12 @@
     "react"
   ],
   "rules": {
+    "react-hooks/exhaustive-deps": [
+      2
+    ],
+    "react-hooks/rules-of-hooks": [
+      2
+    ],
     "react/boolean-prop-naming": [
       0
     ],
@@ -136,9 +143,9 @@
       {
         "allowArrowFunctions": true,
         "allowBind": false,
-        "ignoreRefs": true,
         "allowFunctions": false,
-        "ignoreDOMComponents": false
+        "ignoreDOMComponents": false,
+        "ignoreRefs": true
       }
     ],
     "react/jsx-no-comment-textnodes": [
@@ -356,18 +363,11 @@
     ],
     "react/void-dom-elements-no-children": [
       2
-    ],
-    "react-hooks/exhaustive-deps": [
-      2
-    ],
-    "react-hooks/rules-of-hooks": [
-      2
     ]
   },
   "settings": {
     "react": {
       "version": "detect"
     }
-  },
-  "ignorePatterns": []
+  }
 }

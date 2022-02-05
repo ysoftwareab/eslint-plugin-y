@@ -1,6 +1,7 @@
 {
   "env": {},
   "globals": {},
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [
@@ -65,6 +66,5 @@
       1
     ]
   },
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }

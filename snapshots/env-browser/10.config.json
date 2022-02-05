@@ -7,10 +7,10 @@
     "__dirname": false,
     "__filename": false
   },
+  "ignorePatterns": [],
   "parser": null,
   "parserOptions": {},
   "plugins": [],
   "rules": {},
-  "settings": {},
-  "ignorePatterns": []
+  "settings": {}
 }
