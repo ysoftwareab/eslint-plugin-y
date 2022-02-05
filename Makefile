@@ -37,7 +37,7 @@ TARGETS_CHECK_Y_CONFIG = $(patsubst %,check-y-config/%,$(CONFIGS))
 
 CONFIGS_EXTERNAL := $(wildcard eslintrc.external/*.eslintrc.js)
 CONFIGS_EXTERNAL := $(patsubst eslintrc.external/%.eslintrc.js,%,$(CONFIGS_EXTERNAL))
-TARGETS_SNAPSHOTS_EXTERNAL := $(patsubst %,snapshots/%,$(CONFIGS_EXTERNAL))
+TARGETS_SNAPSHOTS_EXTERNAL := $(patsubst %,snapshots/external/%,$(CONFIGS_EXTERNAL))
 TARGETS_SNAPSHOTS += $(TARGETS_SNAPSHOTS_EXTERNAL)
 
 YP_VENDOR_FILES_IGNORE += \
@@ -127,6 +127,14 @@ snapshots/%: noop ## Generate snapshots for a specific config.
 .PHONY: snapshots
 snapshots: $(TARGETS_SNAPSHOTS) ## Generate snapshots (internal).
 	:
+
+
+.PHONY: snapshots/external/%
+snapshots/external/%: noop ## Generate snapshots for a specific external config.
+	$(ECHO_DO) "Snapshot external $* config..."
+	$(MKDIR) snapshots.external/$*
+	$(GIT_ROOT)/bin/snapshot $* snapshots.external/$*
+	$(ECHO_DONE)
 
 
 .PHONY: snapshots/external
