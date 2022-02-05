@@ -46,6 +46,7 @@ YP_VENDOR_FILES_IGNORE += \
 	-e "^package\.json$$" \
 	-e "^rules/index\.js$$" \
 	-e "^snapshots/" \
+	-e "^snapshots\.external/" \
 
 YP_ECLINT_FILES_IGNORE += \
 	-e "^rules/.*\.original\.js$$" \

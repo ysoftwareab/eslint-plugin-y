@@ -60,92 +60,92 @@ esac
 }
 
 [[ -f ${ESLINTRC} ]] || {
-  >&2 echo "[ERR ] Couldn't find a eslintrc{,.external}/${NAME}.eslintrc.js ."
-  exit 1
+    >&2 echo "[ERR ] Couldn't find a eslintrc{,.external}/${NAME}.eslintrc.js ."
+    exit 1
 }
 
 # ------------------------------------------------------------------------------
 
 function config() {
-  >&2 echo ${FUNCNAME}
-  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE}
+    >&2 echo ${FUNCNAME}
+    eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE}
 }
 
 function rules() {
-  >&2 echo ${FUNCNAME}
-  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
-    jq -r ".rules | keys[]" | sort
+    >&2 echo ${FUNCNAME}
+    eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+        jq -r ".rules | keys[]" | sort
 }
 
 # ------------------------------------------------------------------------------
 
 function rules-plugin-eslint() {
-  SCRIPT="$(cat <<EOF
+    SCRIPT="$(cat <<EOF
 let {Linter} = require('eslint');
 let rules = new Linter().getRules();
 console.log(Array.from(rules.keys()).join('\n'));
 EOF
 )"
-  node -e "${SCRIPT}" | sort
+    node -e "${SCRIPT}" | sort
 }
 
 function rules-plugin() {
-  [[ "${PLUGIN}" != "eslint" ]] || {
-    rules-plugin-eslint
-    return 0
-  }
+    [[ "${PLUGIN}" != "eslint" ]] || {
+        rules-plugin-eslint
+        return 0
+    }
 
-  SCRIPT="$(cat <<EOF
+    SCRIPT="$(cat <<EOF
 let plugin = require('${PLUGIN}');
 let rules = plugin.rules;
 console.log(Object.keys(rules).join('\n'));
 EOF
 )"
-  node -e "${SCRIPT}" | sed "s|^|${PLUGIN_RULE_PREFIX:-.}|g" | sort
+    node -e "${SCRIPT}" | sed "s|^|${PLUGIN_RULE_PREFIX:-.}|g" | sort
 }
 
 function rules-plugin-configured() {
-  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
-    jq -r ".rules | keys[]" | sort | { grep "^${PLUGIN_RULE_PREFIX:-.}" || true; }
+    eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+        jq -r ".rules | keys[]" | sort | { grep "^${PLUGIN_RULE_PREFIX:-.}" || true; }
 }
 
 function rules-plugin-overrides() {
-  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
-    jq -r ".rules | keys[]" | sort | { grep -v "^${PLUGIN_RULE_PREFIX:-.}" || true; }
+    eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+        jq -r ".rules | keys[]" | sort | { grep -v "^${PLUGIN_RULE_PREFIX:-.}" || true; }
 }
 
 function rules-plugin-configured-outdated() {
-  >&2 echo ${FUNCNAME}
-  comm -23 ${OUTPUT_DIR}/21.rules.plugin-configured.txt ${OUTPUT_DIR}/20.rules.plugin.txt
+    >&2 echo ${FUNCNAME}
+    comm -23 ${OUTPUT_DIR}/21.rules.plugin-configured.txt ${OUTPUT_DIR}/20.rules.plugin.txt
 }
 
 function rules-plugin-not-configured() {
-  >&2 echo ${FUNCNAME}
-  comm -23 ${OUTPUT_DIR}/20.rules.plugin.txt ${OUTPUT_DIR}/21.rules.plugin-configured.txt
+    >&2 echo ${FUNCNAME}
+    comm -23 ${OUTPUT_DIR}/20.rules.plugin.txt ${OUTPUT_DIR}/21.rules.plugin-configured.txt
 }
 
 function config-extends() {
-  >&2 echo ${FUNCNAME}
-  eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE}
+    >&2 echo ${FUNCNAME}
+    eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE}
 }
 
 function config-extends-diff() {
-  >&2 echo ${FUNCNAME}
-  jd ${OUTPUT_DIR}/30.config.extends.json ${OUTPUT_DIR}/10.config.json
+    >&2 echo ${FUNCNAME}
+    jd ${OUTPUT_DIR}/30.config.extends.json ${OUTPUT_DIR}/10.config.json
 }
 
 function rules-extends() {
-  >&2 echo ${FUNCNAME}
-  eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE} | \
-    jq -r ".rules | keys[]" | sort
+    >&2 echo ${FUNCNAME}
+    eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE} | \
+        jq -r ".rules | keys[]" | sort
 }
 
 function rules-extends-diff() {
-  >&2 echo ${FUNCNAME} ${CONFIG_EXTENDS}
-  # NOTE using 'comm' we would only see added rules, but not rules with changed configuration
-  # comm -23 ${OUTPUT_DIR}/31.rules.extends.txt ${OUTPUT_DIR}/11.rules.txt
-  cat ${OUTPUT_DIR}/32.config.extends-diff.txt | { grep "^@ " || true; } | \
-    sed "s/^@ //" | jq -r ".[1]" | sort
+    >&2 echo ${FUNCNAME} ${CONFIG_EXTENDS}
+    # NOTE using 'comm' we would only see added rules, but not rules with changed configuration
+    # comm -23 ${OUTPUT_DIR}/31.rules.extends.txt ${OUTPUT_DIR}/11.rules.txt
+    cat ${OUTPUT_DIR}/32.config.extends-diff.txt | { grep "^@ " || true; } | \
+        sed "s/^@ //" | jq -r ".[1]" | sort
 }
 
 # ------------------------------------------------------------------------------
@@ -164,18 +164,18 @@ config > ${OUTPUT_DIR}/10.config.json
 rules > ${OUTPUT_DIR}/11.rules.txt
 
 if [[ -n "${PLUGIN}" ]]; then
-  rules-plugin > ${OUTPUT_DIR}/20.rules.plugin.txt
-  rules-plugin-configured > ${OUTPUT_DIR}/21.rules.plugin-configured.txt
-  rules-plugin-overrides > ${OUTPUT_DIR}/22.rules.plugin-overrides.txt
+    rules-plugin > ${OUTPUT_DIR}/20.rules.plugin.txt
+    rules-plugin-configured > ${OUTPUT_DIR}/21.rules.plugin-configured.txt
+    rules-plugin-overrides > ${OUTPUT_DIR}/22.rules.plugin-overrides.txt
 
-  rules-plugin-configured-outdated > ${OUTPUT_DIR}/23.rules.plugin-configured-outdated.txt
-  rules-plugin-not-configured > ${OUTPUT_DIR}/24.rules.plugin-not-configured.txt
+    rules-plugin-configured-outdated > ${OUTPUT_DIR}/23.rules.plugin-configured-outdated.txt
+    rules-plugin-not-configured > ${OUTPUT_DIR}/24.rules.plugin-not-configured.txt
 
-  if [[ -f "${CONFIG_EXTENDS}" ]]; then
-    config-extends > ${OUTPUT_DIR}/30.config.extends.json
-    rules-extends > ${OUTPUT_DIR}/31.rules.extends.txt
+    if [[ -f "${CONFIG_EXTENDS}" ]]; then
+        config-extends > ${OUTPUT_DIR}/30.config.extends.json
+        rules-extends > ${OUTPUT_DIR}/31.rules.extends.txt
 
-    config-extends-diff > ${OUTPUT_DIR}/32.config.extends-diff.txt
-    rules-extends-diff > ${OUTPUT_DIR}/33.rules.extends-diff.txt
-  fi
+        config-extends-diff > ${OUTPUT_DIR}/32.config.extends-diff.txt
+        rules-extends-diff > ${OUTPUT_DIR}/33.rules.extends-diff.txt
+    fi
 fi
