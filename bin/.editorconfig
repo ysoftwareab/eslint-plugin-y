@@ -1,5 +1,8 @@
-[list-available-rules]
+[diff-config]
 indent_size = 4
 
-[list-configured-rules]
+[diff-config-rules]
+indent_size = 4
+
+[snapshot]
 indent_size = 4
