@@ -160,7 +160,8 @@ mkdir -p ${OUTPUT_DIR}
 >&2 echo PLUGIN=${PLUGIN}
 >&2 echo PLUGIN_RULE_PREFIX=${PLUGIN_RULE_PREFIX}
 
-config > ${OUTPUT_DIR}/10.config.json
+config > ${OUTPUT_DIR}/40.config.original.json
+cat ${OUTPUT_DIR}/40.config.original.json | jq -S > ${OUTPUT_DIR}/10.config.json
 rules > ${OUTPUT_DIR}/11.rules.txt
 
 if [[ -n "${PLUGIN}" ]]; then
@@ -172,7 +173,8 @@ if [[ -n "${PLUGIN}" ]]; then
     rules-plugin-not-configured > ${OUTPUT_DIR}/24.rules.plugin-not-configured.txt
 
     if [[ -f "${CONFIG_EXTENDS}" ]]; then
-        config-extends > ${OUTPUT_DIR}/30.config.extends.json
+        config-extends > ${OUTPUT_DIR}/41.config.extends.original.json
+        cat ${OUTPUT_DIR}/41.config.extends.original.json | jq -S > ${OUTPUT_DIR}/30.config.extends.json
         rules-extends > ${OUTPUT_DIR}/31.rules.extends.txt
 
         config-extends-diff > ${OUTPUT_DIR}/32.config.extends-diff.txt
