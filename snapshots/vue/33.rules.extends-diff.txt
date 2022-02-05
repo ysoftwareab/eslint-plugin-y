@@ -1,4 +1,2 @@
 vue/html-closing-bracket-newline
-vue/html-closing-bracket-newline
-vue/singleline-html-element-content-newline
 vue/singleline-html-element-content-newline

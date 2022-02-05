@@ -31,7 +31,6 @@
 @typescript-eslint/no-unnecessary-type-arguments
 @typescript-eslint/no-unnecessary-type-assertion
 @typescript-eslint/no-unused-vars
-@typescript-eslint/no-unused-vars
 @typescript-eslint/no-use-before-define
 @typescript-eslint/no-useless-constructor
 @typescript-eslint/prefer-for-of

@@ -1,7 +1,6 @@
 jsdoc/check-syntax
 jsdoc/require-description-complete-sentence
 jsdoc/require-hyphen-before-param-description
-jsdoc/require-hyphen-before-param-description
 jsdoc/require-jsdoc
 jsdoc/require-param-description
 jsdoc/require-returns-description

@@ -1,14 +1,9 @@
 lodash
 lodash/chain-style
-lodash/chain-style
-lodash/chaining
 lodash/chaining
 lodash/consistent-compose
-lodash/consistent-compose
-lodash/import-scope
 lodash/import-scope
 lodash/matches-prop-shorthand
-lodash/matches-shorthand
 lodash/matches-shorthand
 lodash/prefer-compact
 lodash/prefer-constant
