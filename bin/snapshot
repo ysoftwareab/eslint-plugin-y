@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 NAME=${1:-eslint}
 OUTPUT_DIR=$2
@@ -67,12 +67,12 @@ esac
 # ------------------------------------------------------------------------------
 
 function config() {
-    >&2 echo ${FUNCNAME}
+    >&2 echo "${FUNCNAME[@]}"
     eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE}
 }
 
 function rules() {
-    >&2 echo ${FUNCNAME}
+    >&2 echo "${FUNCNAME[@]}"
     eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
         jq -r ".rules | keys[]" | sort
 }
@@ -115,33 +115,33 @@ function rules-plugin-overrides() {
 }
 
 function rules-plugin-configured-outdated() {
-    >&2 echo ${FUNCNAME}
+    >&2 echo "${FUNCNAME[@]}"
     comm -23 ${OUTPUT_DIR}/21.rules.plugin-configured.txt ${OUTPUT_DIR}/20.rules.plugin.txt
 }
 
 function rules-plugin-not-configured() {
-    >&2 echo ${FUNCNAME}
+    >&2 echo "${FUNCNAME[@]}"
     comm -23 ${OUTPUT_DIR}/20.rules.plugin.txt ${OUTPUT_DIR}/21.rules.plugin-configured.txt
 }
 
 function config-extends() {
-    >&2 echo ${FUNCNAME}
+    >&2 echo "${FUNCNAME[@]}"
     eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE}
 }
 
 function config-extends-diff() {
-    >&2 echo ${FUNCNAME}
+    >&2 echo "${FUNCNAME[@]}"
     jd ${OUTPUT_DIR}/30.config.extends.json ${OUTPUT_DIR}/10.config.json
 }
 
 function rules-extends() {
-    >&2 echo ${FUNCNAME}
+    >&2 echo "${FUNCNAME[@]}"
     eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE} | \
         jq -r ".rules | keys[]" | sort
 }
 
 function rules-extends-diff() {
-    >&2 echo ${FUNCNAME} ${CONFIG_EXTENDS}
+    >&2 echo "${FUNCNAME[@]}" ${CONFIG_EXTENDS}
     # NOTE using 'comm' we would only see added rules, but not rules with changed configuration
     # comm -23 ${OUTPUT_DIR}/31.rules.extends.txt ${OUTPUT_DIR}/11.rules.txt
     cat ${OUTPUT_DIR}/32.config.extends-diff.txt | { grep "^@ " || true; } | \
