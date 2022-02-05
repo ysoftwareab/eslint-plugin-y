@@ -2,4 +2,4 @@
 set -euo pipefail
 
 jd $1 $2 | { grep "^@ " || true; } | \
-    sed "s/^@ //" | jq -r ".[1]" | sort
+    sed "s/^@ //" | jq -r ".[1]" | sort -u

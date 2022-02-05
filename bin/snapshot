@@ -145,7 +145,7 @@ function rules-extends-diff() {
     # NOTE using 'comm' we would only see added rules, but not rules with changed configuration
     # comm -23 ${OUTPUT_DIR}/31.rules.extends.txt ${OUTPUT_DIR}/11.rules.txt
     cat ${OUTPUT_DIR}/32.config.extends-diff.txt | { grep "^@ " || true; } | \
-        sed "s/^@ //" | jq -r ".[1]" | sort
+        sed "s/^@ //" | jq -r ".[1]" | sort -u
 }
 
 # ------------------------------------------------------------------------------
