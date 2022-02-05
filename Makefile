@@ -70,6 +70,7 @@ YP_ECLINT_FILES_IGNORE += \
 	-e "^test/order-imports\.test\.js$$" \
 
 YP_DEPS_TARGETS += \
+	deps-npm-peer \
 	.github/workflows/main.yml \
 	configs/index.js \
 	rules/index.js \
@@ -94,6 +95,23 @@ YP_TEST_TARGETS += \
 	test-rules \
 
 # ------------------------------------------------------------------------------
+
+.PHONY: deps-npm-peer
+deps-npm-peer:
+# we only support npm@6+, so no reason to check for older npm versions)
+ifeq (6,$(shell $(NPM) --version | $(CUT) -d. -f1))
+	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb
+	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-base
+	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-typescript
+	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-canonical
+	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-standard@^17.0.0-1
+	$(NPX) install-peerdeps --dev --only-peers eslint-plugin-flowtype
+	$(NPX) install-peerdeps --dev --only-peers @graphql-eslint/eslint-plugin
+else
+	$(ECHO_INFO) "$(NPM) version $(shell $(NPM) --version) should be automatically install peer dependencies."
+	$(ECHO_SKIP) "$(NPX) install-peerdeps"
+endif
+
 
 .github/workflows/main.yml: yplatform/package.json
 .github/workflows/main.yml: $(wildcard .github/workflows.src/main*)
