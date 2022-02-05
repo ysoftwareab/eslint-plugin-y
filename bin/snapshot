@@ -1,0 +1,181 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+GIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+NAME=${1:-eslint}
+OUTPUT_DIR=$2
+
+cd ${GIT_ROOT}
+
+FILE=foo.js
+
+ESLINTRC=eslintrc/${NAME}.eslintrc.js
+ESLINTRC_EXTERNAL=eslintrc.external/${NAME}.eslintrc.js
+
+CONFIG=configs/${NAME}.js
+CONFIG_EXTENDS=configs/${NAME}.extends.js
+
+PLUGIN=eslint-plugin-${NAME}
+PLUGIN_RULE_PREFIX=${NAME}/
+case ${NAME} in
+    babel)
+        PLUGIN=@babel/eslint-plugin
+        PLUGIN_RULE_PREFIX=@babel/
+        ;;
+    eslint)
+        PLUGIN=
+        PLUGIN_RULE_PREFIX=
+        ;;
+    jsdoc|jsdoc-*)
+        PLUGIN=eslint-plugin-jsdoc
+        PLUGIN_RULE_PREFIX=jsdoc/
+        ;;
+    lodash|lodash-*)
+        PLUGIN=eslint-plugin-lodash
+        PLUGIN_RULE_PREFIX=lodash/
+        ;;
+    proper-arrows)
+        PLUGIN=@getify/eslint-plugin-proper-arrows
+        PLUGIN_RULE_PREFIX=@getify/proper-arrows/
+        ;;
+    typescript|typescript-*)
+        PLUGIN=@typescript-eslint/eslint-plugin
+        PLUGIN_RULE_PREFIX=@typescript-eslint/
+        ;;
+    env-*|recommended|recommended-*)
+        PLUGIN=
+        PLUGIN_RULE_PREFIX=
+        ;;
+    *)
+        ;;
+esac
+
+[[ -f ${ESLINTRC} ]] || {
+    ESLINTRC=${ESLINTRC_EXTERNAL}
+    CONFIG=
+    CONFIG_EXTENDS=
+    PLUGIN=
+    PLUGIN_RULE_PREFIX=
+}
+
+[[ -f ${ESLINTRC} ]] || {
+  >&2 echo "[ERR ] Couldn't find a eslintrc{,.external}/${NAME}.eslintrc.js ."
+  exit 1
+}
+
+# ------------------------------------------------------------------------------
+
+function config() {
+  >&2 echo ${FUNCNAME}
+  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE}
+}
+
+function rules() {
+  >&2 echo ${FUNCNAME}
+  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+    jq -r ".rules | keys[]" | sort
+}
+
+# ------------------------------------------------------------------------------
+
+function rules-plugin-eslint() {
+  SCRIPT="$(cat <<EOF
+let {Linter} = require('eslint');
+let rules = new Linter().getRules();
+console.log(Array.from(rules.keys()).join('\n'));
+EOF
+)"
+  node -e "${SCRIPT}" | sort
+}
+
+function rules-plugin() {
+  [[ "${PLUGIN}" != "eslint" ]] || {
+    rules-plugin-eslint
+    return 0
+  }
+
+  SCRIPT="$(cat <<EOF
+let plugin = require('${PLUGIN}');
+let rules = plugin.rules;
+console.log(Object.keys(rules).join('\n'));
+EOF
+)"
+  node -e "${SCRIPT}" | sed "s|^|${PLUGIN_RULE_PREFIX:-.}|g" | sort
+}
+
+function rules-plugin-configured() {
+  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+    jq -r ".rules | keys[]" | sort | { grep "^${PLUGIN_RULE_PREFIX:-.}" || true; }
+}
+
+function rules-plugin-overrides() {
+  eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+    jq -r ".rules | keys[]" | sort | { grep -v "^${PLUGIN_RULE_PREFIX:-.}" || true; }
+}
+
+function rules-plugin-configured-outdated() {
+  >&2 echo ${FUNCNAME}
+  comm -23 ${OUTPUT_DIR}/21.rules.plugin-configured.txt ${OUTPUT_DIR}/20.rules.plugin.txt
+}
+
+function rules-plugin-not-configured() {
+  >&2 echo ${FUNCNAME}
+  comm -23 ${OUTPUT_DIR}/20.rules.plugin.txt ${OUTPUT_DIR}/21.rules.plugin-configured.txt
+}
+
+function config-extends() {
+  >&2 echo ${FUNCNAME}
+  eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE}
+}
+
+function config-extends-diff() {
+  >&2 echo ${FUNCNAME}
+  jd ${OUTPUT_DIR}/30.config.extends.json ${OUTPUT_DIR}/10.config.json
+}
+
+function rules-extends() {
+  >&2 echo ${FUNCNAME}
+  eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE} | \
+    jq -r ".rules | keys[]" | sort
+}
+
+function rules-extends-diff() {
+  >&2 echo ${FUNCNAME} ${CONFIG_EXTENDS}
+  # NOTE using 'comm' we would only see added rules, but not rules with changed configuration
+  # comm -23 ${OUTPUT_DIR}/31.rules.extends.txt ${OUTPUT_DIR}/11.rules.txt
+  cat ${OUTPUT_DIR}/32.config.extends-diff.txt | { grep "^@ " || true; } | \
+    sed "s/^@ //" | jq -r ".[1]" | sort
+}
+
+# ------------------------------------------------------------------------------
+
+mkdir -p ${OUTPUT_DIR}
+
+>&2 echo NAME=${NAME}
+>&2 echo ESLINTRC=${ESLINTRC}
+>&2 echo ESLINTRC_EXTERNAL=${ESLINTRC_EXTERNAL}
+>&2 echo CONFIG=${CONFIG}
+>&2 echo CONFIG_EXTENDS=${CONFIG_EXTENDS}
+>&2 echo PLUGIN=${PLUGIN}
+>&2 echo PLUGIN_RULE_PREFIX=${PLUGIN_RULE_PREFIX}
+
+config > ${OUTPUT_DIR}/10.config.json
+rules > ${OUTPUT_DIR}/11.rules.txt
+
+if [[ -n "${PLUGIN}" ]]; then
+  rules-plugin > ${OUTPUT_DIR}/20.rules.plugin.txt
+  rules-plugin-configured > ${OUTPUT_DIR}/21.rules.plugin-configured.txt
+  rules-plugin-overrides > ${OUTPUT_DIR}/22.rules.plugin-overrides.txt
+
+  rules-plugin-configured-outdated > ${OUTPUT_DIR}/23.rules.plugin-configured-outdated.txt
+  rules-plugin-not-configured > ${OUTPUT_DIR}/24.rules.plugin-not-configured.txt
+
+  if [[ -f "${CONFIG_EXTENDS}" ]]; then
+    config-extends > ${OUTPUT_DIR}/30.config.extends.json
+    rules-extends > ${OUTPUT_DIR}/31.rules.extends.txt
+
+    config-extends-diff > ${OUTPUT_DIR}/32.config.extends-diff.txt
+    rules-extends-diff > ${OUTPUT_DIR}/33.rules.extends-diff.txt
+  fi
+fi

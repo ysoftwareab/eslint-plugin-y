@@ -35,6 +35,11 @@ TARGETS_CHECK_OUTDATED_RULES = $(patsubst %,check-outdated-rules/%,$(CONFIGS))
 TARGETS_CHECK_CONFIGURED_OVERRIDES_RULES = $(patsubst %,check-configured-overrides-rules/%,$(CONFIGS))
 TARGETS_CHECK_Y_CONFIG = $(patsubst %,check-y-config/%,$(CONFIGS))
 
+CONFIGS_EXTERNAL := $(wildcard eslintrc.external/*.eslintrc.js)
+CONFIGS_EXTERNAL := $(patsubst eslintrc.external/%.eslintrc.js,%,$(CONFIGS_EXTERNAL))
+TARGETS_SNAPSHOTS_EXTERNAL := $(patsubst %,snapshots/%,$(CONFIGS_EXTERNAL))
+TARGETS_SNAPSHOTS += $(TARGETS_SNAPSHOTS_EXTERNAL)
+
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
 	-e "^configs/index\.js$$" \
@@ -64,6 +69,7 @@ YP_DEPS_TARGETS += \
 	rules/index.js \
 	eslintrc \
 	snapshots \
+	snapshots/external \
 
 YP_CHECK_TPL_FILES += \
 	.github/workflows/main.yml \
@@ -114,30 +120,17 @@ eslintrc: $(TARGETS_ESLINTRC)
 snapshots/%: noop ## Generate snapshots for a specific config.
 	$(ECHO_DO) "Snapshot $* config..."
 	$(MKDIR) snapshots/$*
-	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
-	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
-	$(COMM) -23 snapshots/$*/rules.configured-own.txt snapshots/$*/rules.own.txt > \
-		snapshots/$*/rules.configured-outdated.txt
-	$(GIT_ROOT)/bin/list-own-rules $* > snapshots/$*/rules.own.txt
-	$(GIT_ROOT)/bin/list-configured-own-rules $* > snapshots/$*/rules.configured-own.txt
-	$(COMM) -23 snapshots/$*/rules.own.txt snapshots/$*/rules.configured-own.txt > snapshots/$*/rules.not-configured.txt
-	$(GIT_ROOT)/bin/list-configured-overrides-rules $* > snapshots/$*/rules.configured-overrides.txt
-	if [[ -f "configs/$*.extends.js" ]]; then \
-		$(ESLINT) --no-eslintrc -c configs/$*.extends.js --print-config foo.js > snapshots/$*/config.extends.txt; \
-		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.extends-and-y.txt; \
-		$(JD) snapshots/$*/config.extends.txt snapshots/$*/config.extends-and-y.txt > \
-			snapshots/$*/config.extends-diff-extends-and-y.txt; \
-		$(CAT) snapshots/$*/config.extends-diff-extends-and-y.txt | { $(GREP) "^@ " || true; } | \
-			$(SED) "s/^@ //" | $(JQ) -r ".[1]" | $(SORT) > snapshots/$*/rules.configured-y.txt; \
-	else \
-		$(ESLINT) --no-eslintrc -c configs/$*.js --print-config foo.js > snapshots/$*/config.y.txt; \
-		$(CAT) snapshots/$*/config.y.txt | $(JQ) -r ".rules | keys[]" | $(SORT) > snapshots/$*/rules.configured-y.txt; \
-	fi
+	$(GIT_ROOT)/bin/snapshot $* snapshots/$*
 	$(ECHO_DONE)
 
 
 .PHONY: snapshots
-snapshots: $(TARGETS_SNAPSHOTS) ## Generate snapshots.
+snapshots: $(TARGETS_SNAPSHOTS) ## Generate snapshots (internal).
+	:
+
+
+.PHONY: snapshots/external
+snapshots/external: $(TARGETS_SNAPSHOTS_EXTERNAL) ## Generate snapshots (external).
 	:
 
 
