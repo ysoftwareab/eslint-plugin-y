@@ -1,0 +1,6 @@
+unicorn/prefer-dom-node-append
+unicorn/prefer-dom-node-dataset
+unicorn/prefer-dom-node-remove
+unicorn/prefer-dom-node-text-content
+unicorn/prefer-keyboard-event-key
+unicorn/prefer-modern-dom-apis

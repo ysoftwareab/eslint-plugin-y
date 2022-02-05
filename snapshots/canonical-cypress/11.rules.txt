@@ -1,0 +1,7 @@
+cypress/assertion-before-screenshot
+cypress/no-assigning-return-values
+cypress/no-async-tests
+cypress/no-force
+cypress/no-pause
+cypress/no-unnecessary-waiting
+import/unambiguous
