@@ -1,4 +1,0 @@
-[submodule "yplatform"]
-	path = yplatform
-	url = git://github.com/ysoftwareab/yplatform.git
-	branch = master

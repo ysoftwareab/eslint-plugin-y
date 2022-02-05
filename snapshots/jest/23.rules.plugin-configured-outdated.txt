@@ -1,1 +1,0 @@
-jest/no-empty-title

@@ -1,2 +1,0 @@
-class-methods-use-this
-max-classes-per-file
