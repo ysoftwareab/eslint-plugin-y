@@ -195,7 +195,7 @@ module.exports = {
       custom: {
         // regex: '^T[A-Z][a-zA-Z]+$',
         // regex: '^(T[A-Z][a-zA-Z]+|[A-Z])$',
-        regex: '^[A-Z][a-zA-Z]+$',
+        regex: '^[A-Z][a-zA-Z0-9]*$',
         match: true
       }
     }, {
@@ -233,6 +233,9 @@ module.exports = {
 
     'no-extra-parens': 'off',
     '@typescript-eslint/no-extra-parens': _eslint.rules['no-extra-parens'],
+
+    'no-loop-func': 'off',
+    '@typescript-eslint/no-loop-func': _eslint.rules['no-loop-func'],
 
     'no-magic-numbers': 'off',
     '@typescript-eslint/no-magic-numbers': _eslint.rules['no-magic-numbers'],

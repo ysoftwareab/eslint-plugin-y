@@ -19,6 +19,7 @@
 @typescript-eslint/no-extraneous-class
 @typescript-eslint/no-floating-promises
 @typescript-eslint/no-inferrable-types
+@typescript-eslint/no-loop-func
 @typescript-eslint/no-magic-numbers
 @typescript-eslint/no-misused-promises
 @typescript-eslint/no-non-null-assertion
@@ -65,6 +66,7 @@ no-extra-parens
 no-extra-semi
 no-func-assign
 no-import-assign
+no-loop-func
 no-loss-of-precision
 no-magic-numbers
 no-new-symbol

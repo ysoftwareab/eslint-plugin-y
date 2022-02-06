@@ -16,6 +16,7 @@ no-extra-parens
 no-extra-semi
 no-func-assign
 no-import-assign
+no-loop-func
 no-loss-of-precision
 no-magic-numbers
 no-new-symbol

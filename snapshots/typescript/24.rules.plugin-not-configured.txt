@@ -22,7 +22,6 @@
 @typescript-eslint/no-implied-eval
 @typescript-eslint/no-invalid-this
 @typescript-eslint/no-invalid-void-type
-@typescript-eslint/no-loop-func
 @typescript-eslint/no-meaningless-void-operator
 @typescript-eslint/no-non-null-asserted-nullish-coalescing
 @typescript-eslint/no-redeclare

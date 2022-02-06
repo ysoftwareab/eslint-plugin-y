@@ -7,7 +7,6 @@ jest/no-deprecated-functions
 jest/no-disabled-tests
 jest/no-done-callback
 jest/no-duplicate-hooks
-jest/no-empty-title
 jest/no-export
 jest/no-focused-tests
 jest/no-hooks

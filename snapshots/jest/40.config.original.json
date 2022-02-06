@@ -36,9 +36,6 @@
     "jest/no-duplicate-hooks": [
       "error"
     ],
-    "jest/no-empty-title": [
-      "error"
-    ],
     "jest/no-export": [
       "error"
     ],
@@ -108,6 +105,9 @@
     "jest/require-to-throw-message": [
       "off"
     ],
+    "jest/valid-title": [
+      "error"
+    ],
     "jest/no-disabled-tests": [
       "warn"
     ],
@@ -130,9 +130,6 @@
       "error"
     ],
     "jest/valid-expect": [
-      "error"
-    ],
-    "jest/valid-title": [
       "error"
     ]
   },

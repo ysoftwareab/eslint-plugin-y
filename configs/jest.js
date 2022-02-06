@@ -35,7 +35,6 @@ module.exports = {
     'jest/no-deprecated-functions': 'error',
     'jest/no-done-callback': 'error',
     'jest/no-duplicate-hooks': 'error',
-    'jest/no-empty-title': 'error',
     'jest/no-export': 'error',
     'jest/no-hooks': 'off',
     'jest/no-if': 'error',
@@ -58,6 +57,7 @@ module.exports = {
     'jest/prefer-to-have-length': 'error',
     'jest/require-hook': 'error',
     'jest/require-top-level-describe': 'error',
-    'jest/require-to-throw-message': 'off'
+    'jest/require-to-throw-message': 'off',
+    'jest/valid-title': 'error'
   }
 };

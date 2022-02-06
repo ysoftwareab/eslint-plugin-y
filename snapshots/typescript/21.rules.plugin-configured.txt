@@ -24,6 +24,7 @@
 @typescript-eslint/no-extraneous-class
 @typescript-eslint/no-floating-promises
 @typescript-eslint/no-inferrable-types
+@typescript-eslint/no-loop-func
 @typescript-eslint/no-loss-of-precision
 @typescript-eslint/no-magic-numbers
 @typescript-eslint/no-misused-new

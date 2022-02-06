@@ -13,8 +13,6 @@
 + ["error"]
 @ ["rules","jest/no-duplicate-hooks"]
 + ["error"]
-@ ["rules","jest/no-empty-title"]
-+ ["error"]
 @ ["rules","jest/no-hooks"]
 + ["off"]
 @ ["rules","jest/no-if"]
