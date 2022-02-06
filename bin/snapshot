@@ -6,6 +6,8 @@ GIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 NAME=${1:-eslint}
 OUTPUT_DIR=$2
 
+PATH=${PATH}:${GIT_ROOT}/node_modules/.bin
+
 cd ${GIT_ROOT}
 
 FILE=foo.js
