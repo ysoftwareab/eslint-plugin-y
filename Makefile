@@ -103,8 +103,8 @@ ifeq (6,$(shell $(NPM) --version | $(CUT) -d. -f1))
 	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb
 	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-base
 	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-typescript
-	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-canonical
-	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-standard@^17.0.0-1
+	$(NPX) install-peerdeps --dev --only-peers eslint-config-canonical
+	$(NPX) install-peerdeps --dev --only-peers eslint-config-standard@^17.0.0-1
 	$(NPX) install-peerdeps --dev --only-peers eslint-plugin-flowtype
 	$(NPX) install-peerdeps --dev --only-peers @graphql-eslint/eslint-plugin
 else
