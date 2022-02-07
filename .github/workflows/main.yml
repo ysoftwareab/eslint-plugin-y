@@ -31,7 +31,7 @@ jobs:
     name: 'main-node-${{ matrix.node }}'
     runs-on: ubuntu-latest
     container:
-      image: 'ysoftwareab/yp-ubuntu-20.04-minimal:0.3.29'
+      image: 'ysoftwareab/yp-ubuntu-20.04-minimal:0.3.28'
       options: '--user yp:yp'
       env:
         GITHUB_JOB_NAME: 'main-node-${{ matrix.node }}'
@@ -41,7 +41,7 @@ jobs:
         YP_PRINTENV_BOOTSTRAP: '${{ secrets.YP_PRINTENV_BOOTSTRAP }}'
         V: '${{ secrets.V }}'
     steps:
-      - uses: ysoftwareab/yplatform@v0.3.29
+      - uses: ysoftwareab/yplatform@v0.3.28
         with:
           run: |
             bin/github-fix
