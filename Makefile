@@ -48,6 +48,7 @@ TARGETS_SNAPSHOTS += $(TARGETS_SNAPSHOTS_EXTERNAL)
 YP_VENDOR_FILES_IGNORE += \
 	-e "^\.github/workflows/main\.yml$$" \
 	-e "^configs/index\.js$$" \
+	-e "^eslintrc/" \
 	-e "^package\.json$$" \
 	-e "^rules/index\.js$$" \
 	-e "^snapshots/" \
