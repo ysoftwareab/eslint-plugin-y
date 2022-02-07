@@ -96,20 +96,17 @@ YP_TEST_TARGETS += \
 
 # ------------------------------------------------------------------------------
 
-# 'npx install-peerdeps' needs to run before 'npm install' or it will mess up node_modules
-deps-npm: deps-npm-peer
-
 .PHONY: deps-npm-peer
 deps-npm-peer:
 # we only support npm@6+, so no reason to check for older npm versions)
 ifeq (6,$(shell $(NPM) --version | $(CUT) -d. -f1))
-	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb
-	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-base
-	$(NPX) install-peerdeps --dev --only-peers eslint-config-airbnb-typescript
-	$(NPX) install-peerdeps --dev --only-peers eslint-config-canonical
-	$(NPX) install-peerdeps --dev --only-peers eslint-config-standard@^17.0.0-1
-	$(NPX) install-peerdeps --dev --only-peers eslint-plugin-flowtype
-	$(NPX) install-peerdeps --dev --only-peers @graphql-eslint/eslint-plugin
+	$(NPX) install-peerdeps --dev eslint-config-airbnb
+	$(NPX) install-peerdeps --dev eslint-config-airbnb-base
+	$(NPX) install-peerdeps --dev eslint-config-airbnb-typescript
+	$(NPX) install-peerdeps --dev eslint-config-canonical
+	$(NPX) install-peerdeps --dev eslint-config-standard@^17.0.0-1
+	$(NPX) install-peerdeps --dev eslint-plugin-flowtype
+	$(NPX) install-peerdeps --dev @graphql-eslint/eslint-plugin
 else
 	$(ECHO_INFO) "$(NPM) version $(shell $(NPM) --version) should be automatically install peer dependencies."
 	$(ECHO_SKIP) "$(NPX) install-peerdeps"
