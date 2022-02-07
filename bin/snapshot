@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-GIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+set -x
+
+# DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
+GIT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." >/dev/null && pwd)"
 NAME=${1:-eslint}
 OUTPUT_DIR=$2
 
-PATH=${PATH}:${GIT_ROOT}/node_modules/.bin
+export PATH=${PATH}:${GIT_ROOT}/node_modules/.bin
+hash -r
 
 cd ${GIT_ROOT}
 

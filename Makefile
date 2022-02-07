@@ -70,7 +70,6 @@ YP_ECLINT_FILES_IGNORE += \
 	-e "^test/order-imports\.test\.js$$" \
 
 YP_DEPS_TARGETS += \
-	deps-npm-peer \
 	.github/workflows/main.yml \
 	configs/index.js \
 	rules/index.js \
@@ -95,6 +94,9 @@ YP_TEST_TARGETS += \
 	test-rules \
 
 # ------------------------------------------------------------------------------
+
+# 'npx install-peerdeps' needs to run before 'npm install' or it will mess up node_modules
+deps-npm: deps-npm-peer
 
 .PHONY: deps-npm-peer
 deps-npm-peer:
