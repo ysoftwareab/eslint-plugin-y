@@ -31,10 +31,10 @@ export YP_SKIP_BREW_BOOTSTRAP=true
 
 [[ "$1" = "before_install" ]] || {
     NODE_VSN=${GITHUB_MATRIX_NODE}
-    echo_do "Activating node ${NODE_VSN} via NVM (as per GITHUB_MATRIX_NODE)..."
-    exe nvm use ${GITHUB_MATRIX_NODE}
-    echo_done
+    echo_do "Activating node@${NODE_VSN} via NVM (as per GITHUB_MATRIX_NODE)..."
+    exe nvm use ${NODE_VSN}
     unset NODE_VSN
+    echo_done
 }
 
 # shellcheck disable=SC1091
