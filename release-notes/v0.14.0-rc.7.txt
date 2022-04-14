@@ -1,0 +1,47 @@
+eslint-plugin-y v0.14.0-rc.7 Release Notes
+
+Highlights since v0.14.0-rc.6-src:
+
+* None
+
+
+Breaking commits since v0.14.0-rc.6-src:
+
+* None
+
+Commits since v0.14.0-rc.6-src:
+
+* a18acdf 2022-04-14 remove eslint-plugin-mocha, not compatible with node 17 due to rambda, gives ERR_PACKAGE_PATH_NOT_EXPORTED
+* 791bb44 2022-04-14 Revert "can't use eslint-plugin-mocha (depends on ramda) with node 17, gives ERR_PACKAGE_NOT_EXPORTED error"
+* 232897b 2022-04-14 updated bin/snapshot
+* 737088e 2022-04-14 can't use eslint-plugin-mocha (depends on ramda) with node 17, gives ERR_PACKAGE_NOT_EXPORTED error
+* f4d9fb6 2022-04-14 update snapshots
+* e9d2316 2022-04-14 fixup! updated yplatform to v0.3.31
+* 95cfc2f 2022-04-14 fixup! Revert "temporary fix. lock to yp images 0.3.28"
+* fa168ef 2022-04-14 Revert "temporary fix. lock to yp images 0.3.28"
+* 38ccc30 2022-04-14 updated yplatform to v0.3.31
+* 289d62c 2022-02-08 updated yplatform
+* 30a5d8d 2022-02-08 don't run install-peerdeps automatically. it's buggy, updates package.json to latest despite compatible semver
+* b871329 2022-02-08 fixup! bulk fixes to get the nvm matrix and install-peerdeps working
+* 5b809dc 2022-02-08 faster ci. skip brew/sudo bootstrap
+* 68d13f3 2022-02-08 updated yplatform
+* 044b8a1 2022-02-08 temporary fix. lock to yp images 0.3.28
+* 7e1058e 2022-02-07 updated yplatform
+* e0b78e6 2022-02-07 don't lint generated eslintrc files
+* f7118d4 2022-02-07 bulk fixes to get the nvm matrix and install-peerdeps working
+* 78bf62f 2022-02-06 fix missing eslint
+* 4f77163 2022-02-06 fixup! install peer deps for external configs, since we need to work on npm@6
+* 08ec7d5 2022-02-06 updated yplatform
+* a36f52e 2022-02-06 updated yplatform
+* 6f86d1a 2022-02-06 minor fixes to jest and typescript in order to build lodash-y
+* c76f3cb 2022-02-06 style
+* f51cc09 2022-02-06 disable encapsulation as indicated at https://nodejs.org/api/packages.html#package-entry-points
+* 9be9b73 2022-02-06 install peer deps for external configs, since we need to work on npm@6
+* 1b5ca51 2022-02-05 updated yplatform
+* 37a8e39 2022-02-05 updated yplatform
+* 7fad742 2022-02-05 updated yplatform
+* 4adfe20 2022-02-05 fixup! remove duplicate rules
+* ed51519 2022-02-05 checkin eslintrc folder
+* ed4427a 2022-02-05 updated yplatform
+* 499c047 2022-02-05 remove duplicate rules
+o 0ef747d 2022-02-05 0.14.0-rc.6
