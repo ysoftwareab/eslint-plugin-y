@@ -71,12 +71,14 @@ esac
 
 function config() {
     >&2 echo "${FUNCNAME[@]}"
-    eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE}
+    eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+        stabilize
 }
 
 function rules() {
     >&2 echo "${FUNCNAME[@]}"
     eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+        stabilize | \
         jq -r ".rules | keys[]" | sort
 }
 
@@ -109,11 +111,13 @@ EOF
 
 function rules-plugin-configured() {
     eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+        stabilize | \
         jq -r ".rules | keys[]" | sort | { grep "^${PLUGIN_RULE_PREFIX:-.}" || true; }
 }
 
 function rules-plugin-overrides() {
     eslint --no-eslintrc -c ${ESLINTRC} --print-config ${FILE} | \
+        stabilize | \
         jq -r ".rules | keys[]" | sort | { grep -v "^${PLUGIN_RULE_PREFIX:-.}" || true; }
 }
 
@@ -129,17 +133,19 @@ function rules-plugin-not-configured() {
 
 function config-extends() {
     >&2 echo "${FUNCNAME[@]}"
-    eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE}
+    eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE} | \
+        stabilize
 }
 
 function config-extends-diff() {
     >&2 echo "${FUNCNAME[@]}"
-    jd ${OUTPUT_DIR}/30.config.extends.json ${OUTPUT_DIR}/10.config.json
+    jd ${OUTPUT_DIR}/30.config.extends.json ${OUTPUT_DIR}/10.config.json || true
 }
 
 function rules-extends() {
     >&2 echo "${FUNCNAME[@]}"
     eslint --no-eslintrc -c ${CONFIG_EXTENDS} --print-config ${FILE} | \
+        stabilize | \
         jq -r ".rules | keys[]" | sort
 }
 
@@ -149,6 +155,10 @@ function rules-extends-diff() {
     # comm -23 ${OUTPUT_DIR}/31.rules.extends.txt ${OUTPUT_DIR}/11.rules.txt
     cat ${OUTPUT_DIR}/32.config.extends-diff.txt | { grep "^@ " || true; } | \
         sed "s/^@ //" | jq -r ".[1]" | sort -u
+}
+
+function stabilize() {
+    sed "s|${GIT_ROOT}|/|g"
 }
 
 # ------------------------------------------------------------------------------
@@ -164,7 +174,7 @@ mkdir -p ${OUTPUT_DIR}
 >&2 echo PLUGIN_RULE_PREFIX=${PLUGIN_RULE_PREFIX}
 
 config > ${OUTPUT_DIR}/40.config.original.json
-cat ${OUTPUT_DIR}/40.config.original.json | jq -S > ${OUTPUT_DIR}/10.config.json
+cat ${OUTPUT_DIR}/40.config.original.json | stabilize | jq -S > ${OUTPUT_DIR}/10.config.json
 rules > ${OUTPUT_DIR}/11.rules.txt
 
 if [[ -n "${PLUGIN}" ]]; then
