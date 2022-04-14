@@ -41,7 +41,7 @@ jobs:
         YP_PRINTENV_BOOTSTRAP: '${{ secrets.YP_PRINTENV_BOOTSTRAP }}'
         V: '${{ secrets.V }}'
     steps:
-      - uses: ysoftwareab/yplatform@v0.3.31
+      - uses: ysoftwareab/yplatform/.github/actions/run@v0.3.31
         with:
           run: |
             bin/github-fix
