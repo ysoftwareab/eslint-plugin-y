@@ -49,7 +49,6 @@ These addons require you to install the plugin manually:
 - `@typescript-eslint/eslint-plugin`: `plugin:y/typescript`
 - `eslint-plugin-jasmine`: `plugin:y/jasmine`
 - `eslint-plugin-jest`: `plugin:y/jest`
-- `eslint-plugin-mocha` (with Chai): `plugin:y/mocha`
 - `eslint-plugin-protractor`: `plugin:y/protractor`
 - `eslint-plugin-vue`: `plugin:y/vue`
 
