@@ -1,2 +1,0 @@
-async-await/space-after-async
-async-await/space-after-await

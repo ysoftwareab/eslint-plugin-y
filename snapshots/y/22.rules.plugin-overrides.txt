@@ -1,4 +1,0 @@
-array-bracket-newline
-array-element-newline
-object-curly-newline
-object-property-newline

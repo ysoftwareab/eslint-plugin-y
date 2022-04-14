@@ -1,4 +1,0 @@
-jest/no-alias-methods
-jest/prefer-to-be
-jest/prefer-to-contain
-jest/prefer-to-have-length
