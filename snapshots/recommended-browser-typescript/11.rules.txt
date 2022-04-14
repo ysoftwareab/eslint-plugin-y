@@ -34,6 +34,7 @@
 @typescript-eslint/no-extraneous-class
 @typescript-eslint/no-floating-promises
 @typescript-eslint/no-inferrable-types
+@typescript-eslint/no-loop-func
 @typescript-eslint/no-loss-of-precision
 @typescript-eslint/no-magic-numbers
 @typescript-eslint/no-misused-new
@@ -234,6 +235,7 @@ jsdoc/require-returns-type
 jsdoc/require-throws
 jsdoc/require-yields
 jsdoc/require-yields-check
+jsdoc/sort-tags
 jsdoc/tag-lines
 jsdoc/valid-types
 jsx-quotes

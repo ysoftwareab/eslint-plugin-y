@@ -4,7 +4,7 @@
     "node": true
   },
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@typescript-eslint/parser/dist/index.js",
+  "parser": "//node_modules/@typescript-eslint/parser/dist/index.js",
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
@@ -385,6 +385,12 @@
     "@typescript-eslint/no-shadow": [
       "error"
     ],
+    "space-before-blocks": [
+      "off"
+    ],
+    "@typescript-eslint/space-before-blocks": [
+      "error"
+    ],
     "no-throw-literal": [
       "off"
     ],
@@ -495,7 +501,8 @@
       "off"
     ],
     "@typescript-eslint/return-await": [
-      "error"
+      "error",
+      "in-try-catch"
     ],
     "space-infix-ops": [
       "off"
@@ -778,7 +785,8 @@
     "no-confusing-arrow": [
       "error",
       {
-        "allowParens": true
+        "allowParens": true,
+        "onlyOneSimpleParam": false
       }
     ],
     "no-const-assign": [
@@ -1476,9 +1484,6 @@
     ],
     "sort-vars": [
       "off"
-    ],
-    "space-before-blocks": [
-      "error"
     ],
     "space-in-parens": [
       "error",

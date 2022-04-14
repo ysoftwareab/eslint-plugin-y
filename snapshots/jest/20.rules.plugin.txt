@@ -4,6 +4,7 @@ jest/max-nested-describe
 jest/no-alias-methods
 jest/no-commented-out-tests
 jest/no-conditional-expect
+jest/no-conditional-in-test
 jest/no-deprecated-functions
 jest/no-disabled-tests
 jest/no-done-callback
@@ -29,6 +30,7 @@ jest/prefer-expect-assertions
 jest/prefer-expect-resolves
 jest/prefer-hooks-on-top
 jest/prefer-lowercase-title
+jest/prefer-snapshot-hint
 jest/prefer-spy-on
 jest/prefer-strict-equal
 jest/prefer-to-be

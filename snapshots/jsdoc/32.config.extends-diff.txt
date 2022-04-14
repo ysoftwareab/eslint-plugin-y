@@ -7,7 +7,7 @@
 @ ["rules","jsdoc/require-hyphen-before-param-description",0]
 - "off"
 + "error"
-@ ["rules","jsdoc/require-hyphen-before-param-description",1]
+@ ["rules","jsdoc/require-hyphen-before-param-description",-1]
 + "never"
 @ ["rules","jsdoc/require-jsdoc",0]
 - "warn"

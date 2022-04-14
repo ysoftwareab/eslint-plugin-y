@@ -4,6 +4,7 @@ jest/max-nested-describe
 jest/no-alias-methods
 jest/no-commented-out-tests
 jest/no-conditional-expect
+jest/no-conditional-in-test
 jest/no-deprecated-functions
 jest/no-disabled-tests
 jest/no-done-callback
@@ -12,7 +13,6 @@ jest/no-export
 jest/no-focused-tests
 jest/no-hooks
 jest/no-identical-title
-jest/no-if
 jest/no-interpolation-in-snapshots
 jest/no-jasmine-globals
 jest/no-jest-import
@@ -29,6 +29,7 @@ jest/prefer-expect-assertions
 jest/prefer-expect-resolves
 jest/prefer-hooks-on-top
 jest/prefer-lowercase-title
+jest/prefer-snapshot-hint
 jest/prefer-spy-on
 jest/prefer-strict-equal
 jest/prefer-to-be

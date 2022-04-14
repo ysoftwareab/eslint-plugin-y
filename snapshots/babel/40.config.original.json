@@ -1,7 +1,7 @@
 {
   "env": {},
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@babel/eslint-parser/lib/index.cjs",
+  "parser": "//node_modules/@babel/eslint-parser/lib/index.cjs",
   "parserOptions": {
     "requireConfigFile": false,
     "sourceType": "module"

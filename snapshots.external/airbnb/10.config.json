@@ -1006,7 +1006,8 @@
     "no-confusing-arrow": [
       "error",
       {
-        "allowParens": true
+        "allowParens": true,
+        "onlyOneSimpleParam": false
       }
     ],
     "no-console": [

@@ -5,7 +5,7 @@
   },
   "globals": {},
   "ignorePatterns": [],
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@babel/eslint-parser/lib/index.cjs",
+  "parser": "//node_modules/@babel/eslint-parser/lib/index.cjs",
   "parserOptions": {
     "ecmaVersion": 7,
     "requireConfigFile": false,
@@ -618,6 +618,9 @@
     ],
     "jsdoc/require-yields-check": [
       "warn"
+    ],
+    "jsdoc/sort-tags": [
+      "off"
     ],
     "jsdoc/tag-lines": [
       "warn"

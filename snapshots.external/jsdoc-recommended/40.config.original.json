@@ -145,6 +145,9 @@
     "jsdoc/require-yields-check": [
       "warn"
     ],
+    "jsdoc/sort-tags": [
+      "off"
+    ],
     "jsdoc/tag-lines": [
       "warn"
     ],

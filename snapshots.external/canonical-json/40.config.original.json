@@ -1,7 +1,7 @@
 {
   "env": {},
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/eslint-config-canonical/node_modules/jsonc-eslint-parser/lib/index.js",
+  "parser": "//node_modules/jsonc-eslint-parser/lib/index.js",
   "parserOptions": {},
   "plugins": [
     "jsonc"
@@ -127,6 +127,9 @@
     ],
     "jsonc/quotes": [
       2
+    ],
+    "jsonc/sort-array-values": [
+      0
     ],
     "jsonc/sort-keys": [
       2,

@@ -9,7 +9,7 @@
     "__filename": false
   },
   "ignorePatterns": [],
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@typescript-eslint/parser/dist/index.js",
+  "parser": "//node_modules/@typescript-eslint/parser/dist/index.js",
   "parserOptions": {
     "ecmaVersion": 7,
     "project": "./tsconfig.json",
@@ -179,7 +179,7 @@
       {
         "custom": {
           "match": true,
-          "regex": "^[A-Z][a-zA-Z]+$"
+          "regex": "^[A-Z][a-zA-Z0-9]*$"
         },
         "format": [
           "PascalCase"
@@ -239,6 +239,9 @@
     ],
     "@typescript-eslint/no-inferrable-types": [
       "off"
+    ],
+    "@typescript-eslint/no-loop-func": [
+      "error"
     ],
     "@typescript-eslint/no-loss-of-precision": [
       "error"
@@ -923,6 +926,9 @@
     "jsdoc/require-yields-check": [
       "warn"
     ],
+    "jsdoc/sort-tags": [
+      "off"
+    ],
     "jsdoc/tag-lines": [
       "warn"
     ],
@@ -1332,7 +1338,7 @@
       "error"
     ],
     "no-loop-func": [
-      "error"
+      "off"
     ],
     "no-loss-of-precision": [
       "error"

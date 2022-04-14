@@ -1,5 +1,7 @@
 jest/max-nested-describe
+jest/no-conditional-in-test
 jest/prefer-hooks-on-top
+jest/prefer-snapshot-hint
 jest/prefer-to-be
 jest/prefer-todo
 jest/unbound-method

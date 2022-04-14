@@ -402,12 +402,14 @@ unicorn/no-null
 unicorn/no-object-as-default-parameter
 unicorn/no-process-exit
 unicorn/no-static-only-class
+unicorn/no-thenable
 unicorn/no-this-assignment
 unicorn/no-unreadable-array-destructuring
 unicorn/no-unsafe-regex
 unicorn/no-unused-properties
 unicorn/no-useless-fallback-in-spread
 unicorn/no-useless-length-check
+unicorn/no-useless-promise-resolve-reject
 unicorn/no-useless-spread
 unicorn/no-useless-undefined
 unicorn/no-zero-fractions
@@ -424,6 +426,7 @@ unicorn/prefer-date-now
 unicorn/prefer-default-parameters
 unicorn/prefer-export-from
 unicorn/prefer-includes
+unicorn/prefer-json-parse-buffer
 unicorn/prefer-math-trunc
 unicorn/prefer-negative-index
 unicorn/prefer-number-properties
@@ -445,11 +448,13 @@ unicorn/prefer-ternary
 unicorn/prefer-top-level-await
 unicorn/prefer-type-error
 unicorn/prevent-abbreviations
+unicorn/relative-url-style
 unicorn/require-array-join-separator
 unicorn/require-number-to-fixed-digits-argument
 unicorn/require-post-message-target-origin
 unicorn/string-content
 unicorn/template-indent
+unicorn/text-encoding-identifier-case
 unicorn/throw-new-error
 use-isnan
 valid-typeof

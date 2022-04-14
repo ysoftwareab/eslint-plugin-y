@@ -60,6 +60,7 @@
 @typescript-eslint/no-non-null-assertion
 @typescript-eslint/no-parameter-properties
 @typescript-eslint/no-redeclare
+@typescript-eslint/no-redundant-type-constituents
 @typescript-eslint/no-require-imports
 @typescript-eslint/no-restricted-imports
 @typescript-eslint/no-shadow
@@ -81,6 +82,7 @@
 @typescript-eslint/no-unused-vars
 @typescript-eslint/no-use-before-define
 @typescript-eslint/no-useless-constructor
+@typescript-eslint/no-useless-empty-export
 @typescript-eslint/no-var-requires
 @typescript-eslint/non-nullable-type-assertion-style
 @typescript-eslint/object-curly-spacing
@@ -110,6 +112,7 @@
 @typescript-eslint/return-await
 @typescript-eslint/semi
 @typescript-eslint/sort-type-union-intersection-members
+@typescript-eslint/space-before-blocks
 @typescript-eslint/space-before-function-paren
 @typescript-eslint/space-infix-ops
 @typescript-eslint/strict-boolean-expressions

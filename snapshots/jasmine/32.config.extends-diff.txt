@@ -1,6 +1,6 @@
 @ ["env","jasmine"]
 + true
-@ ["plugins",0]
+@ ["plugins",-1]
 + "jasmine"
 @ ["rules","class-methods-use-this"]
 + ["off"]

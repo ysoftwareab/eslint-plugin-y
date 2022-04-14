@@ -4,7 +4,7 @@
   },
   "globals": {},
   "ignorePatterns": [],
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@babel/eslint-parser/lib/index.cjs",
+  "parser": "//node_modules/@babel/eslint-parser/lib/index.cjs",
   "parserOptions": {
     "ecmaFeatures": {
       "globalReturn": false,
@@ -1009,7 +1009,8 @@
       2,
       {
         "builtinGlobals": false,
-        "hoist": "all"
+        "hoist": "all",
+        "ignoreOnInitialization": false
       }
     ],
     "no-shadow-restricted-names": [
@@ -1475,6 +1476,9 @@
     "unicorn/no-static-only-class": [
       2
     ],
+    "unicorn/no-thenable": [
+      2
+    ],
     "unicorn/no-this-assignment": [
       2
     ],
@@ -1491,6 +1495,9 @@
       2
     ],
     "unicorn/no-useless-length-check": [
+      2
+    ],
+    "unicorn/no-useless-promise-resolve-reject": [
       2
     ],
     "unicorn/no-useless-spread": [
@@ -1546,6 +1553,9 @@
       2
     ],
     "unicorn/prefer-includes": [
+      2
+    ],
+    "unicorn/prefer-json-parse-buffer": [
       2
     ],
     "unicorn/prefer-math-trunc": [
@@ -1621,6 +1631,10 @@
         }
       }
     ],
+    "unicorn/relative-url-style": [
+      2,
+      "never"
+    ],
     "unicorn/require-array-join-separator": [
       2
     ],
@@ -1634,6 +1648,9 @@
       0
     ],
     "unicorn/template-indent": [
+      2
+    ],
+    "unicorn/text-encoding-identifier-case": [
       2
     ],
     "unicorn/throw-new-error": [

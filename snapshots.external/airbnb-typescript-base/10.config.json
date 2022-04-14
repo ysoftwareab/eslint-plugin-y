@@ -5,7 +5,7 @@
   },
   "globals": {},
   "ignorePatterns": [],
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@typescript-eslint/parser/dist/index.js",
+  "parser": "//node_modules/@typescript-eslint/parser/dist/index.js",
   "parserOptions": {
     "ecmaFeatures": {
       "generators": false,
@@ -256,11 +256,15 @@
       "off"
     ],
     "@typescript-eslint/return-await": [
-      "error"
+      "error",
+      "in-try-catch"
     ],
     "@typescript-eslint/semi": [
       "error",
       "always"
+    ],
+    "@typescript-eslint/space-before-blocks": [
+      "error"
     ],
     "@typescript-eslint/space-before-function-paren": [
       "error",
@@ -992,7 +996,8 @@
     "no-confusing-arrow": [
       "error",
       {
-        "allowParens": true
+        "allowParens": true,
+        "onlyOneSimpleParam": false
       }
     ],
     "no-console": [
@@ -1939,7 +1944,7 @@
       "off"
     ],
     "space-before-blocks": [
-      "error"
+      "off"
     ],
     "space-before-function-paren": [
       "off",

@@ -1,7 +1,7 @@
 {
   "env": {},
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@typescript-eslint/parser/dist/index.js",
+  "parser": "//node_modules/@typescript-eslint/parser/dist/index.js",
   "parserOptions": {
     "sourceType": "module"
   },
@@ -258,6 +258,9 @@
     "@typescript-eslint/no-redeclare": [
       "error"
     ],
+    "@typescript-eslint/no-redundant-type-constituents": [
+      "error"
+    ],
     "@typescript-eslint/no-require-imports": [
       "error"
     ],
@@ -334,6 +337,9 @@
       "off"
     ],
     "@typescript-eslint/no-use-before-define": [
+      "error"
+    ],
+    "@typescript-eslint/no-useless-empty-export": [
       "error"
     ],
     "no-useless-constructor": [
@@ -457,6 +463,12 @@
       "off"
     ],
     "@typescript-eslint/space-infix-ops": [
+      "error"
+    ],
+    "space-before-blocks": [
+      "off"
+    ],
+    "@typescript-eslint/space-before-blocks": [
       "error"
     ],
     "@typescript-eslint/strict-boolean-expressions": [

@@ -38,5 +38,6 @@ jsdoc/require-returns-description
 jsdoc/require-throws
 jsdoc/require-yields
 jsdoc/require-yields-check
+jsdoc/sort-tags
 jsdoc/tag-lines
 jsdoc/valid-types

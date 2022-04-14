@@ -104,6 +104,7 @@ vue/no-restricted-call-after-await
 vue/no-restricted-class
 vue/no-restricted-component-options
 vue/no-restricted-custom-event
+vue/no-restricted-html-elements
 vue/no-restricted-props
 vue/no-restricted-static-attribute
 vue/no-restricted-syntax
@@ -148,8 +149,11 @@ vue/one-component-per-file
 vue/operator-linebreak
 vue/order-in-components
 vue/padding-line-between-blocks
+vue/prefer-import-from-vue
+vue/prefer-prop-type-boolean-first
 vue/prefer-separate-static-class
 vue/prefer-template
+vue/prefer-true-attribute-shorthand
 vue/prop-name-casing
 vue/quote-props
 vue/require-component-is

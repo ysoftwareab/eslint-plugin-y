@@ -52,6 +52,12 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "react/hook-use-state": [
+      2
+    ],
+    "react/iframe-missing-sandbox": [
+      2
+    ],
     "react/jsx-boolean-value": [
       2,
       "never"
@@ -119,7 +125,8 @@
       2,
       {
         "checkFragmentShorthand": true,
-        "checkKeyMustBeforeSpread": true
+        "checkKeyMustBeforeSpread": true,
+        "warnOnDuplicates": false
       }
     ],
     "react/jsx-max-depth": [

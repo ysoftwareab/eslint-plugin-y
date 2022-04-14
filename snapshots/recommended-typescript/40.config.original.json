@@ -1,7 +1,7 @@
 {
   "env": {},
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@typescript-eslint/parser/dist/index.js",
+  "parser": "//node_modules/@typescript-eslint/parser/dist/index.js",
   "parserOptions": {
     "project": "./tsconfig.json",
     "sourceType": "module"
@@ -334,7 +334,7 @@
           "PascalCase"
         ],
         "custom": {
-          "regex": "^[A-Z][a-zA-Z]+$",
+          "regex": "^[A-Z][a-zA-Z0-9]*$",
           "match": true
         }
       },
@@ -394,6 +394,12 @@
     ],
     "@typescript-eslint/no-extra-parens": [
       "off"
+    ],
+    "no-loop-func": [
+      "off"
+    ],
+    "@typescript-eslint/no-loop-func": [
+      "error"
     ],
     "no-magic-numbers": [
       "off"

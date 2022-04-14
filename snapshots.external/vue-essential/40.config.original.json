@@ -4,7 +4,7 @@
     "es6": true
   },
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/eslint-plugin-vue/node_modules/vue-eslint-parser/index.js",
+  "parser": "//node_modules/vue-eslint-parser/index.js",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"

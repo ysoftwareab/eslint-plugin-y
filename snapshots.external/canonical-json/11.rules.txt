@@ -36,6 +36,7 @@ jsonc/object-curly-spacing
 jsonc/object-property-newline
 jsonc/quote-props
 jsonc/quotes
+jsonc/sort-array-values
 jsonc/sort-keys
 jsonc/space-unary-ops
 jsonc/valid-json-number

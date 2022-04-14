@@ -20,5 +20,6 @@ yml/plain-scalar
 yml/quotes
 yml/require-string-key
 yml/sort-keys
+yml/sort-sequence-values
 yml/spaced-comment
 yml/vue-custom-block/no-parsing-error

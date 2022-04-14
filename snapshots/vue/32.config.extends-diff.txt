@@ -1,10 +1,10 @@
 @ ["rules","vue/html-closing-bracket-newline",0]
 - "warn"
 + "error"
-@ ["rules","vue/html-closing-bracket-newline",1]
+@ ["rules","vue/html-closing-bracket-newline",-1]
 + {"multiline":"always","singleline":"never"}
 @ ["rules","vue/singleline-html-element-content-newline",0]
 - "warn"
 + "error"
-@ ["rules","vue/singleline-html-element-content-newline",1]
+@ ["rules","vue/singleline-html-element-content-newline",-1]
 + {"ignoreWhenEmpty":true,"ignores":["code","pre","textarea"]}

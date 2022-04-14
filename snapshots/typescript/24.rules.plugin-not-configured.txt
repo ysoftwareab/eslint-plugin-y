@@ -25,6 +25,7 @@
 @typescript-eslint/no-meaningless-void-operator
 @typescript-eslint/no-non-null-asserted-nullish-coalescing
 @typescript-eslint/no-redeclare
+@typescript-eslint/no-redundant-type-constituents
 @typescript-eslint/no-restricted-imports
 @typescript-eslint/no-shadow
 @typescript-eslint/no-throw-literal
@@ -35,6 +36,7 @@
 @typescript-eslint/no-unsafe-member-access
 @typescript-eslint/no-unsafe-return
 @typescript-eslint/no-unused-expressions
+@typescript-eslint/no-useless-empty-export
 @typescript-eslint/non-nullable-type-assertion-style
 @typescript-eslint/object-curly-spacing
 @typescript-eslint/padding-line-between-statements
@@ -51,6 +53,7 @@
 @typescript-eslint/restrict-template-expressions
 @typescript-eslint/return-await
 @typescript-eslint/sort-type-union-intersection-members
+@typescript-eslint/space-before-blocks
 @typescript-eslint/space-before-function-paren
 @typescript-eslint/space-infix-ops
 @typescript-eslint/switch-exhaustiveness-check

@@ -29,6 +29,7 @@
 @typescript-eslint/require-await
 @typescript-eslint/return-await
 @typescript-eslint/semi
+@typescript-eslint/space-before-blocks
 @typescript-eslint/space-before-function-paren
 @typescript-eslint/space-infix-ops
 accessor-pairs

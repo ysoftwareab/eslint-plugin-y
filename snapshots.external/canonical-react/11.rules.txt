@@ -11,6 +11,8 @@ react/forbid-elements
 react/forbid-foreign-prop-types
 react/forbid-prop-types
 react/function-component-definition
+react/hook-use-state
+react/iframe-missing-sandbox
 react/jsx-boolean-value
 react/jsx-child-element-spacing
 react/jsx-closing-bracket-location

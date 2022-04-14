@@ -3,7 +3,7 @@
     "es6": true
   },
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@babel/eslint-parser/lib/index.cjs",
+  "parser": "//node_modules/@babel/eslint-parser/lib/index.cjs",
   "parserOptions": {
     "requireConfigFile": false,
     "sourceType": "module",
@@ -458,6 +458,9 @@
     ],
     "jsdoc/require-yields-check": [
       "warn"
+    ],
+    "jsdoc/sort-tags": [
+      "off"
     ],
     "jsdoc/tag-lines": [
       "warn"

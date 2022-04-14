@@ -4,7 +4,7 @@
   },
   "globals": {},
   "ignorePatterns": [],
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/eslint/node_modules/espree/dist/espree.cjs",
+  "parser": "//node_modules/espree/dist/espree.cjs",
   "parserOptions": {
     "ecmaVersion": 7,
     "sourceType": "module"

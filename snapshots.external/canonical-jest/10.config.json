@@ -31,6 +31,9 @@
     "jest/no-conditional-expect": [
       2
     ],
+    "jest/no-conditional-in-test": [
+      2
+    ],
     "jest/no-deprecated-functions": [
       2
     ],
@@ -53,9 +56,6 @@
       0
     ],
     "jest/no-identical-title": [
-      2
-    ],
-    "jest/no-if": [
       2
     ],
     "jest/no-interpolation-in-snapshots": [
@@ -88,6 +88,9 @@
     "jest/prefer-called-with": [
       2
     ],
+    "jest/prefer-comparison-matcher": [
+      2
+    ],
     "jest/prefer-expect-assertions": [
       2,
       {
@@ -102,6 +105,9 @@
     ],
     "jest/prefer-lowercase-title": [
       0
+    ],
+    "jest/prefer-snapshot-hint": [
+      2
     ],
     "jest/prefer-spy-on": [
       2

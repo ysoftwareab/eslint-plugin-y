@@ -28,6 +28,9 @@
     "jest/no-conditional-expect": [
       "error"
     ],
+    "jest/no-conditional-in-test": [
+      "error"
+    ],
     "jest/no-deprecated-functions": [
       "error"
     ],
@@ -50,9 +53,6 @@
       "error"
     ],
     "jest/no-identical-title": [
-      "error"
-    ],
-    "jest/no-if": [
       "error"
     ],
     "jest/no-interpolation-in-snapshots": [
@@ -101,6 +101,9 @@
       "error"
     ],
     "jest/prefer-lowercase-title": [
+      "error"
+    ],
+    "jest/prefer-snapshot-hint": [
       "error"
     ],
     "jest/prefer-spy-on": [

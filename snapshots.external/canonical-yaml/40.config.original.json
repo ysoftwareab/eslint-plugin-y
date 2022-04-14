@@ -1,7 +1,7 @@
 {
   "env": {},
   "globals": {},
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/eslint-config-canonical/node_modules/yaml-eslint-parser/lib/index.js",
+  "parser": "//node_modules/yaml-eslint-parser/lib/index.js",
   "parserOptions": {},
   "plugins": [
     "yml"
@@ -86,6 +86,9 @@
         "caseSensitive": false,
         "natural": true
       }
+    ],
+    "yml/sort-sequence-values": [
+      0
     ],
     "yml/spaced-comment": [
       2

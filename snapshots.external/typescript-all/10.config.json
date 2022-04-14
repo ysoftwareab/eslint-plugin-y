@@ -2,7 +2,7 @@
   "env": {},
   "globals": {},
   "ignorePatterns": [],
-  "parser": "/Users/andrei/git/ysoftwareab/eslint-plugin-y/node_modules/@typescript-eslint/parser/dist/index.js",
+  "parser": "//node_modules/@typescript-eslint/parser/dist/index.js",
   "parserOptions": {
     "sourceType": "module"
   },
@@ -193,6 +193,9 @@
     "@typescript-eslint/no-redeclare": [
       "error"
     ],
+    "@typescript-eslint/no-redundant-type-constituents": [
+      "error"
+    ],
     "@typescript-eslint/no-require-imports": [
       "error"
     ],
@@ -254,6 +257,9 @@
       "error"
     ],
     "@typescript-eslint/no-useless-constructor": [
+      "error"
+    ],
+    "@typescript-eslint/no-useless-empty-export": [
       "error"
     ],
     "@typescript-eslint/no-var-requires": [
@@ -341,6 +347,9 @@
       "error"
     ],
     "@typescript-eslint/sort-type-union-intersection-members": [
+      "error"
+    ],
+    "@typescript-eslint/space-before-blocks": [
       "error"
     ],
     "@typescript-eslint/space-before-function-paren": [
@@ -473,6 +482,9 @@
       "off"
     ],
     "semi": [
+      "off"
+    ],
+    "space-before-blocks": [
       "off"
     ],
     "space-before-function-paren": [
