@@ -5,7 +5,7 @@
   "version": "0.14.0-rc.6",
   "license": "Unlicense",
   "engines": {
-    "node": ">=12",
+    "node": ">=12,<17",
     "npm": ">=6"
   },
   "exports": {
