@@ -48,8 +48,10 @@ let _tpl = _.template(outdent`
 `);
 
 if (require.main === module) {
+  // TODO remove below fix for node 12&14, which leave trailing spaces on empty lines
+  // console.log(_tpl({_configData}));
   // eslint-disable-next-line no-console
-  console.log(_tpl({_configData}));
+  console.log(_.replace(_tpl({_configData}), /\n\s+\n/g, '\n\n'));
 }
 
 module.exports = {
